@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Sprite Pixel</string>
+    <string name="high_scores">Top This Blasters!</string>
+    <string name="save">Save Score</string>
+    <string name="play">Play Again?</string>
+    <string name="name">Enter Player Name</string>
+    <string name="light">Title Text</string>
+
+    <string name="DATABASE_NAME">highscores.db</string>
+    <string name="HIGH_SCORE_TABLE">highscore</string>
+    <string name="COLUMN_ID">ID</string>
+    <string name="COLUMN_SCORE">SCORE</string>
+    <string name="COLUMN_NAME">NAME</string>
+    <string name="COLUMN_CHAIN">CHAIN</string>
+    <string name="nothanks">No thanks!</string>
+</resources>
