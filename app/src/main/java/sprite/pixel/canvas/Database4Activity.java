@@ -119,11 +119,11 @@ public class Database4Activity extends Activity {
                     builder.append("<h1><FONT COLOR=FF0000><center>High Scores</center></FONT></h1>");
                     builder.append("<table width='100%25'>");
                     builder.append("<tr><td><h2>");
-                    builder.append("<FONT COLOR=00CC00>Name </FONT>");
+                    builder.append("<FONT COLOR=FF0000>Name </FONT>");
                     builder.append("</h2></td><td><h2>");
-                    builder.append("<FONT COLOR=00CC00>Chain </FONT>");
+                    builder.append("<FONT COLOR=FF0000>Chain </FONT>");
                     builder.append("</h2></td><td><h2>");
-                    builder.append("<FONT COLOR=00CC00>Score </FONT>");
+                    builder.append("<FONT COLOR=FF0000>Score </FONT>");
                     builder.append("</h2></td></tr>");
                     c.moveToLast();
 
@@ -177,11 +177,11 @@ public class Database4Activity extends Activity {
         builder.append("<h1><FONT COLOR=FF0000><center>High Scores</center></FONT></h1>");
         builder.append("<table width='100%25'>");
         builder.append("<tr><td><h2>");
-        builder.append("<FONT COLOR=00CC00>Name </FONT>");
+        builder.append("<FONT COLOR=FF0000>Name </FONT>");
         builder.append("</h2></td><td><h2>");
-        builder.append("<FONT COLOR=00CC00>Chain </FONT>");
+        builder.append("<FONT COLOR=FF0000>Chain </FONT>");
         builder.append("</h2></td><td><h2>");
-        builder.append("<FONT COLOR=00CC00>Score </FONT>");
+        builder.append("<FONT COLOR=FF0000>Score </FONT>");
         builder.append("</h2></td></tr>");
         c.moveToLast();
 
@@ -301,7 +301,7 @@ public class Database4Activity extends Activity {
         SharedPreferences preferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.clear();
-        editor.commit();
+        editor.apply();
     }
 
     @Override
