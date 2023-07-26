@@ -1190,7 +1190,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         i = rand.nextInt(3);
         switch (i) {
             case 0:
-                p.setARGB(255, 0, 255, 0);
+                p.setARGB(255, 0, 0, 255);
                 break;
             case 1:
                 p.setARGB(255, 255, 255, 255);
