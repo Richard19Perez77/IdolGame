@@ -437,7 +437,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         fireText.setTextSize(textSize2);
 
         loadingText.setStrokeWidth(1);
-        loadingText.setColor(Color.BLACK);
+        loadingText.setColor(Color.RED);
         loadingText.setTextSize(textSize2);
         loadingText.setAntiAlias(true);
         loadingText.setFilterBitmap(true);
@@ -965,7 +965,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         fireText.setTextSize(textSize2);
 
         loadingText.setStrokeWidth(1);
-        loadingText.setColor(Color.BLACK);
+        loadingText.setColor(Color.RED);
         loadingText.setTextSize(textSize2);
         loadingText.setAntiAlias(true);
         loadingText.setFilterBitmap(true);
