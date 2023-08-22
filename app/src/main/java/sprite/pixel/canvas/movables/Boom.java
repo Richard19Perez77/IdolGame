@@ -34,8 +34,8 @@ public class Boom {
 		c = "Critical Hit!";
 		paint = new Paint();
 		paint.setColor(Color.RED);
-		paint.setTextSize(20);
-		paint.setStrokeWidth(3);
+		paint.setTextSize(35);
+		paint.setStrokeWidth(4);
 	}
 
 	public void update(Canvas canvas) {
