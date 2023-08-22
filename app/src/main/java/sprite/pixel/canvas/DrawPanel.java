@@ -51,6 +51,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     public final int PIECES = 49;
     public final int ROW = 7;
 
+    public final int MAX_BOOMS = 60;
+
     public final String path = "android.resource://sprite.pixel.canvas/";
 
     public int startSpeedOffset;
@@ -401,8 +403,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         b = BitmapFactory.decodeResource(getResources(), R.drawable.boom4);
         booms[4] = b;
 
-        allBooms2 = new Boom[40];
-        for (int i = 0; i < 40; i++) {
+        allBooms2 = new Boom[MAX_BOOMS];
+        for (int i = 0; i < MAX_BOOMS; i++) {
             allBooms2[i] = new Boom(booms);
         }
 
@@ -921,8 +923,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         b = BitmapFactory.decodeResource(getResources(), R.drawable.boom4);
         booms[4] = b;
 
-        allBooms2 = new Boom[40];
-        for (int i = 0; i < 40; i++) {
+        allBooms2 = new Boom[MAX_BOOMS];
+        for (int i = 0; i < MAX_BOOMS; i++) {
             allBooms2[i] = new Boom(booms);
         }
 
@@ -1549,7 +1551,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     }
 
     public void updateBooms(Canvas canvas) {
-        for (int i = 0; i < 40; i++) {
+        for (int i = 0; i < MAX_BOOMS; i++) {
             if (allBooms2[i].isBooming()) {
                 allBooms2[i].update(canvas);
             }
@@ -1676,7 +1678,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     }
 
     public void boomMap(int temp1, int temp2, boolean crit) {
-        for (int i = 0; i < 40; i++) {
+        for (int i = 0; i < MAX_BOOMS; i++) {
             if (!allBooms2[i].isBooming()) {
                 allBooms2[i].setX(temp1 + 5);
                 allBooms2[i].setY(temp2 + 5);
