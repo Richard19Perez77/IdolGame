@@ -75,10 +75,10 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             createSmallItems = true, justFired;
 
     public int shieldReserve = 10, chainBonus, randPlanetType, tempscore, px1, px2, py1,
-            py2, itemx1, itemy1, temp1, temp2, firex1, firex2, firey1, wallX,
+            py2, itemx1, itemy1, temp1, temp2, firex1, firex2, firey1, firey2, wallX,
             wallY, wallbX, wallbY, myX, myY, newX, newY, starTrail, acc, playerW,
             playerH, i, sCurr, sMax, aCurr, aMax, jx1, jx2, jy1, jy2, rapidH,
-            noteHeight, noteWidth, itemx2, itemy2, fireW, starsX[], starsY[],
+            noteHeight, noteWidth, itemx2, itemy2, fireW, fireH, starsX[], starsY[],
             speed = 1, critBonus, rapidCount = 50, bossNumber, roundChain,
             currChain, maxChain, timer, itemCount, maxItems, maxFire,
             itemH, itemW, screenH, fireSpeed, screenW, textSize1, textSize2,
@@ -868,6 +868,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         fireSkin = BitmapFactory
                 .decodeResource(getResources(), R.drawable.bullet);
         fireW = fireSkin.getWidth();
+        fireH = fireSkin.getHeight();
 
         rapidG = BitmapFactory
                 .decodeResource(getResources(), R.drawable.rapidg);
@@ -1600,6 +1601,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                 firex1 = bulletArray[i].x;
                 firex2 = firex1 + fireW;
                 firey1 = bulletArray[i].y;
+                firey2 = bulletArray[i].y + fireH;
+
                 // check for fire hitting small items
                 // and small items hitting player
                 for (int j = 0; j < itemArray.length; j++) {
@@ -1609,8 +1612,14 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                         itemy1 = itemArray[j].y;
                         itemy2 = itemy1 + itemH;
 
-                        if (((firex1 >= itemx1 && firex1 <= itemx2) || (firex2 >= itemx1 && firex2 <= itemx2))
-                                && (firey1 <= itemy2) && (itemy2 >= 0)) {
+                        if ((firex1 >= itemx1 && firex1 <= itemx2)
+                                && (firey2 >= itemy1 && firey2 <= itemy2)
+                                || (firex2 >= itemx1 && firex2 <= itemx2)
+                                && (firey2 >= itemy1 && firey2 <= itemy2)
+                                || (firex1 >= itemx1 && firex1 <= itemx2)
+                                && (firey1 >= itemy1 && firey1 <= itemy2)
+                                || (firex2 >= itemx1 && firex2 <= itemx2)
+                                && (firey1 >= itemy1 && firey1 <= itemy2)) {
                             if (incChain)
                                 currChain++;
                             comboCheck(canvas);
@@ -1708,8 +1717,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         itemCount--;
         item.exists = false;
         if (createSmallItems) {
-            item.x = (rand.nextInt(screenW - playerW));
-            item.y = (-playerH - 10);
+            item.x = rand.nextInt(screenW - itemW);
+            item.y = -itemH;
         }
     }
 
@@ -2344,6 +2353,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         firex1 = 0;
         firex2 = 0;
         firey1 = 0;
+        firey2 = 0;
         wallX = 0;
         wallY = 0;
         wallbX = 0;
@@ -3281,6 +3291,14 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             sharedPreferencesValid = false;
         }
 
+        if (sharedpreferences.contains("FireH")) {
+            fireH = sharedpreferences.getInt("FireH", -1);
+            if (fireH != -1)
+                sharedPreferencesValid = true;
+        } else {
+            sharedPreferencesValid = false;
+        }
+
         if (sharedpreferences.contains("rapidH")) {
             rapidH = sharedpreferences.getInt("rapidH", -1);
             if (rapidH != -1)
@@ -3492,14 +3510,6 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         if (sharedpreferences.contains("Firex2")) {
             firex2 = sharedpreferences.getInt("Firex2", -1);
             if (firex2 != -1)
-                sharedPreferencesValid = true;
-        } else {
-            sharedPreferencesValid = false;
-        }
-
-        if (sharedpreferences.contains("FireW")) {
-            fireW = sharedpreferences.getInt("FireW", -1);
-            if (fireW != -1)
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
