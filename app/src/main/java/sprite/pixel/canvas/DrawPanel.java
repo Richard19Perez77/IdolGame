@@ -67,7 +67,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             ready, gameTouchReady, bonusPlaying, bonusInitialized, gameOver,
             mp2gameplayplaying, mp3overplaying, mp4winplaying, threadAlive,
             planet1Phase, planet2Phase, planet3Phase, overheat, retry,
-            showFinalScore, johnPressed, soundOn = true, allVarsLoaded,
+            showFinalScore, playerMapPressed, soundOn = true, allVarsLoaded,
             timer3Started, loadingPrepared, showHighScoreScreen,
             loadingScreen = true, incScore = true, incChain = true,
             createSmallItems = true, justFired;
@@ -90,7 +90,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     public Bitmap b, planeta, planetb, itemSkin, fireSkin;
     public Bitmap[] booms;
     public Boom[] allBooms2;
-    public Bitmap rapidG, rapidR, rapidW, john, loadingIntro, warningIntro,
+    public Bitmap rapidG, rapidR, rapidW, playerMap, loadingIntro, warningIntro,
             noteR, noteG, noteW, noteRoff, noteWoff, noteGoff;
 
     // large item variables
@@ -406,7 +406,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             allBooms2[i] = new Boom(booms);
         }
 
-        john = BitmapFactory.decodeResource(getResources(), R.drawable.player);
+        playerMap = BitmapFactory.decodeResource(getResources(), R.drawable.player);
 
         scoreText.setStrokeWidth(1);
         scoreText.setColor(getResources().getColor(R.color.MediumVioletRed));
@@ -537,7 +537,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         measure = textColor.measureText(textString6);
         canvas.drawText(textString6, (screenW - measure) / 2, screenH
                 - (screenH / 4), textColor);
-        canvas.drawBitmap(john, (screenW - playerW) / 2, screenH - playerH, null);
+        canvas.drawBitmap(playerMap, (screenW - playerW) / 2, screenH - playerH, null);
     }
 
     public void gamePlaying(Canvas canvas) {
@@ -668,7 +668,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
     public void updateGame(Canvas canvas) {
         // updates game vars and drawing
-        getJohnLocationThenDraw(canvas);
+        getPlayerMapLocationThenDraw(canvas);
         reSetItems();
         // draw idol if any are created
         if (itemCount != 0) {
@@ -926,9 +926,9 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             allBooms2[i] = new Boom(booms);
         }
 
-        john = BitmapFactory.decodeResource(getResources(), R.drawable.player);
-        playerW = john.getWidth();
-        playerH = john.getHeight();
+        playerMap = BitmapFactory.decodeResource(getResources(), R.drawable.player);
+        playerW = playerMap.getWidth();
+        playerH = playerMap.getHeight();
 
         sMax = 36;
         sCurr = sMax;
@@ -1098,14 +1098,14 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    public void getJohnLocationThenDraw(Canvas canvas) {
-        // get john location and draw him
+    public void getPlayerMapLocationThenDraw(Canvas canvas) {
+        // get player map location and draw him
         jx1 = myX - playerW / 2;
         jx2 = myX + (playerW / 2);
         jy1 = myY - (playerH / 2) - 20;
         jy2 = myY + (playerH / 2) - 20;
 
-        canvas.drawBitmap(john, jx1, jy1, null);
+        canvas.drawBitmap(playerMap, jx1, jy1, null);
     }
 
     public void printScoreTexts(Canvas canvas) {
@@ -1119,7 +1119,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         canvas.drawText(scoreString, screenW - measure,
                 scoreText.getTextSize(), scoreText);
 
-        // draw the ammo and shields count over john, so its drawn last
+        // draw the ammo and shields count over player map, so its drawn last
         canvas.drawText(fireString, 10, screenH - fireText.getTextSize() * 2,
                 fireText);
 
@@ -1227,11 +1227,11 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
                         switch (event.getAction()) {
                             case MotionEvent.ACTION_DOWN:
-                                //check if touch down on john
+                                //check if touch down on player map
                                 if (newX >= myX - playerW * 2 && newX <= myX + playerW * 2
                                         && newY >= myY - playerW * 2
                                         && newY <= myY + playerW * 2) {
-                                    johnPressed = true;
+                                    playerMapPressed = true;
                                     myX = newX;
                                     myY = newY;
 
@@ -1248,7 +1248,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                                 break;
                             case MotionEvent.ACTION_MOVE:
                                 // deactivate for rapid fire in bonus stage
-                                if (johnPressed) {
+                                if (playerMapPressed) {
                                     myX = newX;
                                     myY = newY;
 
@@ -1270,11 +1270,11 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                                 }
                                 break;
                             case MotionEvent.ACTION_UP:
-                                if (johnPressed) {
+                                if (playerMapPressed) {
                                     myX = newX;
                                     myY = newY;
                                 }
-                                johnPressed = false;
+                                playerMapPressed = false;
                                 break;
                         }
                     }
@@ -2314,7 +2314,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         overheat = false;
         retry = false;
         showFinalScore = false;
-        johnPressed = false;
+        playerMapPressed = false;
         soundOn = true;
         allVarsLoaded = false;
         timer3Started = false;
@@ -3327,16 +3327,16 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             sharedPreferencesValid = false;
         }
 
-        if (sharedpreferences.contains("johnW")) {
-            playerW = sharedpreferences.getInt("johnW", -1);
+        if (sharedpreferences.contains("playerMapW")) {
+            playerW = sharedpreferences.getInt("playerMapW", -1);
             if (playerW != -1)
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
-        if (sharedpreferences.contains("johnH")) {
-            playerH = sharedpreferences.getInt("johnH", -1);
+        if (sharedpreferences.contains("playerMapH")) {
+            playerH = sharedpreferences.getInt("playerMapH", -1);
             if (playerH != -1)
                 sharedPreferencesValid = true;
         } else {
@@ -3795,8 +3795,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             sharedPreferencesValid = false;
         }
 
-        if (sharedpreferences.contains("johnPressed")) {
-            johnPressed = sharedpreferences.getBoolean("johnPressed", false);
+        if (sharedpreferences.contains("playerMapPressed")) {
+            playerMapPressed = sharedpreferences.getBoolean("playerMapPressed", false);
             sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -3923,7 +3923,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         editor.putBoolean("planet2Phase", planet2Phase);
         editor.putBoolean("planet3Phase", planet3Phase);
         editor.putBoolean("overheat", overheat);
-        editor.putBoolean("johnPressed", johnPressed);
+        editor.putBoolean("playerMapPressed", playerMapPressed);
         editor.putBoolean("rapidAvailable", rapidAvailable);
         editor.putBoolean("justFired", justFired);
         editor.putBoolean("soundOn", soundOn);
@@ -3963,8 +3963,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         editor.putInt("incSpeed", incSpeed);
         editor.putInt("maxFires", maxFire);
         editor.putInt("currChain", currChain);
-        editor.putInt("johnW", playerW);
-        editor.putInt("johnH", playerH);
+        editor.putInt("playerMapW", playerW);
+        editor.putInt("playerMapH", playerH);
         editor.putInt("sMax", sMax);
         editor.putInt("aMax", aMax);
         editor.putInt("speed", speed);
