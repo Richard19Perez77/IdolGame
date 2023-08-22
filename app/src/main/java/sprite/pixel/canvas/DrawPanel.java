@@ -1190,7 +1190,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         i = rand.nextInt(3);
         switch (i) {
             case 0:
-                p.setARGB(255, 0, 255, 0);
+                p.setARGB(255, 0, 0, 255);
                 break;
             case 1:
                 p.setARGB(255, 255, 255, 255);
@@ -1456,23 +1456,25 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
     public void showSoundNote(Canvas canvas) {
         if (soundOn) {
-            if (scoreText.getColor() == (getResources().getColor(R.color.Red))) {
-                canvas.drawBitmap(noteR, (screenW - noteWidth), rapidH, null);
-            } else if (scoreText.getColor() == getResources().getColor(
-                    R.color.MediumVioletRed)) {
-                canvas.drawBitmap(noteG, (screenW - noteWidth), rapidH, null);
-            } else {
-                canvas.drawBitmap(noteW, (screenW - noteWidth), rapidH, null);
-            }
+            canvas.drawBitmap(noteW, (screenW - noteWidth), rapidH, null);
+//            if (scoreText.getColor() == (getResources().getColor(R.color.Red))) {
+//                canvas.drawBitmap(noteR, (screenW - noteWidth), rapidH, null);
+//            } else if (scoreText.getColor() == getResources().getColor(
+//                    R.color.MediumVioletRed)) {
+//                canvas.drawBitmap(noteG, (screenW - noteWidth), rapidH, null);
+//            } else {
+//                canvas.drawBitmap(noteW, (screenW - noteWidth), rapidH, null);
+//            }
         } else {
-            if (scoreText.getColor() == (getResources().getColor(R.color.Red))) {
-                canvas.drawBitmap(noteRoff, (screenW - noteWidth), rapidH, null);
-            } else if (scoreText.getColor() == getResources().getColor(
-                    R.color.MediumVioletRed)) {
-                canvas.drawBitmap(noteGoff, (screenW - noteWidth), rapidH, null);
-            } else {
-                canvas.drawBitmap(noteWoff, (screenW - noteWidth), rapidH, null);
-            }
+            canvas.drawBitmap(noteWoff, (screenW - noteWidth), rapidH, null);
+//            if (scoreText.getColor() == (getResources().getColor(R.color.Red))) {
+//                canvas.drawBitmap(noteRoff, (screenW - noteWidth), rapidH, null);
+//            } else if (scoreText.getColor() == getResources().getColor(
+//                    R.color.MediumVioletRed)) {
+//                canvas.drawBitmap(noteGoff, (screenW - noteWidth), rapidH, null);
+//            } else {
+//                canvas.drawBitmap(noteWoff, (screenW - noteWidth), rapidH, null);
+//            }
         }
     }
 
@@ -1480,14 +1482,16 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         // deactivate for not rapid graphics on bonus stage
         if (rapidAvailable) {
             // if (rapidAvailable && !bonusPlaying) {
-            if (scoreText.getColor() == (getResources().getColor(R.color.Red))) {
-                canvas.drawBitmap(rapidR, 0, rapidH, null);
-            } else if (scoreText.getColor() == getResources().getColor(
-                    R.color.MediumVioletRed)) {
-                canvas.drawBitmap(rapidG, 0, rapidH, null);
-            } else {
-                canvas.drawBitmap(rapidW, 0, rapidH, null);
-            }
+//            if (scoreText.getColor() == (getResources().getColor(R.color.Red))) {
+//                canvas.drawBitmap(rapidR, 0, rapidH, null);
+//            } else if (scoreText.getColor() == getResources().getColor(
+//                    R.color.MediumVioletRed)) {
+//                canvas.drawBitmap(rapidG, 0, rapidH, null);
+//            } else {
+//                canvas.drawBitmap(rapidW, 0, rapidH, null);
+//            }
+
+            canvas.drawBitmap(rapidW, 0, rapidH, null);
             rapidS = " " + rapidCount;
             scoreText.setTextSize(textSize2);
             canvas.drawText(rapidS, 5,
@@ -2185,7 +2189,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             maxItems = 50;
             maxFire = 75;
             textSize1 = 55;
-            textSize2 = 45;
+            textSize2 = 40;
             textSize3 = 37;
             numStars = 50;
         } else if (screenH >= 700 && screenW >= 400) {

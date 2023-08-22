@@ -14,7 +14,7 @@ public class Effect {
 	public Effect() {
 		exists = false;
 		shieldColor = new Paint();
-		shieldColor.setARGB(125, 0, 255, 0);
+		shieldColor.setARGB(125, 0, 0, 255);
 		shieldCount = 0;
 	}
 

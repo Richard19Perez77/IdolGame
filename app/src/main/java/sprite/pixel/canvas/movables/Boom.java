@@ -31,9 +31,9 @@ public class Boom {
 		currentFrame = 0;
 		counter = 0;
 		booming = false;
-		c = "Critical Hit !";
+		c = "Critical Hit!";
 		paint = new Paint();
-		paint.setColor(Color.GREEN);
+		paint.setColor(Color.RED);
 		paint.setTextSize(20);
 		paint.setStrokeWidth(3);
 	}
@@ -45,12 +45,12 @@ public class Boom {
 		}
 
 		if (crit) {
-			if (paint.getColor() == Color.GREEN) {
+			if (paint.getColor() == Color.BLUE) {
 				paint.setColor(Color.RED);
 			} else if (paint.getColor() == Color.RED) {
 				paint.setColor(Color.WHITE);
 			} else {
-				paint.setColor(Color.GREEN);
+				paint.setColor(Color.BLUE);
 			}
 			canvas.drawText(c, critx, crity, paint);
 			crity += 2;
