@@ -1255,19 +1255,14 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                                     myX = newX;
                                     myY = newY;
 
-                                    if (rapidAvailable) {
-                                        if (!justFired) {
-                                            if (aCurr >= 1) {
-                                                createFire(newX, newY - 50);
-                                                justFired = true;
-                                                if (!overheat)
-                                                    rapidCount--;
-                                            }
-                                            if (rapidCount <= 0) {
-                                                rapidAvailable = false;
-                                            }
-                                        } else {
-                                            justFired = false;
+                                    if (rapidAvailable && timer % 2 == 0) {
+                                        if (aCurr >= 1) {
+                                            createFire(newX, newY - 50);
+                                            if (!overheat)
+                                                rapidCount--;
+                                        }
+                                        if (rapidCount <= 0) {
+                                            rapidAvailable = false;
                                         }
                                     }
                                 }
@@ -1522,7 +1517,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
     public void comboCheck(Canvas canvas) {
         if (currChain > 0 && currChain % 100 == 0) {
-            chainBonus += 25;
+            chainBonus += 50;
             rapidAvailable = true;
             rapidCount += 200 + chainBonus;
             setRandomTextColor(scoreText);
