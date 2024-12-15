@@ -79,7 +79,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             wallY, wallbX, wallbY, myX, myY, newX, newY, starTrail, acc, playerW,
             playerH, i, sCurr, sMax, aCurr, aMax, jx1, jx2, jy1, jy2, rapidH,
             noteHeight, noteWidth, itemx2, itemy2, fireW, fireH, starsX[], starsY[],
-            speed = 1, critBonus, rapidCount = 50, bossNumber, roundChain,
+            speed = 1, critBonus, rapidCount = 200, bossNumber, roundChain,
             currChain, maxChain, timer, itemCount, maxItems, maxFire,
             itemH, itemW, screenH, fireSpeed, screenW, textSize1, textSize2,
             textSize3, displayBonusTextTimer, largeW, largeH, numStars, score, finalScore;
@@ -1521,10 +1521,10 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     }
 
     public void comboCheck(Canvas canvas) {
-        if (currChain > 0 && currChain % 50 == 0) {
-            chainBonus += 15;
+        if (currChain > 0 && currChain % 100 == 0) {
+            chainBonus += 25;
             rapidAvailable = true;
-            rapidCount += chainBonus;
+            rapidCount += 200 + chainBonus;
             setRandomTextColor(scoreText);
             if (currChain >= maxChain) {
                 maxChain = currChain;
@@ -2339,7 +2339,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         isItemArrayLargeItem = false;
 
         shieldReserve = 10;
-        chainBonus = 0;
+        chainBonus = 15;
         randPlanetType = 0;
         tempscore = 0;
         px1 = 0;
@@ -2383,7 +2383,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         fireW = 0;
         speed = 1;
         critBonus = 0;
-        rapidCount = 50;
+        rapidCount = 200;
         bossNumber = 0;
         roundChain = 0;
         currChain = 0;
