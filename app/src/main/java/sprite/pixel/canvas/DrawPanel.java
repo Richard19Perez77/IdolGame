@@ -1499,16 +1499,6 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     public void showRapidCount(Canvas canvas) {
         // deactivate for not rapid graphics on bonus stage
         if (rapidAvailable) {
-            // if (rapidAvailable && !bonusPlaying) {
-//            if (scoreText.getColor() == (getResources().getColor(R.color.Red))) {
-//                canvas.drawBitmap(rapidR, 0, rapidH, null);
-//            } else if (scoreText.getColor() == getResources().getColor(
-//                    R.color.MediumVioletRed)) {
-//                canvas.drawBitmap(rapidG, 0, rapidH, null);
-//            } else {
-//                canvas.drawBitmap(rapidW, 0, rapidH, null);
-//            }
-
             canvas.drawBitmap(rapidW, 0, rapidH, null);
             rapidS = " " + rapidCount;
             scoreText.setTextSize(textSize2);
