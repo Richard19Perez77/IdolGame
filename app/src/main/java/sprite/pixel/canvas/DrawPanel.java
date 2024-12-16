@@ -399,15 +399,10 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         if (screenH > 1000 && screenW > 600) {
             loadingIntro = BitmapFactory.decodeResource(getResources(),
                     R.drawable.loadingintrolarge);
-            loadingIntro = getResizedBitmap(loadingIntro, screenH, screenW);
         } else {
             loadingIntro = BitmapFactory.decodeResource(getResources(),
                     R.drawable.loadingintro);
-            loadingIntro = getResizedBitmap(loadingIntro, screenH, screenW);
         }
-
-        loadingIntro = BitmapFactory.decodeResource(getResources(),
-                R.drawable.loadingintro);
         loadingIntro = getResizedBitmap(loadingIntro, screenH, screenW);
 
         warningIntro = BitmapFactory.decodeResource(getResources(),
@@ -529,15 +524,10 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         if (screenH > 1000 && screenW > 600) {
             loadingIntro = BitmapFactory.decodeResource(getResources(),
                     R.drawable.loadingintrolarge);
-            loadingIntro = getResizedBitmap(loadingIntro, screenH, screenW);
         } else {
             loadingIntro = BitmapFactory.decodeResource(getResources(),
                     R.drawable.loadingintro);
-            loadingIntro = getResizedBitmap(loadingIntro, screenH, screenW);
         }
-
-        loadingIntro = BitmapFactory.decodeResource(getResources(),
-                R.drawable.loadingintro);
         loadingIntro = getResizedBitmap(loadingIntro, screenH, screenW);
 
         warningIntro = BitmapFactory.decodeResource(getResources(),
@@ -1791,13 +1781,11 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                     bulletArray[i].y = y;
                     if (!rapidAvailable) {
                         aCurr -= 1;
-                        if (aCurr == 0)
-                            overheat = true;
                     } else {
                         aCurr--;
-                        if (aCurr == 0)
-                            overheat = true;
                     }
+                    if (aCurr == 0)
+                        overheat = true;
                     break;
                 }
             }
@@ -3894,22 +3882,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     public void onRestart() {
         Thread.State threadState = myThread1.getState();
         Log.d(TAG, "thread state " + threadState);
-        switch (threadState) {
-            case BLOCKED:
-                break;
-            case NEW:
-                break;
-            case RUNNABLE:
-                continueThread = true;
-                break;
-            case TERMINATED:
-                break;
-            case TIMED_WAITING:
-                break;
-            case WAITING:
-                break;
-            default:
-                break;
+        if (threadState == Thread.State.RUNNABLE) {
+            continueThread = true;
         }
     }
 
