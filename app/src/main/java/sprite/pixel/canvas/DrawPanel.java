@@ -1464,7 +1464,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                     (screenW - ((screenW / 2) - measure2)) - measure,
                     (screenH / 4) + textColor.getTextSize() * 3, textColor);
 
-            tempScore = (int) (score + (maxChain * 24) + critBonus);
+            tempScore = score + (maxChain * 24) + critBonus;
             finalScoreText = "Total";
             canvas.drawText(finalScoreText, (screenW / 2) - measure2,
                     (screenH / 4) + textColor.getTextSize() * 5, textColor);
@@ -2081,7 +2081,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                         - measure, (screenH / 4) + textColor.getTextSize() * 3,
                 textColor);
 
-        tempScore = (int) (score + (maxChain * 24) + critBonus);
+        tempScore = score + (maxChain * 24) + critBonus;
         finalScoreText = "Total";
         c.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4)
                 + textColor.getTextSize() * 5, textColor);
