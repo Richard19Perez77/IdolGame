@@ -40,7 +40,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
     public final String path = "android.resource://sprite.pixel.canvas/";
 
-    private boolean isLogging = false;
+    private final boolean isLogging = false;
     private final String TAG = "tagLog";
 
     public final int BOSS_SCORE = 100000;
@@ -74,15 +74,77 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             loadingScreen = true, incScore = true, incChain = true,
             createSmallItems = true, justFired;
 
-    public int shieldReserve = 10, chainBonus, randPlanetType, tempscore, px1, px2, py1,
-            py2, itemx1, itemy1, temp1, temp2, firex1, firex2, firey1, firey2, wallX,
-            wallY, wallbX, wallbY, myX, myY, newX, newY, starTrail, acc, playerW,
-            playerH, i, sCurr, sMax, aCurr, aMax, jx1, jx2, jy1, jy2, rapidH,
-            noteHeight, noteWidth, itemx2, itemy2, fireW, fireH, starsX[], starsY[],
-            speed = 1, critBonus, rapidCount = 200, bossNumber, roundChain,
-            currChain, maxChain, timer, itemCount, maxItems, maxFire,
-            itemH, itemW, screenH, fireSpeed, screenW, textSize1, textSize2,
-            textSize3, displayBonusTextTimer, largeW, largeH, numStars, score, finalScore;
+    public int shieldReserve = 10;
+    public int chainBonus;
+    public int randPlanetType;
+    public int tempScore;
+    public int px1;
+    public int px2;
+    public int py1;
+    public int py2;
+    public int itemX1;
+    public int itemY1;
+    public int temp1;
+    public int temp2;
+    public int fireX1;
+    public int fireX2;
+    public int fireY1;
+    public int fireY2;
+    public int wallX;
+    public int wallY;
+    public int wallBX;
+    public int wallBY;
+    public int myX;
+    public int myY;
+    public int newX;
+    public int newY;
+    public int starTrail;
+    public int acc;
+    public int playerW;
+    public int playerH;
+    public int i;
+    public int sCurr;
+    public int sMax;
+    public int aCurr;
+    public int aMax;
+    public int jx1;
+    public int jx2;
+    public int jy1;
+    public int jy2;
+    public int rapidH;
+    public int noteHeight;
+    public int noteWidth;
+    public int itemX2;
+    public int itemY2;
+    public int fireW;
+    public int fireH;
+    public int[] starsX;
+    public int[] starsY;
+    public int speed = 1;
+    public int critBonus;
+    public int rapidCount = 200;
+    public int bossNumber;
+    public int roundChain;
+    public int currChain;
+    public int maxChain;
+    public int timer;
+    public int itemCount;
+    public int maxItems;
+    public int maxFire;
+    public int itemH;
+    public int itemW;
+    public int screenH;
+    public int fireSpeed;
+    public int screenW;
+    public int textSize1;
+    public int textSize2;
+    public int textSize3;
+    public int displayBonusTextTimer;
+    public int largeW;
+    public int largeH;
+    public int numStars;
+    public int score;
+    public int finalScore;
 
     public long chainTextTimer, tempTimer2, tempTimer3, displayScoreTimer;
 
@@ -116,12 +178,18 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
     public Bullet[] bulletArray;
 
-    public Paint textColor = new Paint(), backGround = new Paint(),
-            loadingBG = new Paint(), scoreText = new Paint(),
-            fireText = new Paint(), loadingText = new Paint(),
-            shieldText = new Paint(), firePaint = new Paint(),
-            shieldPaint = new Paint(), randPaint = new Paint(), starsC[],
-            timerPaint = new Paint();
+    public Paint textColor = new Paint();
+    public Paint backGround = new Paint();
+    public Paint loadingBG = new Paint();
+    public Paint scoreText = new Paint();
+    public Paint fireText = new Paint();
+    public Paint loadingText = new Paint();
+    public Paint shieldText = new Paint();
+    public Paint firePaint = new Paint();
+    public Paint shieldPaint = new Paint();
+    public Paint randPaint = new Paint();
+    public Paint[] starsC;
+    public Paint timerPaint = new Paint();
 
     public DrawThread myThread1;
 
@@ -144,7 +212,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
     public Activity activity;
 
-    private String PREFS_NAME = "myPreferences";
+    private final String PREFS_NAME = "myPreferences";
 
     //variables used for shared preferences
     public int numberOfItemsInItemArray;
@@ -363,7 +431,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
 
         timerPaint.setStrokeWidth(1);
-        timerPaint.setColor(getResources().getColor(R.color.SlateBlue));
+        timerPaint.setColor(getResources().getColor(R.color.SlateBlue, null));
 
         timerPaint.setTextSize(textSize2);
 
@@ -411,31 +479,31 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         playerMap = BitmapFactory.decodeResource(getResources(), R.drawable.player);
 
         scoreText.setStrokeWidth(1);
-        scoreText.setColor(getResources().getColor(R.color.MediumVioletRed));
+        scoreText.setColor(getResources().getColor(R.color.MediumVioletRed, null));
         scoreText.setTextSize(textSize2);
 
         textColor.setStrokeWidth(1);
-        textColor.setColor(getResources().getColor(R.color.MediumVioletRed));
+        textColor.setColor(getResources().getColor(R.color.MediumVioletRed, null));
         textColor.setTextSize(textSize1);
 
         randPaint.setStrokeWidth(1);
-        randPaint.setColor(getResources().getColor(R.color.Red));
+        randPaint.setColor(getResources().getColor(R.color.Red, null));
         randPaint.setTextSize(textSize2);
 
         backGround.setStyle(Paint.Style.FILL);
         backGround.setColor(Color.BLACK);
 
         loadingBG.setStyle(Paint.Style.FILL);
-        loadingBG.setColor(getResources().getColor(R.color.SlateBlue));
+        loadingBG.setColor(getResources().getColor(R.color.SlateBlue, null));
 
-        firePaint.setColor(getResources().getColor(R.color.Red));
+        firePaint.setColor(getResources().getColor(R.color.Red, null));
         firePaint.setStyle(Paint.Style.FILL);
 
-        shieldPaint.setColor(getResources().getColor(R.color.SlateBlue));
+        shieldPaint.setColor(getResources().getColor(R.color.SlateBlue, null));
         shieldPaint.setStyle(Paint.Style.FILL);
 
         fireText.setStrokeWidth(1);
-        fireText.setColor(getResources().getColor(R.color.Red));
+        fireText.setColor(getResources().getColor(R.color.Red, null));
         fireText.setTextSize(textSize2);
 
         loadingText.setStrokeWidth(1);
@@ -447,7 +515,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         loadingText.setTextAlign(Align.CENTER);
 
         shieldText.setStrokeWidth(1);
-        shieldText.setColor(getResources().getColor(R.color.SlateBlue));
+        shieldText.setColor(getResources().getColor(R.color.SlateBlue, null));
         shieldText.setTextSize(textSize2);
 
         allVarsLoaded = true;
@@ -478,17 +546,14 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         textString3 = String.format(getResources().getString(R.string.light));
 
-        loadingThread = new Thread() {
-            @Override
-            public void run() {
-                mpInit(getContext());
-                initSoundPool();
+        loadingThread = new Thread(() -> {
+            mpInit(getContext());
+            initSoundPool();
 
-                initGameVars();
-                allVarsLoaded = true;
+            initGameVars();
+            allVarsLoaded = true;
 
-            }
-        };
+        });
         loadingThread.start();
         loadingPrepared = true;
     }
@@ -514,7 +579,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         textString6 = "Title Text 5";
 
         textColor.setTextSize(textSize1);
-        textColor.setColor(getResources().getColor(R.color.DarkBlue));
+        textColor.setColor(getResources().getColor(R.color.DarkBlue, null));
         measure = textColor.measureText(textString3);
         canvas.drawText(textString3, (screenW - measure) / 2, screenH / 5,
                 textColor);
@@ -532,7 +597,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                 randPaint);
 
         textColor.setTextSize(textSize3);
-        textColor.setColor(getResources().getColor(R.color.MistyRose));
+        textColor.setColor(getResources().getColor(R.color.MistyRose, null));
         measure = textColor.measureText(textString5);
         canvas.drawText(textString5, (screenW - measure) / 2, screenH
                 - (screenH / 3), textColor);
@@ -678,7 +743,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
         moveFire();
         drawFire(canvas);
-        checkForHits(canvas);
+        checkForHits();
         updateBooms(canvas);
         showChainText(canvas);
         showRapidCount(canvas);
@@ -733,7 +798,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         textString6 = "Title Text 6";
 
         textColor.setTextSize(textSize1);
-        textColor.setColor(getResources().getColor(R.color.MediumVioletRed));
+        textColor.setColor(getResources().getColor(R.color.MediumVioletRed, null));
         measure = textColor.measureText(textString3);
         canvas.drawText(textString3, (screenW - measure) / 2, screenH / 5,
                 textColor);
@@ -745,7 +810,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                 randPaint);
 
         textColor.setTextSize(textSize3);
-        textColor.setColor(getResources().getColor(R.color.orange));
+        textColor.setColor(getResources().getColor(R.color.orange, null));
         measure = textColor.measureText(textString1);
         canvas.drawText(textString1, (screenW - measure) / 2, screenH / 2,
                 textColor);
@@ -754,7 +819,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                 + (textColor.getTextSize() * 2), textColor);
 
         textColor.setTextSize(textSize3);
-        textColor.setColor(getResources().getColor(R.color.SlateBlue));
+        textColor.setColor(getResources().getColor(R.color.SlateBlue, null));
         measure = textColor.measureText(textString5);
         canvas.drawText(textString5, (screenW - measure) / 2, screenH
                 - (screenH / 3), textColor);
@@ -837,8 +902,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                 R.drawable.planet2b);
         planet1Phase = true;
 
-        wallbX = screenW;
-        wallbY = 50;
+        wallBX = screenW;
+        wallBY = 50;
         wallX = screenW;
         wallY = 0;
 
@@ -856,7 +921,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         timer = 0;
 
         timerPaint.setStrokeWidth(1);
-        timerPaint.setColor(getResources().getColor(R.color.SlateBlue));
+        timerPaint.setColor(getResources().getColor(R.color.SlateBlue, null));
 
         timerPaint.setTextSize(textSize2);
 
@@ -939,32 +1004,32 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         aCurr = aMax;
 
         scoreText.setStrokeWidth(1);
-        scoreText.setColor(getResources().getColor(R.color.MediumVioletRed));
+        scoreText.setColor(getResources().getColor(R.color.MediumVioletRed, null));
         scoreText.setTextSize(textSize2);
 
         textColor.setStrokeWidth(1);
-        textColor.setColor(getResources().getColor(R.color.MediumVioletRed));
+        textColor.setColor(getResources().getColor(R.color.MediumVioletRed, null));
         textColor.setTextSize(textSize1);
 
         randPaint.setStrokeWidth(1);
-        randPaint.setColor(getResources().getColor(R.color.Red));
+        randPaint.setColor(getResources().getColor(R.color.Red, null));
         randPaint.setTextSize(textSize2);
 
         backGround.setStyle(Paint.Style.FILL);
         backGround.setColor(Color.BLACK);
 
         loadingBG.setStyle(Paint.Style.FILL);
-        loadingBG.setColor(getResources().getColor(R.color.SlateBlue));
+        loadingBG.setColor(getResources().getColor(R.color.SlateBlue, null));
 
-        firePaint.setColor(getResources().getColor(R.color.Red));
+        firePaint.setColor(getResources().getColor(R.color.Red, null));
         firePaint.setStyle(Paint.Style.FILL);
 
-        shieldPaint.setColor(getResources().getColor(R.color.SlateBlue));
+        shieldPaint.setColor(getResources().getColor(R.color.SlateBlue, null));
         shieldPaint.setStyle(Paint.Style.FILL);
 
         fireString = "Ammo";
         fireText.setStrokeWidth(1);
-        fireText.setColor(getResources().getColor(R.color.Red));
+        fireText.setColor(getResources().getColor(R.color.Red, null));
         fireText.setTextSize(textSize2);
 
         loadingText.setStrokeWidth(1);
@@ -977,7 +1042,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         shieldString = "PlayerShields";
         shieldText.setStrokeWidth(1);
-        shieldText.setColor(getResources().getColor(R.color.SlateBlue));
+        shieldText.setColor(getResources().getColor(R.color.SlateBlue, null));
         shieldText.setTextSize(textSize2);
 
         speed = 1;
@@ -1178,7 +1243,6 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     }
 
     public Paint newColor() {
-        // randomly choose between red green and white
         Paint p = new Paint();
         i = rand.nextInt(3);
         switch (i) {
@@ -1331,25 +1395,25 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
 
         if (score % 50 == 0) {
-            wallbY++;
+            wallBY++;
         }
 
         if (score % 40 == 0) {
             wallX--;
         }
         if (score % 20 == 0) {
-            wallbX--;
+            wallBX--;
         }
     }
 
     public void destroyAllItems() {
         for (int i = 0; i < itemArray.length; i++) {
             if (itemArray[i].exists) {
-                itemx1 = itemArray[i].x;
-                itemy1 = itemArray[i].y;
+                itemX1 = itemArray[i].x;
+                itemY1 = itemArray[i].y;
                 // replace with boom map animation
-                temp1 = itemx1 - 30;
-                temp2 = itemy1 - 30;
+                temp1 = itemX1 - 30;
+                temp2 = itemY1 - 30;
                 playSound(EXPLODE, fSpeed);
                 boomMap(temp1, temp2, crit);
                 destroyItems(itemArray[i]);
@@ -1372,42 +1436,42 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
             textColor.setTextSize(textSize1);
 
-            tempscore = (int) score;
+            tempScore = score;
             finalScoreText = "GameScore";
             float measure2 = textColor.measureText(finalScoreText);
             canvas.drawText(finalScoreText, (screenW / 2) - measure2,
                     (screenH / 4) + textColor.getTextSize() * 1, textColor);
-            finalScoreText = Integer.toString(tempscore);
+            finalScoreText = Integer.toString(tempScore);
             measure = textColor.measureText(finalScoreText);
             canvas.drawText(finalScoreText,
                     (screenW - ((screenW / 2) - measure2)) - measure,
                     (screenH / 4) + textColor.getTextSize() * 1, textColor);
 
-            tempscore = (maxChain * 24);
+            tempScore = (maxChain * 24);
             finalScoreText = "ChainBonus";
             canvas.drawText(finalScoreText, (screenW / 2) - measure2,
                     (screenH / 4) + textColor.getTextSize() * 2, textColor);
-            finalScoreText = Integer.toString(tempscore);
+            finalScoreText = Integer.toString(tempScore);
             measure = textColor.measureText(finalScoreText);
             canvas.drawText(finalScoreText,
                     (screenW - ((screenW / 2) - measure2)) - measure,
                     (screenH / 4) + textColor.getTextSize() * 2, textColor);
 
-            tempscore = critBonus;
+            tempScore = critBonus;
             finalScoreText = "CritBonus";
             canvas.drawText(finalScoreText, (screenW / 2) - measure2,
                     (screenH / 4) + textColor.getTextSize() * 3, textColor);
-            finalScoreText = Integer.toString(tempscore);
+            finalScoreText = Integer.toString(tempScore);
             measure = textColor.measureText(finalScoreText);
             canvas.drawText(finalScoreText,
                     (screenW - ((screenW / 2) - measure2)) - measure,
                     (screenH / 4) + textColor.getTextSize() * 3, textColor);
 
-            tempscore = (int) (score + (maxChain * 24) + critBonus);
+            tempScore = (int) (score + (maxChain * 24) + critBonus);
             finalScoreText = "Total";
             canvas.drawText(finalScoreText, (screenW / 2) - measure2,
                     (screenH / 4) + textColor.getTextSize() * 5, textColor);
-            finalScoreText = Integer.toString(tempscore);
+            finalScoreText = Integer.toString(tempScore);
             measure = textColor.measureText(finalScoreText);
             canvas.drawText(finalScoreText,
                     (screenW - ((screenW / 2) - measure2)) - measure,
@@ -1485,12 +1549,12 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     public void showChainText(Canvas canvas) {
         if (showChainText && chainTextTimer < 100) {
             if (chainTextTimer % 3 == 0) {
-                textColor.setColor(getResources().getColor(R.color.Red));
+                textColor.setColor(getResources().getColor(R.color.Red, null));
             } else if (chainTextTimer % 3 == 1) {
                 textColor.setColor(getResources()
                         .getColor(R.color.MediumVioletRed));
             } else {
-                textColor.setColor(getResources().getColor(R.color.SlateBlue));
+                textColor.setColor(getResources().getColor(R.color.SlateBlue, null));
             }
             textColor.setTextSize(textSize1);
             measure = textColor.measureText(chainText);
@@ -1500,7 +1564,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    public void comboCheck(Canvas canvas) {
+    public void comboCheck() {
         if (currChain > 0 && currChain % 100 == 0) {
             chainBonus += 50;
             rapidAvailable = true;
@@ -1519,15 +1583,14 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     }
 
     public void setRandomTextColor(Paint scoreText2) {
-        // on combo hit change text color
         if (scoreText2.getColor() == getResources().getColor(
-                R.color.MediumVioletRed)) {
-            scoreText2.setColor(getResources().getColor(R.color.Red));
+                R.color.MediumVioletRed, null)) {
+            scoreText2.setColor(getResources().getColor(R.color.Red, null));
         } else if (scoreText2.getColor() == (getResources()
-                .getColor(R.color.Red))) {
-            scoreText2.setColor(getResources().getColor(R.color.SlateBlue));
+                .getColor(R.color.Red, null))) {
+            scoreText2.setColor(getResources().getColor(R.color.SlateBlue, null));
         } else {
-            scoreText2.setColor(getResources().getColor(R.color.MediumVioletRed));
+            scoreText2.setColor(getResources().getColor(R.color.MediumVioletRed, null));
         }
     }
 
@@ -1574,35 +1637,35 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    public void checkForHits(Canvas canvas) {
+    public void checkForHits() {
         // first check for fire hitting item
         for (int i = 0; i < maxFire; i++) {
             if (bulletArray[i].exists) {
-                firex1 = bulletArray[i].x;
-                firex2 = firex1 + fireW;
-                firey1 = bulletArray[i].y;
-                firey2 = bulletArray[i].y + fireH;
+                fireX1 = bulletArray[i].x;
+                fireX2 = fireX1 + fireW;
+                fireY1 = bulletArray[i].y;
+                fireY2 = bulletArray[i].y + fireH;
 
                 // check for fire hitting small items
                 // and small items hitting player
                 for (int j = 0; j < itemArray.length; j++) {
                     if (itemArray[j].exists) {
-                        itemx1 = itemArray[j].x;
-                        itemx2 = itemx1 + itemW;
-                        itemy1 = itemArray[j].y;
-                        itemy2 = itemy1 + itemH;
+                        itemX1 = itemArray[j].x;
+                        itemX2 = itemX1 + itemW;
+                        itemY1 = itemArray[j].y;
+                        itemY2 = itemY1 + itemH;
 
-                        if ((firex1 >= itemx1 && firex1 <= itemx2)
-                                && (firey2 >= itemy1 && firey2 <= itemy2)
-                                || (firex2 >= itemx1 && firex2 <= itemx2)
-                                && (firey2 >= itemy1 && firey2 <= itemy2)
-                                || (firex1 >= itemx1 && firex1 <= itemx2)
-                                && (firey1 >= itemy1 && firey1 <= itemy2)
-                                || (firex2 >= itemx1 && firex2 <= itemx2)
-                                && (firey1 >= itemy1 && firey1 <= itemy2)) {
+                        if ((fireX1 >= itemX1 && fireX1 <= itemX2)
+                                && (fireY2 >= itemY1 && fireY2 <= itemY2)
+                                || (fireX2 >= itemX1 && fireX2 <= itemX2)
+                                && (fireY2 >= itemY1 && fireY2 <= itemY2)
+                                || (fireX1 >= itemX1 && fireX1 <= itemX2)
+                                && (fireY1 >= itemY1 && fireY1 <= itemY2)
+                                || (fireX2 >= itemX1 && fireX2 <= itemX2)
+                                && (fireY1 >= itemY1 && fireY1 <= itemY2)) {
                             if (incChain)
                                 currChain++;
-                            comboCheck(canvas);
+                            comboCheck();
                             if (currChain >= maxChain) {
                                 maxChain = currChain;
                             }
@@ -1618,8 +1681,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                             }
 
                             // replace graphic with boom map animation
-                            temp1 = itemx1 - 30;
-                            temp2 = itemy1 - 30;
+                            temp1 = itemX1 - 30;
+                            temp2 = itemY1 - 30;
                             boomMap(temp1, temp2, crit);
                             crit = false;
                             playSound(EXPLODE, fSpeed);
@@ -1845,10 +1908,10 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
 
         if (score % 50 == 0) {
-            wallbY++;
+            wallBY++;
         }
         if (score % 20 == 0) {
-            wallbX--;
+            wallBX--;
         }
 
         if (score % 100 == 0) {
@@ -1869,12 +1932,12 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         if (tempTimer2 > 0 && tempTimer2 < 200) {
 
             if (tempTimer2 % 3 == 0) {
-                textColor.setColor(getResources().getColor(R.color.Red));
+                textColor.setColor(getResources().getColor(R.color.Red, null));
             } else if (tempTimer2 % 3 == 1) {
                 textColor.setColor(getResources()
-                        .getColor(R.color.MediumVioletRed));
+                        .getColor(R.color.MediumVioletRed, null));
             } else {
-                textColor.setColor(getResources().getColor(R.color.SlateBlue));
+                textColor.setColor(getResources().getColor(R.color.SlateBlue, null));
             }
 
             textColor.setTextSize(textSize1);
@@ -1978,54 +2041,54 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
     public void falseEndingHighScore(Canvas c) {
         if (textColor.getColor() == getResources().getColor(
-                R.color.MediumVioletRed)) {
-            textColor.setColor(getResources().getColor(R.color.Red));
+                R.color.MediumVioletRed, null)) {
+            textColor.setColor(getResources().getColor(R.color.Red, null));
         } else if (textColor.getColor() == (getResources()
-                .getColor(R.color.Red))) {
-            textColor.setColor(getResources().getColor(R.color.SlateBlue));
+                .getColor(R.color.Red, null))) {
+            textColor.setColor(getResources().getColor(R.color.SlateBlue, null));
         } else {
-            textColor.setColor(getResources().getColor(R.color.MediumVioletRed));
+            textColor.setColor(getResources().getColor(R.color.MediumVioletRed, null));
         }
 
         setRandomTextColor(textColor);
         textColor.setTextSize(textSize1);
 
-        tempscore = (int) score;
+        tempScore = score;
         finalScoreText = "GameScore";
         float measure2 = textColor.measureText(finalScoreText);
         c.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4)
                 + textColor.getTextSize() * 1, textColor);
-        finalScoreText = Integer.toString(tempscore);
+        finalScoreText = Integer.toString(tempScore);
         measure = textColor.measureText(finalScoreText);
         c.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2))
                         - measure, (screenH / 4) + textColor.getTextSize() * 1,
                 textColor);
 
-        tempscore = (maxChain * 24);
+        tempScore = (maxChain * 24);
         finalScoreText = "ChainBonus";
         c.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4)
                 + textColor.getTextSize() * 2, textColor);
-        finalScoreText = Integer.toString(tempscore);
+        finalScoreText = Integer.toString(tempScore);
         measure = textColor.measureText(finalScoreText);
         c.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2))
                         - measure, (screenH / 4) + textColor.getTextSize() * 2,
                 textColor);
 
-        tempscore = critBonus;
+        tempScore = critBonus;
         finalScoreText = "CritBonus";
         c.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4)
                 + textColor.getTextSize() * 3, textColor);
-        finalScoreText = Integer.toString(tempscore);
+        finalScoreText = Integer.toString(tempScore);
         measure = textColor.measureText(finalScoreText);
         c.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2))
                         - measure, (screenH / 4) + textColor.getTextSize() * 3,
                 textColor);
 
-        tempscore = (int) (score + (maxChain * 24) + critBonus);
+        tempScore = (int) (score + (maxChain * 24) + critBonus);
         finalScoreText = "Total";
         c.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4)
                 + textColor.getTextSize() * 5, textColor);
-        finalScoreText = Integer.toString(tempscore);
+        finalScoreText = Integer.toString(tempScore);
         measure = textColor.measureText(finalScoreText);
         c.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2))
                         - measure, (screenH / 4) + textColor.getTextSize() * 5,
@@ -2063,7 +2126,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     public void moveAsteroids() {
         for (Light light : lightArray) {
             if (light.exists) {
-                if (light.starX < (0 - light.starW)) {
+                if (light.starX < -light.starW) {
                     light.starX = screenW;
                     light.starY = screenH - rand.nextInt(screenH);
                 } else {
@@ -2082,14 +2145,14 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     }
 
     public void drawPlanets(Canvas c) {
-        c.drawBitmap(planetb, wallbX, wallbY, null);
+        c.drawBitmap(planetb, wallBX, wallBY, null);
         c.drawBitmap(planeta, wallX, wallY, null);
     }
 
     public void movePlanets() {
-        if (wallbX < -planetb.getWidth() - 75) {
-            wallbX = screenW;
-            wallbY = 50;
+        if (wallBX < -planetb.getWidth() - 75) {
+            wallBX = screenW;
+            wallBY = 50;
         }
 
         if (wallX < -planeta.getWidth() - 50) {
@@ -2161,7 +2224,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             int divisor = screenH / incSpeed - rate;
             startSpeedOffset = currSpeedOffset = rate / divisor;
             speedOffset = 1;
-        } else if (rate == screenH) {
+        } else {
             incSpeed = 1;
             speedOffset = 1;
         }
@@ -2273,8 +2336,6 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
      * Reset the variables to the initialization state
      */
     private void resetGameVars() {
-        acc = 0;
-
         startSpeedOffset = 0;
         currSpeedOffset = 0;
         incSpeed = 0;
@@ -2317,23 +2378,23 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         shieldReserve = 10;
         chainBonus = 15;
         randPlanetType = 0;
-        tempscore = 0;
+        tempScore = 0;
         px1 = 0;
         px2 = 0;
         py1 = 0;
         py2 = 0;
-        itemx1 = 0;
-        itemy1 = 0;
+        itemX1 = 0;
+        itemY1 = 0;
         temp1 = 0;
         temp2 = 0;
-        firex1 = 0;
-        firex2 = 0;
-        firey1 = 0;
-        firey2 = 0;
+        fireX1 = 0;
+        fireX2 = 0;
+        fireY1 = 0;
+        fireY2 = 0;
         wallX = 0;
         wallY = 0;
-        wallbX = 0;
-        wallbY = 0;
+        wallBX = 0;
+        wallBY = 0;
         myX = 0;
         myY = 0;
         newX = 0;
@@ -2354,8 +2415,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         rapidH = 0;
         noteHeight = 0;
         noteWidth = 0;
-        itemx2 = 0;
-        itemy2 = 0;
+        itemX2 = 0;
+        itemY2 = 0;
         fireW = 0;
         speed = 1;
         critBonus = 0;
@@ -2887,7 +2948,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         if (sharedpreferences.contains("rapidS")) {
             rapidS = sharedpreferences.getString("rapidS", "");
-            if (rapidS.equals(""))
+            if (rapidS.isEmpty())
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -2895,7 +2956,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         if (sharedpreferences.contains("FireString")) {
             fireString = sharedpreferences.getString("FireString", "");
-            if (fireString.equals(""))
+            if (fireString.isEmpty())
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -2903,7 +2964,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         if (sharedpreferences.contains("textString1")) {
             textString1 = sharedpreferences.getString("textString1", "");
-            if (textString1.equals(""))
+            if (textString1.isEmpty())
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -2911,7 +2972,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         if (sharedpreferences.contains("textString2")) {
             textString2 = sharedpreferences.getString("textString2", "");
-            if (textString2.equals(""))
+            if (textString2.isEmpty())
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -2919,7 +2980,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         if (sharedpreferences.contains("textString3")) {
             textString3 = sharedpreferences.getString("textString3", "");
-            if (textString3.equals(""))
+            if (textString3.isEmpty())
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -2927,7 +2988,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         if (sharedpreferences.contains("textString4")) {
             textString4 = sharedpreferences.getString("textString4", "");
-            if (textString4.equals(""))
+            if (textString4.isEmpty())
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -2935,7 +2996,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         if (sharedpreferences.contains("textString5")) {
             textString5 = sharedpreferences.getString("textString5", "");
-            if (textString5.equals(""))
+            if (textString5.isEmpty())
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -2943,7 +3004,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         if (sharedpreferences.contains("textString6")) {
             textString6 = sharedpreferences.getString("textString6", "");
-            if (textString6.equals(""))
+            if (textString6.isEmpty())
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -2951,7 +3012,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         if (sharedpreferences.contains("incomingLargeItemText")) {
             incomingLargeItemText = sharedpreferences.getString("incomingLargeItemText", "");
-            if (incomingLargeItemText.equals(""))
+            if (incomingLargeItemText.isEmpty())
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -2959,7 +3020,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         if (sharedpreferences.contains("doughString")) {
             shieldString = sharedpreferences.getString("doughString", "");
-            if (shieldString.equals(""))
+            if (shieldString.isEmpty())
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -2967,7 +3028,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         if (sharedpreferences.contains("chainString")) {
             chainString = sharedpreferences.getString("chainString", "");
-            if (chainString.equals(""))
+            if (chainString.isEmpty())
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -2975,7 +3036,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         if (sharedpreferences.contains("finalScoreText")) {
             finalScoreText = sharedpreferences.getString("finalScoreText", "");
-            if (finalScoreText.equals(""))
+            if (finalScoreText.isEmpty())
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -2985,23 +3046,23 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     private void getLongSharedPreferences(SharedPreferences sharedpreferences) {
         if (sharedpreferences.contains("score")) {
             score = sharedpreferences.getInt("score", -1);
-            if (score != -1l)
+            if (score != -1L)
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("tempTimer2")) {
-            tempTimer2 = sharedpreferences.getLong("tempTimer2", -1l);
-            if (tempTimer2 != -1l)
+            tempTimer2 = sharedpreferences.getLong("tempTimer2", -1L);
+            if (tempTimer2 != -1L)
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("tempTimer3")) {
-            tempTimer3 = sharedpreferences.getLong("tempTimer3", -1l);
-            if (tempTimer3 != -1l)
+            tempTimer3 = sharedpreferences.getLong("tempTimer3", -1L);
+            if (tempTimer3 != -1L)
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -3009,23 +3070,23 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         if (sharedpreferences.contains("finalScore")) {
             finalScore = sharedpreferences.getInt("finalScore", -1);
-            if (finalScore != -1l)
+            if (finalScore != -1L)
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("displayScoreTimer")) {
-            displayScoreTimer = sharedpreferences.getLong("displayScoreTimer", -1l);
-            if (displayScoreTimer != -1l)
+            displayScoreTimer = sharedpreferences.getLong("displayScoreTimer", -1L);
+            if (displayScoreTimer != -1L)
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("chainTextTimer")) {
-            chainTextTimer = sharedpreferences.getLong("chainTextTimer", -1l);
-            if (chainTextTimer != -1l)
+            chainTextTimer = sharedpreferences.getLong("chainTextTimer", -1L);
+            if (chainTextTimer != -1L)
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -3228,16 +3289,16 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
 
         if (sharedpreferences.contains("wallbX")) {
-            wallbX = sharedpreferences.getInt("wallbX", -1);
-            if (wallbX != -1)
+            wallBX = sharedpreferences.getInt("wallbX", -1);
+            if (wallBX != -1)
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("wallbY")) {
-            wallbY = sharedpreferences.getInt("wallbY", -1);
-            if (wallbY != -1)
+            wallBY = sharedpreferences.getInt("wallbY", -1);
+            if (wallBY != -1)
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -3396,32 +3457,32 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
 
         if (sharedpreferences.contains("Itemx1")) {
-            itemx1 = sharedpreferences.getInt("Itemx1", -1);
-            if (itemx1 != -1)
+            itemX1 = sharedpreferences.getInt("Itemx1", -1);
+            if (itemX1 != -1)
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("Itemx2")) {
-            itemx2 = sharedpreferences.getInt("Itemx2", -1);
-            if (itemx2 != -1)
+            itemX2 = sharedpreferences.getInt("Itemx2", -1);
+            if (itemX2 != -1)
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("Itemy1")) {
-            itemy1 = sharedpreferences.getInt("Itemy1", -1);
-            if (itemy1 != -1)
+            itemY1 = sharedpreferences.getInt("Itemy1", -1);
+            if (itemY1 != -1)
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("Itemy2")) {
-            itemy2 = sharedpreferences.getInt("Itemy2", -1);
-            if (itemy2 != -1)
+            itemY2 = sharedpreferences.getInt("Itemy2", -1);
+            if (itemY2 != -1)
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -3444,8 +3505,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
 
         if (sharedpreferences.contains("tempscore")) {
-            tempscore = sharedpreferences.getInt("tempscore", -1);
-            if (tempscore != -1)
+            tempScore = sharedpreferences.getInt("tempscore", -1);
+            if (tempScore != -1)
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -3476,16 +3537,16 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
 
         if (sharedpreferences.contains("Firex1")) {
-            firex1 = sharedpreferences.getInt("Firex1", -1);
-            if (firex1 != -1)
+            fireX1 = sharedpreferences.getInt("Firex1", -1);
+            if (fireX1 != -1)
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("Firex2")) {
-            firex2 = sharedpreferences.getInt("Firex2", -1);
-            if (firex2 != -1)
+            fireX2 = sharedpreferences.getInt("Firex2", -1);
+            if (fireX2 != -1)
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -3940,8 +4001,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         editor.putInt("jy2", jy2);
         editor.putInt("roundChain", roundChain);
         editor.putInt("starTrail", starTrail);
-        editor.putInt("wallbX", wallbX);
-        editor.putInt("wallbY", wallbY);
+        editor.putInt("wallbX", wallBX);
+        editor.putInt("wallbY", wallBY);
         editor.putInt("wallX", wallX);
         editor.putInt("wallY", wallY);
         editor.putInt("FireW", fireW);
@@ -3960,18 +4021,18 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         editor.putInt("newX", newX);
         editor.putInt("newY", newY);
         editor.putInt("rapidCount", rapidCount);
-        editor.putInt("Itemx1", itemx1);
-        editor.putInt("Itemx2", itemx2);
-        editor.putInt("Itemy1", itemy1);
-        editor.putInt("Itemy2", itemy2);
+        editor.putInt("Itemx1", itemX1);
+        editor.putInt("Itemx2", itemX2);
+        editor.putInt("Itemy1", itemY1);
+        editor.putInt("Itemy2", itemY2);
         editor.putInt("temp1", temp1);
         editor.putInt("temp2", temp2);
-        editor.putInt("tempscore", tempscore);
+        editor.putInt("tempscore", tempScore);
         editor.putInt("maxChain", maxChain);
         editor.putInt("critBonus", critBonus);
         editor.putInt("chainBonus", chainBonus);
-        editor.putInt("Firex1", firex1);
-        editor.putInt("Firex2", firex2);
+        editor.putInt("Firex1", fireX1);
+        editor.putInt("Firex2", fireX2);
         editor.putInt("FireW", fireW);
         editor.putInt("ItemW", itemW);
         editor.putInt("ItemH", itemH);
@@ -4015,20 +4076,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         editor.putString("chainString", chainString);
         editor.putString("finalScoreText", finalScoreText);
 
-        //Item array is slightly more complex
-        //get the number of Items in this array at this time
-        //set each variable to the nthItem and the vars to be set to it as well
         numberOfItemsInItemArray = itemArray.length;
         editor.putInt("numberOfItemsInItemArray", numberOfItemsInItemArray);
-        //now that we know the number of Items in the array we can save each Item variables
-        /**
-         * public int largex, largey;
-         * public int x, y, ItemSpeed;
-         * public boolean exists;
-         * public int movementType;
-         * public int center;
-         * public boolean moveRight;
-         */
         for (int i = 0; i < numberOfItemsInItemArray; i++) {
             editor.putInt("ItemArraylargex" + i, itemArray[i].largex);
             editor.putInt("ItemArraylargey" + i, itemArray[i].largey);
@@ -4041,11 +4090,6 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             editor.putBoolean("ItemArraymoveRight" + i, itemArray[i].moveRight);
         }
 
-        //starArray is another complex save
-        /**
-         * 	public int starW, starH, starX, starY, speed;
-         public boolean exists = false;
-         */
         numberOfStars = lightArray.length;
         editor.putInt("numberOfStars", numberOfStars);
         for (int i = 0; i < numberOfStars; i++) {
@@ -4075,12 +4119,6 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         //new Fire array is also complex
         numberOfFire = bulletArray.length;
         editor.putInt("numberOfFire", numberOfFire);
-        /**
-         * 	public int x,y;
-         public int FireSpeed;
-         public boolean exists;
-         public int center;
-         */
         for (int i = 0; i < numberOfFire; i++) {
             editor.putInt("FireArrayx" + i, bulletArray[i].x);
             editor.putInt("FireArrayy" + i, bulletArray[i].y);
@@ -4089,18 +4127,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             editor.putBoolean("FireArrayexists" + i, bulletArray[i].exists);
         }
 
-        // largeItem has pieces to it
         largeItemPieces = largeItem.pieces.length;
         editor.putInt("largeItemPieces", largeItemPieces);
-        //now that we know the number of Items in the array we can save each Item variables
-        /**
-         * public int largex, largey;
-         * public int x, y, ItemSpeed;
-         * public boolean exists;
-         * public int movementType;
-         * public int center;
-         * public boolean moveRight;
-         */
         for (int i = 0; i < largeItemPieces; i++) {
             editor.putInt("largeItempieceslargex" + i, largeItem.pieces[i].largex);
             editor.putInt("largeItempieceslargey" + i, largeItem.pieces[i].largey);
@@ -4113,23 +4141,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             editor.putBoolean("largeItempiecesArraymoveRight" + i, largeItem.pieces[i].moveRight);
         }
 
-        //allBooms are also complex
         numberOfAllBooms = allBooms2.length;
         editor.putInt("numberOfAllBooms", numberOfAllBooms);
-        /**
-         * 	public Bitmap[] booms;
-         public int x;
-         public int y;
-         public int frames;
-         public int currentFrame;
-         public int fps;
-         public int counter;
-         public boolean booming;
-         public boolean crit = false;
-         public int critx, crity;
-         public Paint paint;
-         public String c;
-         */
         for (int i = 0; i < numberOfAllBooms; i++) {
             editor.putInt("allBooms2x" + i, allBooms2[i].x);
             editor.putInt("allBooms2y" + i, allBooms2[i].y);
@@ -4147,12 +4160,6 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         //shields are complex
         numberOfShields = effects.length;
         editor.putInt("numberOfShields", numberOfShields);
-        /**
-         * 	public int jx1, jy1, jx2, jy2;
-         public Paint shieldColor;
-         public boolean exists;
-         public int shieldCount;
-         */
         for (int i = 0; i < numberOfShields; i++) {
             editor.putInt("shieldsjx1" + i, effects[i].jx1);
             editor.putInt("shieldsjy1" + i, effects[i].jy1);
@@ -4163,7 +4170,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
 
         // Commit the edits!
-        editor.commit();
+        editor.apply();
     }
 
     public void onDestroy() {
