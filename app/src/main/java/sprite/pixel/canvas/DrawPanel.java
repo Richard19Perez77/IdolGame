@@ -23,10 +23,8 @@ import android.util.SparseIntArray;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-
 import java.io.IOException;
 import java.util.Random;
-
 import sprite.pixel.canvas.movables.Boom;
 import sprite.pixel.canvas.movables.LargeItem;
 import sprite.pixel.canvas.movables.Bullet;
