@@ -504,32 +504,32 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
         textColor.setTextSize(textSize1);
         textColor.setColor(getResources().getColor(R.color.MediumVioletRed, null));
         measure = textColor.measureText(textString3);
-        canvas.drawText(textString3, (screenW - measure) / 2, screenH / 5, textColor);
+        canvas.drawText(textString3, (screenW - measure) / 2, (float) screenH / 5, textColor);
 
         textString4 = "Idol Blaster";
         randPaint.setTextSize(textSize1 * 2);
         setRandomTextColor(randPaint);
         measure = randPaint.measureText(textString4);
-        canvas.drawText(textString4, (screenW - measure) / 2, screenH / 3, randPaint);
+        canvas.drawText(textString4, (screenW - measure) / 2, (float) screenH / 3, randPaint);
 
         textString1 = "Cosplay Artworks";
         textColor.setTextSize(textSize3);
         textColor.setColor(getResources().getColor(R.color.orange, null));
         measure = textColor.measureText(textString1);
-        canvas.drawText(textString1, (screenW - measure) / 2, screenH / 2, textColor);
+        canvas.drawText(textString1, (screenW - measure) / 2, (float) screenH / 2, textColor);
 
         textString2 = "Caticornplay";
         measure = textColor.measureText(textString2);
-        canvas.drawText(textString2, (screenW - measure) / 2, screenH / 2 + (textColor.getTextSize() * 2), textColor);
+        canvas.drawText(textString2, (screenW - measure) / 2, (float) screenH / 2 + (textColor.getTextSize() * 2), textColor);
 
         textString5 = "Developer: Rick Perez";
         textColor.setColor(getResources().getColor(R.color.SlateBlue, null));
         measure = textColor.measureText(textString5);
-        canvas.drawText(textString5, (screenW - measure) / 2, screenH - (screenH / 4), textColor);
+        canvas.drawText(textString5, (screenW - measure) / 2, screenH - ((float) screenH / 4), textColor);
 
         textString6 = "Music: Ted Gerstle";
         measure = textColor.measureText(textString6);
-        canvas.drawText(textString6, (screenW - measure) / 2, screenH - (screenH / 4) + (textColor.getTextSize() * 2), textColor);
+        canvas.drawText(textString6, (screenW - measure) / 2, screenH - ((float) screenH / 4) + (textColor.getTextSize() * 2), textColor);
     }
 
     public void gamePlaying(Canvas canvas) {
@@ -563,7 +563,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
                 setRandomTextColor(textColor);
                 textColor.setTextSize(textSize1);
                 measure = textColor.measureText(text);
-                canvas.drawText(text, (screenW - measure) / 2, screenH / 2, textColor);
+                canvas.drawText(text, (screenW - measure) / 2, (float) screenH / 2, textColor);
             }
 
             updateGame(canvas);
@@ -623,7 +623,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
             text = "!! Bonus Stage !!";
             measure = textColor.measureText(text);
             textColor.setTextSize(textSize1);
-            c.drawText(text, screenW / 2 - measure / 2, screenH / 2, textColor);
+            c.drawText(text, (float) screenW / 2 - measure / 2, (float) screenH / 2, textColor);
         }
 
         if (incScore) {
@@ -713,33 +713,32 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
         textColor.setTextSize(textSize1);
         textColor.setColor(getResources().getColor(R.color.MediumVioletRed, null));
         measure = textColor.measureText(textString3);
-        canvas.drawText(textString3, (screenW - measure) / 2, screenH / 5, textColor);
+        canvas.drawText(textString3, (screenW - measure) / 2, (float) screenH / 5, textColor);
 
         textString4 = "Idol Blaster";
         randPaint.setTextSize(textSize1 * 2);
         setRandomTextColor(randPaint);
         measure = randPaint.measureText(textString4);
-        canvas.drawText(textString4, (screenW - measure) / 2, screenH / 3, randPaint);
+        canvas.drawText(textString4, (screenW - measure) / 2, (float) screenH / 3, randPaint);
 
         textString1 = "Cosplay Artworks";
         textColor.setTextSize(textSize3);
         textColor.setColor(getResources().getColor(R.color.orange, null));
         measure = textColor.measureText(textString1);
-        canvas.drawText(textString1, (screenW - measure) / 2, screenH / 2, textColor);
+        canvas.drawText(textString1, (screenW - measure) / 2, (float) screenH / 2, textColor);
 
         textString2 = "Caticornplay";
         measure = textColor.measureText(textString2);
-        canvas.drawText(textString2, (screenW - measure) / 2, screenH / 2 + (textColor.getTextSize() * 2), textColor);
+        canvas.drawText(textString2, (screenW - measure) / 2, (float) screenH / 2 + (textColor.getTextSize() * 2), textColor);
 
         textString5 = "Developer: Rick Perez";
         textColor.setColor(getResources().getColor(R.color.SlateBlue, null));
         measure = textColor.measureText(textString5);
-        canvas.drawText(textString5, (screenW - measure) / 2, screenH - (screenH / 4), textColor);
+        canvas.drawText(textString5, (screenW - measure) / 2, screenH - ((float) screenH / 4), textColor);
 
         textString6 = "Music: Ted Gerstle";
         measure = textColor.measureText(textString6);
-        canvas.drawText(textString6, (screenW - measure) / 2, screenH - (screenH / 4) + (textColor.getTextSize() * 2), textColor);
-
+        canvas.drawText(textString6, (screenW - measure) / 2, screenH - ((float) screenH / 4) + (textColor.getTextSize() * 2), textColor);
     }
 
     public void highScoreScreen() {
@@ -1070,21 +1069,21 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
 
         float sPercent = (float) sCurr / (float) sMax;
         float aPercent = (float) aCurr / (float) aMax;
-        float shields = (screenW / 2) * sPercent;
-        float ammo = (screenW / 2) * aPercent;
-        int sh = (int) (screenW / 2 + shields);
-        int am = (int) (screenW / 2 + ammo);
+        float shields = ((float) screenW / 2) * sPercent;
+        float ammo = ((float) screenW / 2) * aPercent;
+        int sh = (int) ((float) screenW / 2 + shields);
+        int am = (int) ((float) screenW / 2 + ammo);
 
         if (sCurr >= 0) {
-            canvas.drawRect(screenW / 2, screenH - shieldText.getTextSize() * 1, sh, screenH - shieldText.getTextSize() * 2, shieldPaint);
+            canvas.drawRect((float) screenW / 2, screenH - shieldText.getTextSize() * 1, sh, screenH - shieldText.getTextSize() * 2, shieldPaint);
         }
 
         if (aCurr >= 0) {
             if (!overheat)
-                canvas.drawRect(screenW / 2, screenH - fireText.getTextSize() * 2, am, screenH - fireText.getTextSize() * 3, firePaint);
+                canvas.drawRect((float) screenW / 2, screenH - fireText.getTextSize() * 2, am, screenH - fireText.getTextSize() * 3, firePaint);
             else {
                 setRandomTextColor(randPaint);
-                canvas.drawRect(screenW / 2, screenH - fireText.getTextSize() * 2, am, screenH - fireText.getTextSize() * 3, randPaint);
+                canvas.drawRect((float) screenW / 2, screenH - fireText.getTextSize() * 2, am, screenH - fireText.getTextSize() * 3, randPaint);
                 if (aCurr > aMax / 2) overheat = false;
 
             }
@@ -1307,31 +1306,31 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
             tempScore = score;
             finalScoreText = "GameScore";
             float measure2 = textColor.measureText(finalScoreText);
-            canvas.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4) + textColor.getTextSize() * 1, textColor);
+            canvas.drawText(finalScoreText, ((float) screenW / 2) - measure2, ((float) screenH / 4) + textColor.getTextSize() * 1, textColor);
             finalScoreText = Integer.toString(tempScore);
             measure = textColor.measureText(finalScoreText);
-            canvas.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2)) - measure, (screenH / 4) + textColor.getTextSize() * 1, textColor);
+            canvas.drawText(finalScoreText, (screenW - (((float) screenW / 2) - measure2)) - measure, ((float) screenH / 4) + textColor.getTextSize() * 1, textColor);
 
             tempScore = (maxChain * 24);
             finalScoreText = "ChainBonus";
-            canvas.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4) + textColor.getTextSize() * 2, textColor);
+            canvas.drawText(finalScoreText, ((float) screenW / 2) - measure2, ((float) screenH / 4) + textColor.getTextSize() * 2, textColor);
             finalScoreText = Integer.toString(tempScore);
             measure = textColor.measureText(finalScoreText);
-            canvas.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2)) - measure, (screenH / 4) + textColor.getTextSize() * 2, textColor);
+            canvas.drawText(finalScoreText, (screenW - (((float) screenW / 2) - measure2)) - measure, ((float) screenH / 4) + textColor.getTextSize() * 2, textColor);
 
             tempScore = critBonus;
             finalScoreText = "CritBonus";
-            canvas.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4) + textColor.getTextSize() * 3, textColor);
+            canvas.drawText(finalScoreText, ((float) screenW / 2) - measure2, ((float) screenH / 4) + textColor.getTextSize() * 3, textColor);
             finalScoreText = Integer.toString(tempScore);
             measure = textColor.measureText(finalScoreText);
-            canvas.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2)) - measure, (screenH / 4) + textColor.getTextSize() * 3, textColor);
+            canvas.drawText(finalScoreText, (screenW - (((float) screenW / 2) - measure2)) - measure, ((float) screenH / 4) + textColor.getTextSize() * 3, textColor);
 
             tempScore = score + (maxChain * 24) + critBonus;
             finalScoreText = "Total";
-            canvas.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4) + textColor.getTextSize() * 5, textColor);
+            canvas.drawText(finalScoreText, ((float) screenW / 2) - measure2, ((float) screenH / 4) + textColor.getTextSize() * 5, textColor);
             finalScoreText = Integer.toString(tempScore);
             measure = textColor.measureText(finalScoreText);
-            canvas.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2)) - measure, (screenH / 4) + textColor.getTextSize() * 5, textColor);
+            canvas.drawText(finalScoreText, (screenW - (((float) screenW / 2) - measure2)) - measure, ((float) screenH / 4) + textColor.getTextSize() * 5, textColor);
 
             if (!finalScoreSet) {
                 finalScore = score + (maxChain * 24) + critBonus;
@@ -1387,7 +1386,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
             }
             textColor.setTextSize(textSize1);
             measure = textColor.measureText(chainText);
-            canvas.drawText(chainText, screenW / 2 - measure / 2, (screenH / 3), textColor);
+            canvas.drawText(chainText, (float) screenW / 2 - measure / 2, ((float) screenH / 3), textColor);
             chainTextTimer++;
         }
     }
@@ -1737,7 +1736,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
 
             textColor.setTextSize(textSize1);
             measure = textColor.measureText(incomingLargeItemText);
-            c.drawText(incomingLargeItemText, screenW / 2 - measure / 2, (screenH / 2), textColor);
+            c.drawText(incomingLargeItemText, (float) screenW / 2 - measure / 2, ((float) screenH / 2), textColor);
             tempTimer2++;
         }
 
@@ -1846,31 +1845,31 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
         tempScore = score;
         finalScoreText = "GameScore";
         float measure2 = textColor.measureText(finalScoreText);
-        c.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4) + textColor.getTextSize() * 1, textColor);
+        c.drawText(finalScoreText, ((float) screenW / 2) - measure2, ((float) screenH / 4) + textColor.getTextSize() * 1, textColor);
         finalScoreText = Integer.toString(tempScore);
         measure = textColor.measureText(finalScoreText);
-        c.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2)) - measure, (screenH / 4) + textColor.getTextSize() * 1, textColor);
+        c.drawText(finalScoreText, (screenW - (((float) screenW / 2) - measure2)) - measure, ((float) screenH / 4) + textColor.getTextSize() * 1, textColor);
 
         tempScore = (maxChain * 24);
         finalScoreText = "ChainBonus";
-        c.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4) + textColor.getTextSize() * 2, textColor);
+        c.drawText(finalScoreText, ((float) screenW / 2) - measure2, ((float) screenH / 4) + textColor.getTextSize() * 2, textColor);
         finalScoreText = Integer.toString(tempScore);
         measure = textColor.measureText(finalScoreText);
-        c.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2)) - measure, (screenH / 4) + textColor.getTextSize() * 2, textColor);
+        c.drawText(finalScoreText, (screenW - (((float) screenW / 2) - measure2)) - measure, ((float) screenH / 4) + textColor.getTextSize() * 2, textColor);
 
         tempScore = critBonus;
         finalScoreText = "CritBonus";
-        c.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4) + textColor.getTextSize() * 3, textColor);
+        c.drawText(finalScoreText, ((float) screenW / 2) - measure2, ((float) screenH / 4) + textColor.getTextSize() * 3, textColor);
         finalScoreText = Integer.toString(tempScore);
         measure = textColor.measureText(finalScoreText);
-        c.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2)) - measure, (screenH / 4) + textColor.getTextSize() * 3, textColor);
+        c.drawText(finalScoreText, (screenW - (((float) screenW / 2) - measure2)) - measure, ((float) screenH / 4) + textColor.getTextSize() * 3, textColor);
 
         tempScore = score + (maxChain * 24) + critBonus;
         finalScoreText = "Total";
-        c.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4) + textColor.getTextSize() * 5, textColor);
+        c.drawText(finalScoreText, ((float) screenW / 2) - measure2, ((float) screenH / 4) + textColor.getTextSize() * 5, textColor);
         finalScoreText = Integer.toString(tempScore);
         measure = textColor.measureText(finalScoreText);
-        c.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2)) - measure, (screenH / 4) + textColor.getTextSize() * 5, textColor);
+        c.drawText(finalScoreText, (screenW - (((float) screenW / 2) - measure2)) - measure, ((float) screenH / 4) + textColor.getTextSize() * 5, textColor);
 
         if (!finalScoreSet) {
             finalScore = score + (maxChain * 24) + critBonus;
