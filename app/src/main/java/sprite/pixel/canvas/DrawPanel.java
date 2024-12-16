@@ -660,10 +660,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     }
 
     public boolean checkForEndOfGame() {
-        if (sCurr <= 0 && incScore)
-            return true;
-        else
-            return false;
+        return sCurr <= 0 && incScore;
     }
 
     public void endGamePlaying() {
@@ -1552,7 +1549,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                 textColor.setColor(getResources().getColor(R.color.Red, null));
             } else if (chainTextTimer % 3 == 1) {
                 textColor.setColor(getResources()
-                        .getColor(R.color.MediumVioletRed));
+                        .getColor(R.color.MediumVioletRed, null));
             } else {
                 textColor.setColor(getResources().getColor(R.color.SlateBlue, null));
             }
@@ -3677,21 +3674,14 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     private void getBooleanSharedPreferences(SharedPreferences sharedpreferences) {
         if (sharedpreferences.contains("loadingScreen")) {
             loadingScreen = sharedpreferences.getBoolean("loadingScreen", false);
-            if (loadingScreen)
-                sharedPreferencesValid = false;
-            else
-                sharedPreferencesValid = true;
+            sharedPreferencesValid = !loadingScreen;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("introScreenPlaying")) {
             introScreenPlaying = sharedpreferences.getBoolean("introScreenPlaying", false);
-            if (introScreenPlaying) {
-                sharedPreferencesValid = false;
-            } else {
-                sharedPreferencesValid = true;
-            }
+            sharedPreferencesValid = !introScreenPlaying;
         } else {
             sharedPreferencesValid = false;
         }
@@ -3899,17 +3889,10 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             initSoundPool();
     }
 
-    public void onActivityResult() {
-        resetGameVars();
-    }
-
     @Override
     public void onWindowFocusChanged(boolean hasWindowFocus) {
         super.onWindowFocusChanged(hasWindowFocus);
-        if (hasWindowFocus)
-            isWindowReady = true;
-        else
-            isWindowReady = false;
+        isWindowReady = hasWindowFocus;
     }
 
     public void onRestart() {
