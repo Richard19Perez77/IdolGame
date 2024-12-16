@@ -1346,7 +1346,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    public Bitmap getResizedBitmap(Bitmap bm, int newHeight, int newWidth) {
+    public Bitmap getResizedBitmap(@NonNull Bitmap bm, int newHeight, int newWidth) {
         int w = bm.getWidth();
         int h = bm.getHeight();
         float sW = ((float) newWidth) / w;
