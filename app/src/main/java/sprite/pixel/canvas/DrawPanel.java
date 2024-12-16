@@ -250,7 +250,6 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         sharedpreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         sharedPreferencesValid = false;
 
-        //get all boolean shared preferences
         getBooleanSharedPreferences(sharedpreferences);
 
         if (isLogging)
@@ -1579,7 +1578,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    public void setRandomTextColor(Paint scoreText2) {
+    public void setRandomTextColor(@NonNull Paint scoreText2) {
         if (scoreText2.getColor() == getResources().getColor(
                 R.color.MediumVioletRed, null)) {
             scoreText2.setColor(getResources().getColor(R.color.Red, null));
@@ -1740,7 +1739,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    public void destroyFire(Bullet bullet) {
+    public void destroyFire(@NonNull Bullet bullet) {
         bullet.exists = false;
     }
 
@@ -1753,7 +1752,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         soundPool.play(soundsMap.get(sound), volume, volume, 1, 0, fSpeed);
     }
 
-    public void destroyItems(Item item) {
+    public void destroyItems(@NonNull Item item) {
         itemCount--;
         item.exists = false;
         if (createSmallItems) {
@@ -2141,7 +2140,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         movePlanets();
     }
 
-    public void drawPlanets(Canvas c) {
+    public void drawPlanets(@NonNull Canvas c) {
         c.drawBitmap(planetb, wallBX, wallBY, null);
         c.drawBitmap(planeta, wallX, wallY, null);
     }
@@ -2311,7 +2310,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    public void onPrepared(MediaPlayer mp) {
+    public void onPrepared(@NonNull MediaPlayer mp) {
         mp.start();
     }
 
@@ -2319,7 +2318,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         return myThread1;
     }
 
-    public void drawColor(Canvas canvas) {
+    public void drawColor(@NonNull Canvas canvas) {
         // game not playing, pausing process
         canvas.drawBitmap(loadingIntro, 1, 1, null);
     }
@@ -2460,7 +2459,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                                 incomingLargeItemText = "";
     }
 
-    private void getShieldsSharedPreferences(SharedPreferences sharedpreferences) {
+    private void getShieldsSharedPreferences(@NonNull SharedPreferences sharedpreferences) {
         if (sharedpreferences.contains("numberOfShields")) {
             numberOfShields = sharedpreferences.getInt("numberOfShields", -1);
 
@@ -2518,7 +2517,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    private void getBoomsSharedPreferences(SharedPreferences sharedpreferences) {
+    private void getBoomsSharedPreferences(@NonNull SharedPreferences sharedpreferences) {
         if (sharedpreferences.contains("numberOfAllBooms")) {
             numberOfAllBooms = sharedpreferences.getInt("numberOfAllBooms", -1);
 
@@ -2614,7 +2613,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    private void getLargeItemSharedPreferences(SharedPreferences sharedpreferences) {
+    private void getLargeItemSharedPreferences(@NonNull SharedPreferences sharedpreferences) {
         if (sharedpreferences.contains("largeItemPieces")) {
             largeItemPieces = sharedpreferences.getInt("largeItemPieces", -1);
             largeItem = new LargeItem(incSpeed, largeItemPieces);
@@ -2685,7 +2684,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    private void getFireArraySharedPreferences(SharedPreferences sharedpreferences) {
+    private void getFireArraySharedPreferences(@NonNull SharedPreferences sharedpreferences) {
         if (sharedpreferences.contains("numberOfFire")) {
             numberOfFire = sharedpreferences.getInt("numberOfFire", -1);
 
@@ -2737,7 +2736,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    private void getStarYIntArraySharedPreferences(SharedPreferences sharedpreferences) {
+    private void getStarYIntArraySharedPreferences(@NonNull SharedPreferences sharedpreferences) {
         if (sharedpreferences.contains("numberOfStarsY")) {
             numberOfStarsY = sharedpreferences.getInt("numberOfStarsY", -1);
 
@@ -2757,7 +2756,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    private void getStarXIntArraySharedPreferences(SharedPreferences sharedpreferences) {
+    private void getStarXIntArraySharedPreferences(@NonNull SharedPreferences sharedpreferences) {
         if (sharedpreferences.contains("numberOfStarsX")) {
             numberOfStarsX = sharedpreferences.getInt("numberOfStarsX", -1);
 
@@ -2777,7 +2776,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    private void getStarArray(SharedPreferences sharedpreferences) {
+    private void getStarArray(@NonNull SharedPreferences sharedpreferences) {
         if (sharedpreferences.contains("numberOfStars")) {
             numberOfStars = sharedpreferences.getInt("numberOfStars", -1);
 
@@ -2838,7 +2837,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    private void getItemArraySharedPreferences(SharedPreferences sharedpreferences) {
+    private void getItemArraySharedPreferences(@NonNull SharedPreferences sharedpreferences) {
         if (sharedpreferences.contains("numberOfItemsInItemArray")) {
             numberOfItemsInItemArray = sharedpreferences.getInt("numberOfItemsInItemArray", -1);
 
@@ -2923,7 +2922,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    private void getStringSharedPreferences(SharedPreferences sharedpreferences) {
+    private void getStringSharedPreferences(@NonNull SharedPreferences sharedpreferences) {
         if (sharedpreferences.contains("text")) {
             text = sharedpreferences.getString("text", "");
             if (text.isEmpty())
@@ -3037,7 +3036,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    private void getLongSharedPreferences(SharedPreferences sharedpreferences) {
+    private void getLongSharedPreferences(@NonNull SharedPreferences sharedpreferences) {
         if (sharedpreferences.contains("score")) {
             score = sharedpreferences.getInt("score", -1);
             if (score != -1L)
@@ -3087,7 +3086,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    private void getFloatSharedPreferences(SharedPreferences sharedpreferences) {
+    private void getFloatSharedPreferences(@NonNull SharedPreferences sharedpreferences) {
         if (sharedpreferences.contains("volume")) {
             volume = sharedpreferences.getFloat("volume", -1f);
             if (volume != -1f)
@@ -3113,7 +3112,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    private void getIntSharedPreferences(SharedPreferences sharedpreferences) {
+    private void getIntSharedPreferences(@NonNull SharedPreferences sharedpreferences) {
         if (sharedpreferences.contains("acc")) {
             acc = sharedpreferences.getInt("acc", -1);
             if (acc != -1)
@@ -3668,7 +3667,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
     }
 
-    private void getBooleanSharedPreferences(SharedPreferences sharedpreferences) {
+    private void getBooleanSharedPreferences(@NonNull SharedPreferences sharedpreferences) {
         if (sharedpreferences.contains("loadingScreen")) {
             loadingScreen = sharedpreferences.getBoolean("loadingScreen", false);
             sharedPreferencesValid = !loadingScreen;
