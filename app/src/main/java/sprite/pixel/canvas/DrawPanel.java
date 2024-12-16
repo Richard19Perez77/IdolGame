@@ -327,7 +327,6 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
         } else if (showHighScoreScreen) {
             highScoreScreen();
         } else {
-            //draw nothing? how about red? Its settled!
             resetGameVars();
             canvas.drawColor(Color.RED);
         }
@@ -338,18 +337,11 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
 
         acc++;
 
-        textString1 = "Loading... " + (acc * 100) / 450 + "%";
-
-        if (acc < 300) canvas.drawBitmap(warningIntro, 1, 1, null);
-        else {
-            canvas.drawBitmap(loadingIntro, 1, 1, null);
-            canvas.drawText(textString1, (getWidth()) / 2, screenH - screenH / 5, loadingText);
-            canvas.drawText(textString3, (getWidth()) / 2, screenH / 10, loadingText);
-        }
+        canvas.drawBitmap(warningIntro, 1, 1, null);
 
         threadAlive = loadingThread.isAlive();
 
-        if (acc >= 450 && allVarsLoaded && !threadAlive) {
+        if (acc > 200 && allVarsLoaded && !threadAlive) {
             loadingScreen = false;
             introScreenPlaying = true;
             acc = 0;
@@ -507,36 +499,37 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
     }
 
     private void printIntro(Canvas canvas) {
-        textString3 = "Title Text 1";
 
-        textString4 = "Title Text 2";
-        textString1 = "Title Text 3";
-
-        textString5 = "Title Text 4";
-        textString6 = "Title Text 5";
-
+        textString3 = "Welcome to";
         textColor.setTextSize(textSize1);
-        textColor.setColor(getResources().getColor(R.color.DarkBlue, null));
+        textColor.setColor(getResources().getColor(R.color.MediumVioletRed, null));
         measure = textColor.measureText(textString3);
         canvas.drawText(textString3, (screenW - measure) / 2, screenH / 5, textColor);
 
+        textString4 = "Idol Blaster";
         randPaint.setTextSize(textSize1 * 2);
         setRandomTextColor(randPaint);
         measure = randPaint.measureText(textString4);
-        canvas.drawText(textString4, (screenW - measure) / 2, screenH / 2 - randPaint.getTextSize(), randPaint);
+        canvas.drawText(textString4, (screenW - measure) / 2, screenH / 3, randPaint);
 
-        randPaint.setTextSize(textSize1 * 2);
-        setRandomTextColor(randPaint);
-        measure = randPaint.measureText(textString1);
-        canvas.drawText(textString1, (screenW - measure) / 2, screenH / 2, randPaint);
-
+        textString1 = "Cosplay Artworks";
         textColor.setTextSize(textSize3);
-        textColor.setColor(getResources().getColor(R.color.MistyRose, null));
+        textColor.setColor(getResources().getColor(R.color.orange, null));
+        measure = textColor.measureText(textString1);
+        canvas.drawText(textString1, (screenW - measure) / 2, screenH / 2, textColor);
+
+        textString2 = "Caticornplay";
+        measure = textColor.measureText(textString2);
+        canvas.drawText(textString2, (screenW - measure) / 2, screenH / 2 + (textColor.getTextSize() * 2), textColor);
+
+        textString5 = "Developer: Rick Perez";
+        textColor.setColor(getResources().getColor(R.color.SlateBlue, null));
         measure = textColor.measureText(textString5);
-        canvas.drawText(textString5, (screenW - measure) / 2, screenH - (screenH / 3), textColor);
+        canvas.drawText(textString5, (screenW - measure) / 2, screenH - (screenH / 4), textColor);
+
+        textString6 = "Music: Ted Gerstle";
         measure = textColor.measureText(textString6);
-        canvas.drawText(textString6, (screenW - measure) / 2, screenH - (screenH / 4), textColor);
-        canvas.drawBitmap(playerMap, (screenW - playerW) / 2, screenH - playerH, null);
+        canvas.drawText(textString6, (screenW - measure) / 2, screenH - (screenH / 4) + (textColor.getTextSize() * 2), textColor);
     }
 
     public void gamePlaying(Canvas canvas) {
@@ -563,7 +556,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
                     text = "Game Text";
                 } else {
                     text = "Game Text";
-                    myY = screenH - playerH;
+                    myY = screenH - screenH / 3;
                     myX = (screenW - playerW) / 2;
                 }
                 timer += 1;
@@ -715,38 +708,37 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
     }
 
     private void drawThankYou(@NonNull Canvas canvas) {
-        textString3 = "Title Text 1";
-        textString4 = "Title Text 2";
 
-        textString1 = "Title Text 3";
-        textString2 = "Title Text 4";
-
-        textString5 = "Title Text 5";
-        textString6 = "Title Text 6";
-
+        textString3 = "Thanks for Playing";
         textColor.setTextSize(textSize1);
         textColor.setColor(getResources().getColor(R.color.MediumVioletRed, null));
         measure = textColor.measureText(textString3);
         canvas.drawText(textString3, (screenW - measure) / 2, screenH / 5, textColor);
 
-        randPaint.setTextSize(textSize2);
+        textString4 = "Idol Blaster";
+        randPaint.setTextSize(textSize1 * 2);
         setRandomTextColor(randPaint);
         measure = randPaint.measureText(textString4);
         canvas.drawText(textString4, (screenW - measure) / 2, screenH / 3, randPaint);
 
+        textString1 = "Cosplay Artworks";
         textColor.setTextSize(textSize3);
         textColor.setColor(getResources().getColor(R.color.orange, null));
         measure = textColor.measureText(textString1);
         canvas.drawText(textString1, (screenW - measure) / 2, screenH / 2, textColor);
+
+        textString2 = "Caticornplay";
         measure = textColor.measureText(textString2);
         canvas.drawText(textString2, (screenW - measure) / 2, screenH / 2 + (textColor.getTextSize() * 2), textColor);
 
-        textColor.setTextSize(textSize3);
+        textString5 = "Developer: Rick Perez";
         textColor.setColor(getResources().getColor(R.color.SlateBlue, null));
         measure = textColor.measureText(textString5);
-        canvas.drawText(textString5, (screenW - measure) / 2, screenH - (screenH / 3), textColor);
+        canvas.drawText(textString5, (screenW - measure) / 2, screenH - (screenH / 4), textColor);
+
+        textString6 = "Music: Ted Gerstle";
         measure = textColor.measureText(textString6);
-        canvas.drawText(textString6, (screenW - measure) / 2, screenH - (screenH / 4), textColor);
+        canvas.drawText(textString6, (screenW - measure) / 2, screenH - (screenH / 4) + (textColor.getTextSize() * 2), textColor);
 
     }
 
@@ -2116,6 +2108,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
      * Reset the variables to the initialization state
      */
     private void resetGameVars() {
+        acc = 0;
         startSpeedOffset = 0;
         currSpeedOffset = 0;
         incSpeed = 0;
