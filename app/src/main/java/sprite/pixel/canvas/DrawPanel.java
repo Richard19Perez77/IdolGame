@@ -551,11 +551,11 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
                 if (timer >= 300) {
                     ready = true;
                 } else if (timer >= 200) {
-                    text = "Game Text";
+                    text = "Go";
                 } else if (timer >= 100) {
-                    text = "Game Text";
+                    text = "Set";
                 } else {
-                    text = "Game Text";
+                    text = "Ready";
                     myY = screenH - screenH / 3;
                     myX = (screenW - playerW) / 2;
                 }
