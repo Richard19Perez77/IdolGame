@@ -586,7 +586,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                 incChain = false;
                 showFinalScore = true;
                 aCurr = 0;
-                destroyAllItems(canvas);
+                destroyAllItems();
                 displayScoreTimer = 1;
             }
         } else {
@@ -647,16 +647,16 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
 
         updateGame(c);
-        checkScoreBonus(c);
+        checkScoreBonus();
 
         if (sCurr <= 0 && incScore) {
-            initEndOfBonus(c);
+            initEndOfBonus();
         }
 
         setRandomTextColor(scoreText);
     }
 
-    public void initEndOfBonus(Canvas c) {
+    public void initEndOfBonus() {
         bonusPlaying = false;
         createSmallItems = false;
         incScore = false;
@@ -664,7 +664,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         showFinalScore = true;
         displayScoreTimer = 1;
         aCurr = 0;
-        destroyAllItems(c);
+        destroyAllItems();
         displayScoreTimer = 1;
     }
 
@@ -988,7 +988,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    private boolean divideItemIntoLargeItems() {
+    private void divideItemIntoLargeItems() {
         largeW = screenW - screenW / 10;
 
         Bitmap lItem = BitmapFactory.decodeResource(getResources(),
@@ -1037,10 +1037,6 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                 largeItem.pieces[i].piece = Bitmap.createBitmap(largeSkin, x,
                         y, bitmapWd3, bitmapHd3);
 
-                if (largeItem.pieces[i].piece == null) {
-                    return false;
-                }
-
                 largeItem.pieces[i].largex = largeItem.pieces[i].x = x
                         + xOffset;
 
@@ -1055,8 +1051,6 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         if (isItemArrayLargeItem) {
             itemArray = largeItem.pieces;
         }
-
-        return true;
     }
 
     public Light createNewStar(int planetType) {
@@ -1300,12 +1294,11 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         Matrix matrix = new Matrix();
         matrix.postScale(sW, sH);
 
-        Bitmap resizedBitmap = Bitmap.createBitmap(bm, 0, 0, w, h, matrix,
+        return Bitmap.createBitmap(bm, 0, 0, w, h, matrix,
                 false);
-        return resizedBitmap;
     }
 
-    public void checkScoreBonus(Canvas canvas) {
+    public void checkScoreBonus() {
 
         if (score % 10000 == 0) {
             itemArray[0].itemSpeed += incSpeed;
@@ -1349,7 +1342,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    public void destroyAllItems(Canvas c) {
+    public void destroyAllItems() {
         for (int i = 0; i < itemArray.length; i++) {
             if (itemArray[i].exists) {
                 itemx1 = itemArray[i].x;
@@ -1795,7 +1788,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         // create large item
         if (score == BOSS_SCORE) {
 
-            destroyAllItems(c);
+            destroyAllItems();
 
             for (int i = 0; i < PIECES; i++) {
                 largeItem.pieces[i].exists = true;
