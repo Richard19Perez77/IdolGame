@@ -156,12 +156,10 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     public Bitmap b, planetA, planetB, itemSkin, fireSkin;
     public Bitmap[] booms;
     public Boom[] allBooms2;
-    public Bitmap rapidG, rapidR, rapidW, playerMap, loadingIntro, warningIntro,
-            noteR, noteG, noteW, noteROff, noteWoff, noteGoff;
+    public Bitmap rapidW, playerMap, loadingIntro, warningIntro, noteW, noteWoff;
 
     // large item variables
-    public float measure, fSpeed, streamVolumeCurrent,
-            streamVolumeMax, volume, prevVolume = 1, currVolume = 1;
+    public float measure, fSpeed, streamVolumeCurrent, streamVolumeMax, volume, prevVolume = 1, currVolume = 1;
 
     public String finalScoreText, chainText, textString1, textString2,
             textString3, textString4, textString5, textString6, scoreString,
@@ -435,20 +433,10 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         fireSkin = BitmapFactory
                 .decodeResource(getResources(), R.drawable.bullet);
 
-        rapidG = BitmapFactory
-                .decodeResource(getResources(), R.drawable.rapidg);
-        rapidR = BitmapFactory
-                .decodeResource(getResources(), R.drawable.rapidr);
         rapidW = BitmapFactory
                 .decodeResource(getResources(), R.drawable.rapidw);
 
-        noteR = BitmapFactory.decodeResource(getResources(), R.drawable.noter);
-        noteG = BitmapFactory.decodeResource(getResources(), R.drawable.noteg);
         noteW = BitmapFactory.decodeResource(getResources(), R.drawable.notew);
-        noteROff = BitmapFactory.decodeResource(getResources(),
-                R.drawable.noteroff);
-        noteGoff = BitmapFactory.decodeResource(getResources(),
-                R.drawable.notegoff);
         noteWoff = BitmapFactory.decodeResource(getResources(),
                 R.drawable.notewoff);
 
@@ -920,25 +908,15 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         fireW = fireSkin.getWidth();
         fireH = fireSkin.getHeight();
 
-        rapidG = BitmapFactory
-                .decodeResource(getResources(), R.drawable.rapidg);
-        rapidR = BitmapFactory
-                .decodeResource(getResources(), R.drawable.rapidr);
         rapidW = BitmapFactory
                 .decodeResource(getResources(), R.drawable.rapidw);
-        rapidH = rapidG.getHeight();
+        rapidH = rapidW.getHeight();
 
-        noteR = BitmapFactory.decodeResource(getResources(), R.drawable.noter);
-        noteG = BitmapFactory.decodeResource(getResources(), R.drawable.noteg);
         noteW = BitmapFactory.decodeResource(getResources(), R.drawable.notew);
-        noteROff = BitmapFactory.decodeResource(getResources(),
-                R.drawable.noteroff);
-        noteGoff = BitmapFactory.decodeResource(getResources(),
-                R.drawable.notegoff);
         noteWoff = BitmapFactory.decodeResource(getResources(),
                 R.drawable.notewoff);
-        noteHeight = noteR.getHeight();
-        noteWidth = noteR.getWidth();
+        noteHeight = noteW.getHeight();
+        noteWidth = noteW.getWidth();
 
         // create large pizza as largeIdol array
         largeItem = new LargeItem(incSpeed, PIECES);
