@@ -38,6 +38,8 @@ import sprite.pixel.canvas.movables.Light;
 public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         MediaPlayer.OnPreparedListener {
 
+    public final String path = "android.resource://sprite.pixel.canvas/";
+
     private boolean isLogging = false;
     private final String TAG = "tagLog";
 
@@ -52,8 +54,6 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     public final int ROW = 7;
 
     public final int MAX_BOOMS = 60;
-
-    public final String path = "android.resource://sprite.pixel.canvas/";
 
     public int startSpeedOffset;
     public int currSpeedOffset;
@@ -1176,11 +1176,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                 mp1.setVolume(currVolume, currVolume);
                 mp1.setOnPreparedListener(this);
                 mp1.prepareAsync();
-            } catch (IllegalStateException e) {
-                e.printStackTrace();
-            } catch (IllegalArgumentException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+            } catch (IllegalStateException | IllegalArgumentException | IOException e) {
                 e.printStackTrace();
             }
             mp3overplaying = true;
@@ -1442,11 +1438,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             mp1.setVolume(currVolume, currVolume);
             mp1.setOnPreparedListener(this);
             mp1.prepareAsync();
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (IllegalStateException | IllegalArgumentException | IOException e) {
             e.printStackTrace();
         }
         mp2gameplayplaying = true;
@@ -1579,7 +1571,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         if (createSmallItems) {
             if (itemCount <= itemArray.length) {
                 for (int i = 0; i < itemArray.length; i++) {
-                    if (itemArray[i].exists == false) {
+                    if (!itemArray[i].exists) {
                         itemArray[i].exists = true;
                         itemCount += 1;
                         break;
@@ -1663,7 +1655,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                         && (py1 >= jy1 && py1 <= jy2)) {
 
                     for (int j = 0; j < effects.length; j++) {
-                        if (effects[j].exists == false) {
+                        if (!effects[j].exists) {
                             effects[j].start();
                             break;
                         }
@@ -1776,7 +1768,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                         if (bonusPlaying) {
                             sCurr--;
                             for (int j = 0; j < effects.length; j++) {
-                                if (effects[j].exists == false) {
+                                if (!effects[j].exists) {
                                     effects[j].start();
                                     break;
                                 }
@@ -1953,11 +1945,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                     currVolume = 0.5f;
                 }
                 mp1.setVolume(currVolume, currVolume);
-            } catch (IllegalStateException e) {
-                e.printStackTrace();
-            } catch (IllegalArgumentException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+            } catch (IllegalStateException | IllegalArgumentException | IOException e) {
                 e.printStackTrace();
             }
             mp1.setOnPreparedListener(this);
@@ -2082,7 +2070,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     public void moveAsteroids() {
         for (Light light : lightArray) {
             if (light.exists) {
-                if (light.starX < 0 - light.starW) {
+                if (light.starX < (0 - light.starW)) {
                     light.starX = screenW;
                     light.starY = screenH - rand.nextInt(screenH);
                 } else {

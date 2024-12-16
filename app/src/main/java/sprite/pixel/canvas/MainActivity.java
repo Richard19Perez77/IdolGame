@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         if (isLogging)
             Log.d(TAG, "onCreate Main Activity");
-        //getSupportActionBar().hide();
         Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.activity_main);
         drawPanel = findViewById(R.id.drawPanel);
