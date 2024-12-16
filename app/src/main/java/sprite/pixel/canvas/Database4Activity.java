@@ -12,7 +12,6 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -33,7 +32,6 @@ public class Database4Activity extends Activity {
     public static final String COLUMN_CHAIN = "CHAIN";
 
     private int score;
-    private String name;
     private String chain;
     private boolean highScoreSaved = false;
 
@@ -46,7 +44,7 @@ public class Database4Activity extends Activity {
 
     TransitionDrawable trans1, trans2;
 
-    private String PREFS_NAME = "myPreferences";
+    final String PREFS_NAME = "myPreferences";
 
     public boolean isLogging = false;
     String TAG = "idolLog";
@@ -81,87 +79,82 @@ public class Database4Activity extends Activity {
 
         chain = extras != null ? extras.getString("chain") : "0";
 
-        editTextName = (EditText) findViewById(R.id.editText1);
+        editTextName = findViewById(R.id.editText1);
 
-        webview = (WebView) findViewById(R.id.webView1);
+        webview = findViewById(R.id.webView1);
         webview.setBackgroundColor(Color.parseColor("#000000"));
 
-        saveHighScore = (Button) findViewById(R.id.saveScore);
+        saveHighScore = findViewById(R.id.saveScore);
         saveHighScore.setBackgroundResource(R.drawable.revtransitiontopbuttons);
         trans1 = (TransitionDrawable) saveHighScore.getBackground();
         trans1.startTransition(500);
-        saveHighScore.setOnClickListener(new OnClickListener() {
+        saveHighScore.setOnClickListener(v -> {
+            if (!highScoreSaved) {
+                trans2.reverseTransition(500);
+                trans1.reverseTransition(500);
 
-            public void onClick(View v) {
-                if (!highScoreSaved) {
-                    trans2.reverseTransition(500);
-                    trans1.reverseTransition(500);
-
-                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-                    //Find the currently focused view, so we can grab the correct window token from it.
-                    View view = getCurrentFocus();
-                    //If no view currently has focus, create a new one, just so we can grab a window token from it
-                    if (view == null) {
-                        view = new View(context);
-                    }
-                    inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-
-                    saveHighScore();
-                    printRecords();
-
-                    // Retrieve the new list of scores
-                    Cursor c = scoreDB.query(HIGH_SCORE_TABLE, new String[]{
-                                    COLUMN_NAME, COLUMN_SCORE, COLUMN_CHAIN}, null,
-                            null, null, null, COLUMN_SCORE);
-
-                    StringBuilder builder = new StringBuilder();
-                    builder.append("<html><body>");
-                    builder.append("<h1><FONT COLOR=FF0000><center>High Scores</center></FONT></h1>");
-                    builder.append("<table width='100%25'>");
-                    builder.append("<tr><td><h2>");
-                    builder.append("<FONT COLOR=FF0000>Name </FONT>");
-                    builder.append("</h2></td><td><h2>");
-                    builder.append("<FONT COLOR=FF0000>Chain </FONT>");
-                    builder.append("</h2></td><td><h2>");
-                    builder.append("<FONT COLOR=FF0000>Score </FONT>");
-                    builder.append("</h2></td></tr>");
-                    c.moveToLast();
-
-                    for (int i = c.getCount() - 1; i >= 0; i--) {
-                        int count = c.getCount();
-                        // Get the data
-                        builder.append("<tr><td><h3><FONT COLOR=FFFFFF> ").append(count - i).append(" ");
-                        builder.append(c.getString(0));
-                        builder.append("</FONT></h3></td><td><h3><FONT COLOR=FFFFFF>");
-                        builder.append(c.getString(2));
-                        builder.append("</FONT></h3></td><td><h3><FONT COLOR=FFFFFF>");
-                        builder.append(c.getString(1));
-                        builder.append("</FONT></h3></td></tr>");
-
-                        // Move the cursor
-                        c.moveToPrevious();
-                    }
-
-                    builder.append("</table></body></html>");
-                    webview.loadData(builder.toString(), "text/html", "UTF-8");
-                    // Close the cursor
-                    c.close();
-                    highScoreSaved = true;
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                //Find the currently focused view, so we can grab the correct window token from it.
+                View view = getCurrentFocus();
+                //If no view currently has focus, create a new one, just so we can grab a window token from it
+                if (view == null) {
+                    view = new View(context);
                 }
+                inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+                saveHighScore();
+                printRecords();
+
+                // Retrieve the new list of scores
+                Cursor c = scoreDB.query(HIGH_SCORE_TABLE, new String[]{
+                                COLUMN_NAME, COLUMN_SCORE, COLUMN_CHAIN}, null,
+                        null, null, null, COLUMN_SCORE);
+
+                StringBuilder builder = new StringBuilder();
+                builder.append("<html><body>");
+                builder.append("<h1><FONT COLOR=FF0000><center>High Scores</center></FONT></h1>");
+                builder.append("<table width='100%25'>");
+                builder.append("<tr><td><h2>");
+                builder.append("<FONT COLOR=FF0000>Name </FONT>");
+                builder.append("</h2></td><td><h2>");
+                builder.append("<FONT COLOR=FF0000>Chain </FONT>");
+                builder.append("</h2></td><td><h2>");
+                builder.append("<FONT COLOR=FF0000>Score </FONT>");
+                builder.append("</h2></td></tr>");
+                c.moveToLast();
+
+                for (int i = c.getCount() - 1; i >= 0; i--) {
+                    int count = c.getCount();
+                    // Get the data
+                    builder.append("<tr><td><h3><FONT COLOR=FFFFFF> ").append(count - i).append(" ");
+                    builder.append(c.getString(0));
+                    builder.append("</FONT></h3></td><td><h3><FONT COLOR=FFFFFF>");
+                    builder.append(c.getString(2));
+                    builder.append("</FONT></h3></td><td><h3><FONT COLOR=FFFFFF>");
+                    builder.append(c.getString(1));
+                    builder.append("</FONT></h3></td></tr>");
+
+                    // Move the cursor
+                    c.moveToPrevious();
+                }
+
+                builder.append("</table></body></html>");
+                webview.loadData(builder.toString(), "text/html", "UTF-8");
+                // Close the cursor
+                c.close();
+                highScoreSaved = true;
             }
         });
 
-        playAgain = (Button) findViewById(R.id.playAgain);
+        playAgain = findViewById(R.id.playAgain);
         playAgain.setBackgroundResource(R.drawable.transitiontopbuttons);
         trans2 = (TransitionDrawable) playAgain.getBackground();
         trans2.startTransition(500);
 
-        playAgain.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                if (highScoreSaved) {
-                    trans2.startTransition(500);
-                    finish();
-                }
+        playAgain.setOnClickListener(v -> {
+            if (highScoreSaved) {
+                trans2.startTransition(500);
+                finish();
             }
         });
     }
@@ -207,21 +200,18 @@ public class Database4Activity extends Activity {
     }
 
     private void saveHighScore() {
-        name = editTextName.getText().toString();
-        if (name.equals("")) {
-            long currentToppingTime = new Date().getTime()  % 4;
+        String name = editTextName.getText().toString();
+        if (name.isEmpty()) {
+            long currentToppingTime = new Date().getTime() % 4;
             int toppingName = (int) currentToppingTime;
-            switch (toppingName) {
-                case 1:
-                    name = "Cosplay";
-                    break;
-                case 2:
-                    name = "Caticorn";
-                case 3:
-                    name = "Cosplay";
-                    break;
-                default:
-                    name = "Caticorn";
+            if (toppingName == 0) {
+                name = "Cosplay";
+            } else if (toppingName == 1) {
+                name = "Idol";
+            } else if (toppingName == 2) {
+                name = "Blaster";
+            } else {
+                name = "Caticorn";
             }
         }
 
@@ -249,8 +239,6 @@ public class Database4Activity extends Activity {
 
         scoreDB = openOrCreateDatabase(DATABASE_NAME,
                 Context.MODE_PRIVATE, null);
-//        scoreDB = openOrCreateDatabase(DATABASE_NAME,
-//                SQLiteDatabase.CREATE_IF_NECESSARY, null);
         scoreDB.execSQL("CREATE TABLE IF NOT EXISTS " + HIGH_SCORE_TABLE + " ("
                 + COLUMN_ID + " INTEGER PRIMARY KEY, " + COLUMN_NAME
                 + " VARCHAR, " + COLUMN_SCORE + " INT, " + COLUMN_CHAIN
