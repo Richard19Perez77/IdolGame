@@ -2606,10 +2606,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
                 if (sharedpreferences.contains("allBooms2c" + i)) {
                     allBooms2[i].c = sharedpreferences.getString("allBooms2c" + i, "");
-                    if (!allBooms2[i].c.equals(""))
-                        sharedPreferencesValid = true;
-                    else
-                        sharedPreferencesValid = false;
+                    sharedPreferencesValid = !allBooms2[i].c.isEmpty();
                 } else {
                     sharedPreferencesValid = false;
                 }
@@ -2929,7 +2926,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     private void getStringSharedPreferences(SharedPreferences sharedpreferences) {
         if (sharedpreferences.contains("text")) {
             text = sharedpreferences.getString("text", "");
-            if (text.equals(""))
+            if (text.isEmpty())
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -2937,7 +2934,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         if (sharedpreferences.contains("chainText")) {
             chainText = sharedpreferences.getString("chainText", "");
-            if (chainText.equals(""))
+            if (chainText.isEmpty())
                 sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
