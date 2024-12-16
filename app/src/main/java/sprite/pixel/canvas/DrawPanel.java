@@ -37,8 +37,7 @@ import sprite.pixel.canvas.movables.Effect;
 import sprite.pixel.canvas.movables.Light;
 
 @SuppressLint("ViewConstructor")
-public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
-        MediaPlayer.OnPreparedListener {
+public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, MediaPlayer.OnPreparedListener {
 
     public final String path = "android.resource://sprite.pixel.canvas/";
 
@@ -66,15 +65,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     static final int HIGH_SCORE = 1;
 
     // panel variables
-    public boolean rapidAvailable = true, finalScoreSet, crit,
-            showChainText, introScreenPlaying, gamePlaying,
-            ready, gameTouchReady, bonusPlaying, bonusInitialized, gameOver,
-            mp2GameplayPlaying, mp3overplaying, mp4WinPlaying, threadAlive,
-            planet1Phase, planet2Phase, planet3Phase, overheat, retry,
-            showFinalScore, playerMapPressed, soundOn = true, allVarsLoaded,
-            timer3Started, loadingPrepared, showHighScoreScreen,
-            loadingScreen = true, incScore = true, incChain = true,
-            createSmallItems = true, justFired;
+    public boolean rapidAvailable = true, finalScoreSet, crit, showChainText, introScreenPlaying, gamePlaying, ready, gameTouchReady, bonusPlaying, bonusInitialized, gameOver, mp2GameplayPlaying, mp3overplaying, mp4WinPlaying, threadAlive, planet1Phase, planet2Phase, planet3Phase, overheat, retry, showFinalScore, playerMapPressed, soundOn = true, allVarsLoaded, timer3Started, loadingPrepared, showHighScoreScreen, loadingScreen = true, incScore = true, incChain = true, createSmallItems = true, justFired;
 
     public int shieldReserve = 10;
     public int chainBonus;
@@ -161,10 +152,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     // large item variables
     public float measure, fSpeed, streamVolumeCurrent, streamVolumeMax, volume, prevVolume = 1, currVolume = 1;
 
-    public String finalScoreText, chainText, textString1, textString2,
-            textString3, textString4, textString5, textString6, scoreString,
-            fireString, shieldString, chainString, rapidS, text,
-            incomingLargeItemText;
+    public String finalScoreText, chainText, textString1, textString2, textString3, textString4, textString5, textString6, scoreString, fireString, shieldString, chainString, rapidS, text, incomingLargeItemText;
 
     public final int AMMO = 1;
     public final int EXPLODE = 2;
@@ -249,44 +237,37 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         getBooleanSharedPreferences(sharedpreferences);
 
-        if (isLogging)
-            Log.d(TAG, "getBooleanSharedPreferences valid " + sharedPreferencesValid);
+        if (isLogging) Log.d(TAG, "getBooleanSharedPreferences valid " + sharedPreferencesValid);
 
         //get all int shared preferences
         getIntSharedPreferences(sharedpreferences);
 
-        if (isLogging)
-            Log.d(TAG, "getIntSharedPreferences valid " + sharedPreferencesValid);
+        if (isLogging) Log.d(TAG, "getIntSharedPreferences valid " + sharedPreferencesValid);
 
         //get all float shared prefs
         getFloatSharedPreferences(sharedpreferences);
 
-        if (isLogging)
-            Log.d(TAG, "getFloatSharedPreferences valid " + sharedPreferencesValid);
+        if (isLogging) Log.d(TAG, "getFloatSharedPreferences valid " + sharedPreferencesValid);
 
         //get all long shared prefs
         getLongSharedPreferences(sharedpreferences);
 
-        if (isLogging)
-            Log.d(TAG, "getLongSharedPreferences valid " + sharedPreferencesValid);
+        if (isLogging) Log.d(TAG, "getLongSharedPreferences valid " + sharedPreferencesValid);
 
         //get all string shared prefs
         getStringSharedPreferences(sharedpreferences);
 
-        if (isLogging)
-            Log.d(TAG, "getStringSharedPreferences valid " + sharedPreferencesValid);
+        if (isLogging) Log.d(TAG, "getStringSharedPreferences valid " + sharedPreferencesValid);
 
         //get item array
         getItemArraySharedPreferences(sharedpreferences);
 
-        if (isLogging)
-            Log.d(TAG, "getIdolArraySharedPreferences valid " + sharedPreferencesValid);
+        if (isLogging) Log.d(TAG, "getIdolArraySharedPreferences valid " + sharedPreferencesValid);
 
         //get starArray
         getStarArray(sharedpreferences);
 
-        if (isLogging)
-            Log.d(TAG, "getStarArray valid " + sharedPreferencesValid);
+        if (isLogging) Log.d(TAG, "getStarArray valid " + sharedPreferencesValid);
 
         //get starX int array
         getStarXIntArraySharedPreferences(sharedpreferences);
@@ -303,26 +284,22 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         //new fire array from shared prefs
         getFireArraySharedPreferences(sharedpreferences);
 
-        if (isLogging)
-            Log.d(TAG, "getFireArraySharedPreferences valid " + sharedPreferencesValid);
+        if (isLogging) Log.d(TAG, "getFireArraySharedPreferences valid " + sharedPreferencesValid);
 
         //getLargeIdolArray from shared prefs
         getLargeItemSharedPreferences(sharedpreferences);
 
-        if (isLogging)
-            Log.d(TAG, "getLargeIdolSharedPreferences valid " + sharedPreferencesValid);
+        if (isLogging) Log.d(TAG, "getLargeIdolSharedPreferences valid " + sharedPreferencesValid);
 
         //get boom array from shared preferences
         getBoomsSharedPreferences(sharedpreferences);
 
-        if (isLogging)
-            Log.d(TAG, "getBoomsSharedPreferences valid " + sharedPreferencesValid);
+        if (isLogging) Log.d(TAG, "getBoomsSharedPreferences valid " + sharedPreferencesValid);
 
         //get shields from shared preferences
         getShieldsSharedPreferences(sharedpreferences);
 
-        if (isLogging)
-            Log.d(TAG, "getShieldsSharedPreferences valid " + sharedPreferencesValid);
+        if (isLogging) Log.d(TAG, "getShieldsSharedPreferences valid " + sharedPreferencesValid);
 
         if (!sharedPreferencesValid) {
             resetGameVars();
@@ -357,21 +334,17 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     }
 
     public void loadingScreen(Canvas canvas) {
-        if (!loadingPrepared)
-            initLoading();
+        if (!loadingPrepared) initLoading();
 
         acc++;
 
         textString1 = "Loading... " + (acc * 100) / 450 + "%";
 
-        if (acc < 300)
-            canvas.drawBitmap(warningIntro, 1, 1, null);
+        if (acc < 300) canvas.drawBitmap(warningIntro, 1, 1, null);
         else {
             canvas.drawBitmap(loadingIntro, 1, 1, null);
-            canvas.drawText(textString1, (getWidth()) / 2, screenH - screenH
-                    / 5, loadingText);
-            canvas.drawText(textString3, (getWidth()) / 2, screenH / 10,
-                    loadingText);
+            canvas.drawText(textString1, (getWidth()) / 2, screenH - screenH / 5, loadingText);
+            canvas.drawText(textString3, (getWidth()) / 2, screenH / 10, loadingText);
         }
 
         threadAlive = loadingThread.isAlive();
@@ -394,16 +367,13 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
 
         if (screenH > 1000 && screenW > 600) {
-            loadingIntro = BitmapFactory.decodeResource(getResources(),
-                    R.drawable.loadingintrolarge);
+            loadingIntro = BitmapFactory.decodeResource(getResources(), R.drawable.loadingintrolarge);
         } else {
-            loadingIntro = BitmapFactory.decodeResource(getResources(),
-                    R.drawable.loadingintro);
+            loadingIntro = BitmapFactory.decodeResource(getResources(), R.drawable.loadingintro);
         }
         loadingIntro = getResizedBitmap(loadingIntro, screenH, screenW);
 
-        warningIntro = BitmapFactory.decodeResource(getResources(),
-                R.drawable.warningintro);
+        warningIntro = BitmapFactory.decodeResource(getResources(), R.drawable.warningintro);
         warningIntro = getResizedBitmap(warningIntro, screenH, screenW);
 
         textString3 = String.format(getResources().getString(R.string.light));
@@ -411,10 +381,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         mpInit(getContext());
         initSoundPool();
 
-        planetA = BitmapFactory.decodeResource(getResources(),
-                R.drawable.planet1);
-        planetB = BitmapFactory.decodeResource(getResources(),
-                R.drawable.planet2b);
+        planetA = BitmapFactory.decodeResource(getResources(), R.drawable.planet1);
+        planetB = BitmapFactory.decodeResource(getResources(), R.drawable.planet2b);
         planet1Phase = true;
 
         for (int i = 0; i < lightArray.length; i++) {
@@ -427,18 +395,14 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         timerPaint.setTextSize(textSize2);
 
-        itemSkin = BitmapFactory.decodeResource(getResources(),
-                R.drawable.item1);
+        itemSkin = BitmapFactory.decodeResource(getResources(), R.drawable.item1);
 
-        fireSkin = BitmapFactory
-                .decodeResource(getResources(), R.drawable.bullet);
+        fireSkin = BitmapFactory.decodeResource(getResources(), R.drawable.bullet);
 
-        rapidW = BitmapFactory
-                .decodeResource(getResources(), R.drawable.rapidw);
+        rapidW = BitmapFactory.decodeResource(getResources(), R.drawable.rapidw);
 
         noteW = BitmapFactory.decodeResource(getResources(), R.drawable.notew);
-        noteWoff = BitmapFactory.decodeResource(getResources(),
-                R.drawable.notewoff);
+        noteWoff = BitmapFactory.decodeResource(getResources(), R.drawable.notewoff);
 
         booms = new Bitmap[5];
 
@@ -509,16 +473,13 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         setScreenVarsSizes();
 
         if (screenH > 1000 && screenW > 600) {
-            loadingIntro = BitmapFactory.decodeResource(getResources(),
-                    R.drawable.loadingintrolarge);
+            loadingIntro = BitmapFactory.decodeResource(getResources(), R.drawable.loadingintrolarge);
         } else {
-            loadingIntro = BitmapFactory.decodeResource(getResources(),
-                    R.drawable.loadingintro);
+            loadingIntro = BitmapFactory.decodeResource(getResources(), R.drawable.loadingintro);
         }
         loadingIntro = getResizedBitmap(loadingIntro, screenH, screenW);
 
-        warningIntro = BitmapFactory.decodeResource(getResources(),
-                R.drawable.warningintro);
+        warningIntro = BitmapFactory.decodeResource(getResources(), R.drawable.warningintro);
         warningIntro = getResizedBitmap(warningIntro, screenH, screenW);
 
         textString3 = String.format(getResources().getString(R.string.light));
@@ -537,8 +498,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
     public void introScreen(Canvas canvas) {
         acc++;
-        if (acc > 50)
-            gameTouchReady = true;
+        if (acc > 50) gameTouchReady = true;
 
         initStars();
         canvas.drawPaint(backGround);
@@ -558,29 +518,24 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         textColor.setTextSize(textSize1);
         textColor.setColor(getResources().getColor(R.color.DarkBlue, null));
         measure = textColor.measureText(textString3);
-        canvas.drawText(textString3, (screenW - measure) / 2, screenH / 5,
-                textColor);
+        canvas.drawText(textString3, (screenW - measure) / 2, screenH / 5, textColor);
 
         randPaint.setTextSize(textSize1 * 2);
         setRandomTextColor(randPaint);
         measure = randPaint.measureText(textString4);
-        canvas.drawText(textString4, (screenW - measure) / 2, screenH / 2
-                - randPaint.getTextSize(), randPaint);
+        canvas.drawText(textString4, (screenW - measure) / 2, screenH / 2 - randPaint.getTextSize(), randPaint);
 
         randPaint.setTextSize(textSize1 * 2);
         setRandomTextColor(randPaint);
         measure = randPaint.measureText(textString1);
-        canvas.drawText(textString1, (screenW - measure) / 2, screenH / 2,
-                randPaint);
+        canvas.drawText(textString1, (screenW - measure) / 2, screenH / 2, randPaint);
 
         textColor.setTextSize(textSize3);
         textColor.setColor(getResources().getColor(R.color.MistyRose, null));
         measure = textColor.measureText(textString5);
-        canvas.drawText(textString5, (screenW - measure) / 2, screenH
-                - (screenH / 3), textColor);
+        canvas.drawText(textString5, (screenW - measure) / 2, screenH - (screenH / 3), textColor);
         measure = textColor.measureText(textString6);
-        canvas.drawText(textString6, (screenW - measure) / 2, screenH
-                - (screenH / 4), textColor);
+        canvas.drawText(textString6, (screenW - measure) / 2, screenH - (screenH / 4), textColor);
         canvas.drawBitmap(playerMap, (screenW - playerW) / 2, screenH - playerH, null);
     }
 
@@ -588,8 +543,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         // check for shields to be empty
         if (sCurr > 0) {
             // play non bonus game music
-            if (!mp4WinPlaying && !mp2GameplayPlaying)
-                startGamePlayMusic();
+            if (!mp4WinPlaying && !mp2GameplayPlaying) startGamePlayMusic();
 
             if (incScore) {
                 timer += 1;
@@ -616,8 +570,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                 setRandomTextColor(textColor);
                 textColor.setTextSize(textSize1);
                 measure = textColor.measureText(text);
-                canvas.drawText(text, (screenW - measure) / 2, screenH / 2,
-                        textColor);
+                canvas.drawText(text, (screenW - measure) / 2, screenH / 2, textColor);
             }
 
             updateGame(canvas);
@@ -746,14 +699,14 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    public void drawBackground(Canvas c) {
+    public void drawBackground(@NonNull Canvas c) {
         c.drawPaint(backGround);
         createStarField(c);
         createAsteroidField(c);
         createPlanets(c);
     }
 
-    public void gameOver(Canvas canvas) {
+    public void gameOver(@NonNull Canvas canvas) {
         canvas.drawPaint(backGround);
         initStars();
         drawStars(canvas);
@@ -761,7 +714,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         drawThankYou(canvas);
     }
 
-    private void drawThankYou(Canvas canvas) {
+    private void drawThankYou(@NonNull Canvas canvas) {
         textString3 = "Title Text 1";
         textString4 = "Title Text 2";
 
@@ -774,32 +727,26 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         textColor.setTextSize(textSize1);
         textColor.setColor(getResources().getColor(R.color.MediumVioletRed, null));
         measure = textColor.measureText(textString3);
-        canvas.drawText(textString3, (screenW - measure) / 2, screenH / 5,
-                textColor);
+        canvas.drawText(textString3, (screenW - measure) / 2, screenH / 5, textColor);
 
         randPaint.setTextSize(textSize2);
         setRandomTextColor(randPaint);
         measure = randPaint.measureText(textString4);
-        canvas.drawText(textString4, (screenW - measure) / 2, screenH / 3,
-                randPaint);
+        canvas.drawText(textString4, (screenW - measure) / 2, screenH / 3, randPaint);
 
         textColor.setTextSize(textSize3);
         textColor.setColor(getResources().getColor(R.color.orange, null));
         measure = textColor.measureText(textString1);
-        canvas.drawText(textString1, (screenW - measure) / 2, screenH / 2,
-                textColor);
+        canvas.drawText(textString1, (screenW - measure) / 2, screenH / 2, textColor);
         measure = textColor.measureText(textString2);
-        canvas.drawText(textString2, (screenW - measure) / 2, screenH / 2
-                + (textColor.getTextSize() * 2), textColor);
+        canvas.drawText(textString2, (screenW - measure) / 2, screenH / 2 + (textColor.getTextSize() * 2), textColor);
 
         textColor.setTextSize(textSize3);
         textColor.setColor(getResources().getColor(R.color.SlateBlue, null));
         measure = textColor.measureText(textString5);
-        canvas.drawText(textString5, (screenW - measure) / 2, screenH
-                - (screenH / 3), textColor);
+        canvas.drawText(textString5, (screenW - measure) / 2, screenH - (screenH / 3), textColor);
         measure = textColor.measureText(textString6);
-        canvas.drawText(textString6, (screenW - measure) / 2, screenH
-                - (screenH / 4), textColor);
+        canvas.drawText(textString6, (screenW - measure) / 2, screenH - (screenH / 4), textColor);
 
     }
 
@@ -826,7 +773,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             mp1.setOnPreparedListener(this);
             mp1.prepareAsync();
         } catch (IllegalStateException | IllegalArgumentException | IOException ignored) {
-            Log.d(TAG,"mpInit");
+            Log.d(TAG, "mpInit");
         }
     }
 
@@ -835,14 +782,11 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         fSpeed = 1.0f;
         soundPool = new SoundPool(40, AudioManager.STREAM_MUSIC, 100);
         soundsMap = new SparseIntArray();
-        soundsMap.put(AMMO,
-                soundPool.load(getContext(), R.raw.mozzarella, 1));
-        soundsMap
-                .put(EXPLODE, soundPool.load(getContext(), R.raw.explosion, 1));
+        soundsMap.put(AMMO, soundPool.load(getContext(), R.raw.mozzarella, 1));
+        soundsMap.put(EXPLODE, soundPool.load(getContext(), R.raw.explosion, 1));
         soundsMap.put(EFFECT, soundPool.load(getContext(), R.raw.shield, 1));
 
-        mgr = (AudioManager) this.getContext().getSystemService(
-                Context.AUDIO_SERVICE);
+        mgr = (AudioManager) this.getContext().getSystemService(Context.AUDIO_SERVICE);
         streamVolumeCurrent = mgr.getStreamVolume(AudioManager.STREAM_MUSIC);
         streamVolumeMax = mgr.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
     }
@@ -869,10 +813,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         }
 
-        planetA = BitmapFactory.decodeResource(getResources(),
-                R.drawable.planet1);
-        planetB = BitmapFactory.decodeResource(getResources(),
-                R.drawable.planet2b);
+        planetA = BitmapFactory.decodeResource(getResources(), R.drawable.planet1);
+        planetB = BitmapFactory.decodeResource(getResources(), R.drawable.planet2b);
         planet1Phase = true;
 
         wallBX = screenW;
@@ -898,23 +840,19 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         timerPaint.setTextSize(textSize2);
 
-        itemSkin = BitmapFactory.decodeResource(getResources(),
-                R.drawable.item1);
+        itemSkin = BitmapFactory.decodeResource(getResources(), R.drawable.item1);
         itemH = itemSkin.getHeight();
         itemW = itemSkin.getWidth();
 
-        fireSkin = BitmapFactory
-                .decodeResource(getResources(), R.drawable.bullet);
+        fireSkin = BitmapFactory.decodeResource(getResources(), R.drawable.bullet);
         fireW = fireSkin.getWidth();
         fireH = fireSkin.getHeight();
 
-        rapidW = BitmapFactory
-                .decodeResource(getResources(), R.drawable.rapidw);
+        rapidW = BitmapFactory.decodeResource(getResources(), R.drawable.rapidw);
         rapidH = rapidW.getHeight();
 
         noteW = BitmapFactory.decodeResource(getResources(), R.drawable.notew);
-        noteWoff = BitmapFactory.decodeResource(getResources(),
-                R.drawable.notewoff);
+        noteWoff = BitmapFactory.decodeResource(getResources(), R.drawable.notewoff);
         noteHeight = noteW.getHeight();
         noteWidth = noteW.getWidth();
 
@@ -1019,10 +957,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     private void divideItemIntoLargeItems() {
         largeW = screenW - screenW / 10;
 
-        Bitmap lItem = BitmapFactory.decodeResource(getResources(),
-                R.drawable.largeskin);
-        Bitmap largeSkin = Bitmap.createScaledBitmap(lItem, largeW, largeW,
-                false);
+        Bitmap lItem = BitmapFactory.decodeResource(getResources(), R.drawable.largeskin);
+        Bitmap largeSkin = Bitmap.createScaledBitmap(lItem, largeW, largeW, false);
 
         // re do if the image didn't split correctly
         boolean imageSplit = false;
@@ -1062,14 +998,11 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
                 x = ((i % ROW) * bitmapWd3);
 
-                largeItem.pieces[i].piece = Bitmap.createBitmap(largeSkin, x,
-                        y, bitmapWd3, bitmapHd3);
+                largeItem.pieces[i].piece = Bitmap.createBitmap(largeSkin, x, y, bitmapWd3, bitmapHd3);
 
-                largeItem.pieces[i].largex = largeItem.pieces[i].x = x
-                        + xOffset;
+                largeItem.pieces[i].largex = largeItem.pieces[i].x = x + xOffset;
 
-                largeItem.pieces[i].largey = largeItem.pieces[i].y = y
-                        - (bitmapHd3 * ROW);
+                largeItem.pieces[i].largey = largeItem.pieces[i].y = y - (bitmapHd3 * ROW);
 
             }
             imageSplit = true;
@@ -1091,32 +1024,27 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     private void getPlanetTypeForStar(Light newLight, int planetType) {
         switch (planetType) {
             case 0:
-                newLight.star = BitmapFactory.decodeResource(getResources(),
-                        R.drawable.smplanet1);
+                newLight.star = BitmapFactory.decodeResource(getResources(), R.drawable.smplanet1);
                 newLight.starW = newLight.star.getWidth();
                 newLight.starH = newLight.star.getHeight();
                 break;
             case 1:
-                newLight.star = BitmapFactory.decodeResource(getResources(),
-                        R.drawable.smplanet2);
+                newLight.star = BitmapFactory.decodeResource(getResources(), R.drawable.smplanet2);
                 newLight.starW = newLight.star.getWidth();
                 newLight.starH = newLight.star.getHeight();
                 break;
             case 2:
-                newLight.star = BitmapFactory.decodeResource(getResources(),
-                        R.drawable.smplanet3);
+                newLight.star = BitmapFactory.decodeResource(getResources(), R.drawable.smplanet3);
                 newLight.starW = newLight.star.getWidth();
                 newLight.starH = newLight.star.getHeight();
                 break;
             case 3:
-                newLight.star = BitmapFactory.decodeResource(getResources(),
-                        R.drawable.smplanet4);
+                newLight.star = BitmapFactory.decodeResource(getResources(), R.drawable.smplanet4);
                 newLight.starW = newLight.star.getWidth();
                 newLight.starH = newLight.star.getHeight();
                 break;
             case 4:
-                newLight.star = BitmapFactory.decodeResource(getResources(),
-                        R.drawable.smplanet5);
+                newLight.star = BitmapFactory.decodeResource(getResources(), R.drawable.smplanet5);
                 newLight.starW = newLight.star.getWidth();
                 newLight.starH = newLight.star.getHeight();
                 break;
@@ -1141,15 +1069,12 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         scoreString = "Score " + score;
         measure = scoreText.measureText(scoreString);
-        canvas.drawText(scoreString, screenW - measure,
-                scoreText.getTextSize(), scoreText);
+        canvas.drawText(scoreString, screenW - measure, scoreText.getTextSize(), scoreText);
 
         // draw the ammo and shields count over player map, so its drawn last
-        canvas.drawText(fireString, 10, screenH - fireText.getTextSize() * 2,
-                fireText);
+        canvas.drawText(fireString, 10, screenH - fireText.getTextSize() * 2, fireText);
 
-        canvas.drawText(shieldString, 10, screenH - shieldText.getTextSize(),
-                shieldText);
+        canvas.drawText(shieldString, 10, screenH - shieldText.getTextSize(), shieldText);
 
         float sPercent = (float) sCurr / (float) sMax;
         float aPercent = (float) aCurr / (float) aMax;
@@ -1159,22 +1084,16 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         int am = (int) (screenW / 2 + ammo);
 
         if (sCurr >= 0) {
-            canvas.drawRect(screenW / 2, screenH - shieldText.getTextSize() * 1,
-                    sh, screenH - shieldText.getTextSize() * 2, shieldPaint);
+            canvas.drawRect(screenW / 2, screenH - shieldText.getTextSize() * 1, sh, screenH - shieldText.getTextSize() * 2, shieldPaint);
         }
 
         if (aCurr >= 0) {
             if (!overheat)
-                canvas.drawRect(screenW / 2, screenH - fireText.getTextSize()
-                                * 2, am, screenH - fireText.getTextSize() * 3,
-                        firePaint);
+                canvas.drawRect(screenW / 2, screenH - fireText.getTextSize() * 2, am, screenH - fireText.getTextSize() * 3, firePaint);
             else {
                 setRandomTextColor(randPaint);
-                canvas.drawRect(screenW / 2, screenH - fireText.getTextSize()
-                                * 2, am, screenH - fireText.getTextSize() * 3,
-                        randPaint);
-                if (aCurr > aMax / 2)
-                    overheat = false;
+                canvas.drawRect(screenW / 2, screenH - fireText.getTextSize() * 2, am, screenH - fireText.getTextSize() * 3, randPaint);
+                if (aCurr > aMax / 2) overheat = false;
 
             }
         }
@@ -1199,7 +1118,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                 mp1.setOnPreparedListener(this);
                 mp1.prepareAsync();
             } catch (IllegalStateException | IllegalArgumentException | IOException e) {
-                Log.d(TAG,"startEndGameMusic");
+                Log.d(TAG, "startEndGameMusic");
             }
 
             mp3overplaying = true;
@@ -1240,8 +1159,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                             showHighScoreScreen = true;
                             gameOver = false;
                         }
-                    } else if ((gamePlaying || bonusPlaying || showFinalScore)
-                            && ready) {
+                    } else if ((gamePlaying || bonusPlaying || showFinalScore) && ready) {
                         // game is playing start actions
                         newX = (int) event.getX();
                         newY = (int) event.getY();
@@ -1249,9 +1167,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                         switch (event.getAction()) {
                             case MotionEvent.ACTION_DOWN:
                                 //check if touch down on player map
-                                if (newX >= myX - playerW * 2 && newX <= myX + playerW * 2
-                                        && newY >= myY - playerW * 2
-                                        && newY <= myY + playerW * 2) {
+                                if (newX >= myX - playerW * 2 && newX <= myX + playerW * 2 && newY >= myY - playerW * 2 && newY <= myY + playerW * 2) {
                                     playerMapPressed = true;
                                     myX = newX;
                                     myY = newY;
@@ -1262,8 +1178,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                                 }
 
                                 // if tapped on sound icon change on/off
-                                if (newX >= (screenW - noteWidth) && newX <= screenW
-                                        && newY >= noteHeight && newY <= noteHeight * 2) {
+                                if (newX >= (screenW - noteWidth) && newX <= screenW && newY >= noteHeight && newY <= noteHeight * 2) {
                                     toggleSound();
                                 }
                                 break;
@@ -1276,8 +1191,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                                     if (rapidAvailable && timer % 2 == 0) {
                                         if (aCurr >= 1) {
                                             createFire(newX, newY - 50);
-                                            if (!overheat)
-                                                rapidCount--;
+                                            if (!overheat) rapidCount--;
                                         }
                                         if (rapidCount <= 0) {
                                             rapidAvailable = false;
@@ -1322,8 +1236,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         Matrix matrix = new Matrix();
         matrix.postScale(sW, sH);
 
-        return Bitmap.createBitmap(bm, 0, 0, w, h, matrix,
-                false);
+        return Bitmap.createBitmap(bm, 0, 0, w, h, matrix, false);
     }
 
     public void checkScoreBonus() {
@@ -1340,8 +1253,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         if (score % 5000 == 0) {
             for (Item p : itemArray) {
-                if (p.x > itemW && p.x < screenW - itemW)
-                    p.movementType = 1;
+                if (p.x > itemW && p.x < screenW - itemW) p.movementType = 1;
             }
             speed++;
         }
@@ -1403,43 +1315,31 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             tempScore = score;
             finalScoreText = "GameScore";
             float measure2 = textColor.measureText(finalScoreText);
-            canvas.drawText(finalScoreText, (screenW / 2) - measure2,
-                    (screenH / 4) + textColor.getTextSize() * 1, textColor);
+            canvas.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4) + textColor.getTextSize() * 1, textColor);
             finalScoreText = Integer.toString(tempScore);
             measure = textColor.measureText(finalScoreText);
-            canvas.drawText(finalScoreText,
-                    (screenW - ((screenW / 2) - measure2)) - measure,
-                    (screenH / 4) + textColor.getTextSize() * 1, textColor);
+            canvas.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2)) - measure, (screenH / 4) + textColor.getTextSize() * 1, textColor);
 
             tempScore = (maxChain * 24);
             finalScoreText = "ChainBonus";
-            canvas.drawText(finalScoreText, (screenW / 2) - measure2,
-                    (screenH / 4) + textColor.getTextSize() * 2, textColor);
+            canvas.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4) + textColor.getTextSize() * 2, textColor);
             finalScoreText = Integer.toString(tempScore);
             measure = textColor.measureText(finalScoreText);
-            canvas.drawText(finalScoreText,
-                    (screenW - ((screenW / 2) - measure2)) - measure,
-                    (screenH / 4) + textColor.getTextSize() * 2, textColor);
+            canvas.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2)) - measure, (screenH / 4) + textColor.getTextSize() * 2, textColor);
 
             tempScore = critBonus;
             finalScoreText = "CritBonus";
-            canvas.drawText(finalScoreText, (screenW / 2) - measure2,
-                    (screenH / 4) + textColor.getTextSize() * 3, textColor);
+            canvas.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4) + textColor.getTextSize() * 3, textColor);
             finalScoreText = Integer.toString(tempScore);
             measure = textColor.measureText(finalScoreText);
-            canvas.drawText(finalScoreText,
-                    (screenW - ((screenW / 2) - measure2)) - measure,
-                    (screenH / 4) + textColor.getTextSize() * 3, textColor);
+            canvas.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2)) - measure, (screenH / 4) + textColor.getTextSize() * 3, textColor);
 
             tempScore = score + (maxChain * 24) + critBonus;
             finalScoreText = "Total";
-            canvas.drawText(finalScoreText, (screenW / 2) - measure2,
-                    (screenH / 4) + textColor.getTextSize() * 5, textColor);
+            canvas.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4) + textColor.getTextSize() * 5, textColor);
             finalScoreText = Integer.toString(tempScore);
             measure = textColor.measureText(finalScoreText);
-            canvas.drawText(finalScoreText,
-                    (screenW - ((screenW / 2) - measure2)) - measure,
-                    (screenH / 4) + textColor.getTextSize() * 5, textColor);
+            canvas.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2)) - measure, (screenH / 4) + textColor.getTextSize() * 5, textColor);
 
             if (!finalScoreSet) {
                 finalScore = score + (maxChain * 24) + critBonus;
@@ -1480,8 +1380,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             canvas.drawBitmap(rapidW, 0, rapidH, null);
             rapidS = " " + rapidCount;
             scoreText.setTextSize(textSize2);
-            canvas.drawText(rapidS, 5,
-                    rapidH + rapidH + scoreText.getTextSize(), scoreText);
+            canvas.drawText(rapidS, 5, rapidH + rapidH + scoreText.getTextSize(), scoreText);
         }
     }
 
@@ -1490,15 +1389,13 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             if (chainTextTimer % 3 == 0) {
                 textColor.setColor(getResources().getColor(R.color.Red, null));
             } else if (chainTextTimer % 3 == 1) {
-                textColor.setColor(getResources()
-                        .getColor(R.color.MediumVioletRed, null));
+                textColor.setColor(getResources().getColor(R.color.MediumVioletRed, null));
             } else {
                 textColor.setColor(getResources().getColor(R.color.SlateBlue, null));
             }
             textColor.setTextSize(textSize1);
             measure = textColor.measureText(chainText);
-            canvas.drawText(chainText, screenW / 2 - measure / 2,
-                    (screenH / 3), textColor);
+            canvas.drawText(chainText, screenW / 2 - measure / 2, (screenH / 3), textColor);
             chainTextTimer++;
         }
     }
@@ -1522,11 +1419,9 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     }
 
     public void setRandomTextColor(@NonNull Paint scoreText2) {
-        if (scoreText2.getColor() == getResources().getColor(
-                R.color.MediumVioletRed, null)) {
+        if (scoreText2.getColor() == getResources().getColor(R.color.MediumVioletRed, null)) {
             scoreText2.setColor(getResources().getColor(R.color.Red, null));
-        } else if (scoreText2.getColor() == (getResources()
-                .getColor(R.color.Red, null))) {
+        } else if (scoreText2.getColor() == (getResources().getColor(R.color.Red, null))) {
             scoreText2.setColor(getResources().getColor(R.color.SlateBlue, null));
         } else {
             scoreText2.setColor(getResources().getColor(R.color.MediumVioletRed, null));
@@ -1546,17 +1441,14 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             for (int i = 0; i < itemArray.length; i++) {
                 if (itemArray[i].exists) {
                     itemArray[i].moveItem(incSpeed);
-                    canvas.drawBitmap(itemSkin, itemArray[i].x,
-                            itemArray[i].y, null);
+                    canvas.drawBitmap(itemSkin, itemArray[i].x, itemArray[i].y, null);
                 }
             }
         } else {
             for (int i = 0; i < PIECES; i++) {
                 if (largeItem.pieces[i].exists) {
                     largeItem.pieces[i].moveItem(incSpeed);
-                    canvas.drawBitmap(largeItem.pieces[i].piece,
-                            largeItem.pieces[i].x, largeItem.pieces[i].y,
-                            null);
+                    canvas.drawBitmap(largeItem.pieces[i].piece, largeItem.pieces[i].x, largeItem.pieces[i].y, null);
                 }
             }
         }
@@ -1594,16 +1486,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                         itemY1 = itemArray[j].y;
                         itemY2 = itemY1 + itemH;
 
-                        if ((fireX1 >= itemX1 && fireX1 <= itemX2)
-                                && (fireY2 >= itemY1 && fireY2 <= itemY2)
-                                || (fireX2 >= itemX1 && fireX2 <= itemX2)
-                                && (fireY2 >= itemY1 && fireY2 <= itemY2)
-                                || (fireX1 >= itemX1 && fireX1 <= itemX2)
-                                && (fireY1 >= itemY1 && fireY1 <= itemY2)
-                                || (fireX2 >= itemX1 && fireX2 <= itemX2)
-                                && (fireY1 >= itemY1 && fireY1 <= itemY2)) {
-                            if (incChain)
-                                currChain++;
+                        if ((fireX1 >= itemX1 && fireX1 <= itemX2) && (fireY2 >= itemY1 && fireY2 <= itemY2) || (fireX2 >= itemX1 && fireX2 <= itemX2) && (fireY2 >= itemY1 && fireY2 <= itemY2) || (fireX1 >= itemX1 && fireX1 <= itemX2) && (fireY1 >= itemY1 && fireY1 <= itemY2) || (fireX2 >= itemX1 && fireX2 <= itemX2) && (fireY1 >= itemY1 && fireY1 <= itemY2)) {
+                            if (incChain) currChain++;
                             comboCheck();
                             if (currChain >= maxChain) {
                                 maxChain = currChain;
@@ -1613,8 +1497,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                             }
 
                             // check for critical hit
-                            if ((itemArray[j].center <= bulletArray[i].center + 2 && itemArray[j].center >= bulletArray[i].center - 2)
-                                    || bonusPlaying) {
+                            if ((itemArray[j].center <= bulletArray[i].center + 2 && itemArray[j].center >= bulletArray[i].center - 2) || bonusPlaying) {
                                 crit = true;
                                 critBonus += 500;
                             }
@@ -1641,13 +1524,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                 py1 = itemArray[i].y;
                 py2 = itemArray[i].y + itemH;
 
-                if ((px1 >= jx1 && px1 <= jx2) && (py2 >= jy1 && py2 <= jy2)
-                        || (px2 >= jx1 && px2 <= jx2)
-                        && (py2 >= jy1 && py2 <= jy2)
-                        || (px1 >= jx1 && px1 <= jx2)
-                        && (py1 >= jy1 && py1 <= jy2)
-                        || (px2 >= jx1 && px2 <= jx2)
-                        && (py1 >= jy1 && py1 <= jy2)) {
+                if ((px1 >= jx1 && px1 <= jx2) && (py2 >= jy1 && py2 <= jy2) || (px2 >= jx1 && px2 <= jx2) && (py2 >= jy1 && py2 <= jy2) || (px1 >= jx1 && px1 <= jx2) && (py1 >= jy1 && py1 <= jy2) || (px2 >= jx1 && px2 <= jx2) && (py1 >= jy1 && py1 <= jy2)) {
 
                     for (int j = 0; j < effects.length; j++) {
                         if (!effects[j].exists) {
@@ -1688,10 +1565,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
     public void playSound(int sound, float fSpeed) {
         // plays the sounds effect called
-        if (soundOn)
-            volume = streamVolumeCurrent / streamVolumeMax;
-        else
-            volume = 0;
+        if (soundOn) volume = streamVolumeCurrent / streamVolumeMax;
+        else volume = 0;
         soundPool.play(soundsMap.get(sound), volume, volume, 1, 0, fSpeed);
     }
 
@@ -1707,8 +1582,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     public void drawFire(Canvas canvas) {
         for (int i = 0; i < maxFire; i++) {
             if (bulletArray[i].exists) {
-                canvas.drawBitmap(fireSkin, bulletArray[i].x, bulletArray[i].y,
-                        null);
+                canvas.drawBitmap(fireSkin, bulletArray[i].x, bulletArray[i].y, null);
             }
         }
     }
@@ -1737,8 +1611,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                     } else {
                         aCurr--;
                     }
-                    if (aCurr == 0)
-                        overheat = true;
+                    if (aCurr == 0) overheat = true;
                     break;
                 }
             }
@@ -1753,32 +1626,29 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     public void reSetItems() {
         if (createSmallItems) {
             for (int i = 0; i < itemArray.length; i++) {
-                if (itemArray[i].exists)
-                    if (itemArray[i].y > (screenH)) {
-                        //items off bottom of screen
-                        destroyItems(itemArray[i]);
-                        currChain = 0;
-                        if (bonusPlaying) {
-                            sCurr--;
-                            for (int j = 0; j < effects.length; j++) {
-                                if (!effects[j].exists) {
-                                    effects[j].start();
-                                    break;
-                                }
+                if (itemArray[i].exists) if (itemArray[i].y > (screenH)) {
+                    //items off bottom of screen
+                    destroyItems(itemArray[i]);
+                    currChain = 0;
+                    if (bonusPlaying) {
+                        sCurr--;
+                        for (int j = 0; j < effects.length; j++) {
+                            if (!effects[j].exists) {
+                                effects[j].start();
+                                break;
                             }
                         }
                     }
+                }
                 if (itemArray[i].x < 0 || itemArray[i].x + itemW > screenW) {
                     itemArray[i].changeDirection();
                 }
             }
         } else {
             for (int i = 0; i < itemArray.length; i++) {
-                if (itemArray[i].exists
-                        && itemArray[i].y > (screenH + itemH)) {
+                if (itemArray[i].exists && itemArray[i].y > (screenH + itemH)) {
                     itemArray[i].exists = false;
-                    if (incChain)
-                        currChain = 0;
+                    if (incChain) currChain = 0;
                 }
             }
         }
@@ -1814,8 +1684,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                 starTrail -= 3;
             }
             if (score % 500 == 0) {
-                if (numStars > 25)
-                    numStars--;
+                if (numStars > 25) numStars--;
 
                 for (Light light1 : lightArray) {
                     if (!light1.exists) {
@@ -1834,8 +1703,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         if (score < BOSS_SCORE) {
             if (score % 8000 == 0) {
                 for (Item p : itemArray) {
-                    if (p.x > itemW && p.x < screenW - itemW)
-                        p.movementType = 1;
+                    if (p.x > itemW && p.x < screenW - itemW) p.movementType = 1;
                 }
             } else if (score % 4000 == 0) {
                 for (Item p : itemArray) {
@@ -1861,8 +1729,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         // create second and third large item
         if (score == BOSS_SCORE + 6000 || score == BOSS_SCORE + 11000) {
             tempTimer2 = 1;
-            if (bossNumber < 2)
-                bossNumber++;
+            if (bossNumber < 2) bossNumber++;
         }
 
         // show incoming large item alert
@@ -1871,16 +1738,14 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             if (tempTimer2 % 3 == 0) {
                 textColor.setColor(getResources().getColor(R.color.Red, null));
             } else if (tempTimer2 % 3 == 1) {
-                textColor.setColor(getResources()
-                        .getColor(R.color.MediumVioletRed, null));
+                textColor.setColor(getResources().getColor(R.color.MediumVioletRed, null));
             } else {
                 textColor.setColor(getResources().getColor(R.color.SlateBlue, null));
             }
 
             textColor.setTextSize(textSize1);
             measure = textColor.measureText(incomingLargeItemText);
-            c.drawText(incomingLargeItemText, screenW / 2 - measure / 2,
-                    (screenH / 2), textColor);
+            c.drawText(incomingLargeItemText, screenW / 2 - measure / 2, (screenH / 2), textColor);
             tempTimer2++;
         }
 
@@ -1914,9 +1779,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
 
         if (score > BOSS_SCORE + 500 && !bonusPlaying) {
-            if (score % 50 == 0)
-                if (aCurr < aMax)
-                    aCurr += 1;
+            if (score % 50 == 0) if (aCurr < aMax) aCurr += 1;
         }
 
         if (score > WIN_SCORE) {
@@ -1970,19 +1833,16 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
 
         // create new items at intervals
-        if (timer % 50 == 0 && itemCount < maxItems && score < BOSS_SCORE
-                && createSmallItems) {
+        if (timer % 50 == 0 && itemCount < maxItems && score < BOSS_SCORE && createSmallItems) {
             createNewItem();
         }
 
     }
 
     public void falseEndingHighScore(Canvas c) {
-        if (textColor.getColor() == getResources().getColor(
-                R.color.MediumVioletRed, null)) {
+        if (textColor.getColor() == getResources().getColor(R.color.MediumVioletRed, null)) {
             textColor.setColor(getResources().getColor(R.color.Red, null));
-        } else if (textColor.getColor() == (getResources()
-                .getColor(R.color.Red, null))) {
+        } else if (textColor.getColor() == (getResources().getColor(R.color.Red, null))) {
             textColor.setColor(getResources().getColor(R.color.SlateBlue, null));
         } else {
             textColor.setColor(getResources().getColor(R.color.MediumVioletRed, null));
@@ -1994,43 +1854,31 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         tempScore = score;
         finalScoreText = "GameScore";
         float measure2 = textColor.measureText(finalScoreText);
-        c.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4)
-                + textColor.getTextSize() * 1, textColor);
+        c.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4) + textColor.getTextSize() * 1, textColor);
         finalScoreText = Integer.toString(tempScore);
         measure = textColor.measureText(finalScoreText);
-        c.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2))
-                        - measure, (screenH / 4) + textColor.getTextSize() * 1,
-                textColor);
+        c.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2)) - measure, (screenH / 4) + textColor.getTextSize() * 1, textColor);
 
         tempScore = (maxChain * 24);
         finalScoreText = "ChainBonus";
-        c.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4)
-                + textColor.getTextSize() * 2, textColor);
+        c.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4) + textColor.getTextSize() * 2, textColor);
         finalScoreText = Integer.toString(tempScore);
         measure = textColor.measureText(finalScoreText);
-        c.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2))
-                        - measure, (screenH / 4) + textColor.getTextSize() * 2,
-                textColor);
+        c.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2)) - measure, (screenH / 4) + textColor.getTextSize() * 2, textColor);
 
         tempScore = critBonus;
         finalScoreText = "CritBonus";
-        c.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4)
-                + textColor.getTextSize() * 3, textColor);
+        c.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4) + textColor.getTextSize() * 3, textColor);
         finalScoreText = Integer.toString(tempScore);
         measure = textColor.measureText(finalScoreText);
-        c.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2))
-                        - measure, (screenH / 4) + textColor.getTextSize() * 3,
-                textColor);
+        c.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2)) - measure, (screenH / 4) + textColor.getTextSize() * 3, textColor);
 
         tempScore = score + (maxChain * 24) + critBonus;
         finalScoreText = "Total";
-        c.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4)
-                + textColor.getTextSize() * 5, textColor);
+        c.drawText(finalScoreText, (screenW / 2) - measure2, (screenH / 4) + textColor.getTextSize() * 5, textColor);
         finalScoreText = Integer.toString(tempScore);
         measure = textColor.measureText(finalScoreText);
-        c.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2))
-                        - measure, (screenH / 4) + textColor.getTextSize() * 5,
-                textColor);
+        c.drawText(finalScoreText, (screenW - ((screenW / 2) - measure2)) - measure, (screenH / 4) + textColor.getTextSize() * 5, textColor);
 
         if (!finalScoreSet) {
             finalScore = score + (maxChain * 24) + critBonus;
@@ -2053,8 +1901,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     public void drawAsteroids(Canvas canvas) {
         for (int i = 0; i < numStars; i++) {
             if (lightArray[i].exists) {
-                canvas.drawBitmap(lightArray[i].star, lightArray[i].starX,
-                        lightArray[i].starY, null);
+                canvas.drawBitmap(lightArray[i].star, lightArray[i].starX, lightArray[i].starY, null);
             } else {
                 break;
             }
@@ -2095,22 +1942,19 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         if (wallX < -planetA.getWidth() - 50) {
             if (planet1Phase) {
-                planetA = BitmapFactory.decodeResource(getResources(),
-                        R.drawable.planet2);
+                planetA = BitmapFactory.decodeResource(getResources(), R.drawable.planet2);
                 wallX = screenW;
                 wallY = 0;
                 planet1Phase = false;
                 planet2Phase = true;
             } else if (planet2Phase) {
-                planetA = BitmapFactory.decodeResource(getResources(),
-                        R.drawable.planet3);
+                planetA = BitmapFactory.decodeResource(getResources(), R.drawable.planet3);
                 wallX = screenW;
                 wallY = 0;
                 planet2Phase = false;
                 planet3Phase = true;
             } else if (planet3Phase) {
-                planetA = BitmapFactory.decodeResource(getResources(),
-                        R.drawable.planet1);
+                planetA = BitmapFactory.decodeResource(getResources(), R.drawable.planet1);
                 wallX = screenW;
                 wallY = 0;
                 planet3Phase = false;
@@ -2132,8 +1976,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     public void drawStars(Canvas canvas) {
         if (numStars > 0) {
             for (int i = 0; i < numStars; i++) {
-                canvas.drawRect(starsX[i], starsY[i], starsX[i] + 3, starsY[i]
-                        + 3 + starTrail, starsC[i]);
+                canvas.drawRect(starsX[i], starsY[i], starsX[i] + 3, starsY[i] + 3 + starTrail, starsC[i]);
             }
         }
     }
@@ -2223,13 +2066,12 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                 myThread1.join();
                 retry = false;
             } catch (InterruptedException e) {
-                Log.d(TAG,"surfaceDestroyed");
+                Log.d(TAG, "surfaceDestroyed");
             }
         }
     }
 
-    public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width,
-                               int height) {
+    public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {
     }
 
     public void surfaceCreated(@NonNull SurfaceHolder holder) {
@@ -2395,10 +2237,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         prevVolume = 1;
         currVolume = 1;
 
-        finalScoreText = chainText = textString1 = textString2 =
-                textString3 = textString4 = textString5 = textString6 = scoreString =
-                        fireString = shieldString = chainString = rapidS = text =
-                                incomingLargeItemText = "";
+        finalScoreText = chainText = textString1 = textString2 = textString3 = textString4 = textString5 = textString6 = scoreString = fireString = shieldString = chainString = rapidS = text = incomingLargeItemText = "";
     }
 
     private void getShieldsSharedPreferences(@NonNull SharedPreferences sharedpreferences) {
@@ -2411,40 +2250,35 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                 effects[i] = new Effect();
                 if (sharedpreferences.contains("shieldsjx1" + i)) {
                     effects[i].jx1 = sharedpreferences.getInt("shieldsjx1" + i, -1);
-                    if (effects[i].jx1 != -1)
-                        sharedPreferencesValid = true;
+                    if (effects[i].jx1 != -1) sharedPreferencesValid = true;
                 } else {
                     sharedPreferencesValid = false;
                 }
 
                 if (sharedpreferences.contains("shieldsjy1" + i)) {
                     effects[i].jy1 = sharedpreferences.getInt("shieldsjy1" + i, -1);
-                    if (effects[i].jy1 != -1)
-                        sharedPreferencesValid = true;
+                    if (effects[i].jy1 != -1) sharedPreferencesValid = true;
                 } else {
                     sharedPreferencesValid = false;
                 }
 
                 if (sharedpreferences.contains("shieldsjx2" + i)) {
                     effects[i].jx2 = sharedpreferences.getInt("shieldsjx2" + i, -1);
-                    if (effects[i].jx2 != -1)
-                        sharedPreferencesValid = true;
+                    if (effects[i].jx2 != -1) sharedPreferencesValid = true;
                 } else {
                     sharedPreferencesValid = false;
                 }
 
                 if (sharedpreferences.contains("shieldsjy2" + i)) {
                     effects[i].jy2 = sharedpreferences.getInt("shieldsjy2" + i, -1);
-                    if (effects[i].jy2 != -1)
-                        sharedPreferencesValid = true;
+                    if (effects[i].jy2 != -1) sharedPreferencesValid = true;
                 } else {
                     sharedPreferencesValid = false;
                 }
 
                 if (sharedpreferences.contains("shieldsshieldCount" + i)) {
                     effects[i].shieldCount = sharedpreferences.getInt("shieldsshieldCount" + i, -1);
-                    if (effects[i].shieldCount != -1)
-                        sharedPreferencesValid = true;
+                    if (effects[i].shieldCount != -1) sharedPreferencesValid = true;
                 } else {
                     sharedPreferencesValid = false;
                 }
@@ -2469,64 +2303,56 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                 allBooms2[i] = new Boom();
                 if (sharedpreferences.contains("allBooms2x" + i)) {
                     allBooms2[i].x = sharedpreferences.getInt("allBooms2x" + i, -1);
-                    if (allBooms2[i].x != -1)
-                        sharedPreferencesValid = true;
+                    if (allBooms2[i].x != -1) sharedPreferencesValid = true;
                 } else {
                     sharedPreferencesValid = false;
                 }
 
                 if (sharedpreferences.contains("allBooms2y" + i)) {
                     allBooms2[i].y = sharedpreferences.getInt("allBooms2y" + i, -1);
-                    if (allBooms2[i].y != -1)
-                        sharedPreferencesValid = true;
+                    if (allBooms2[i].y != -1) sharedPreferencesValid = true;
                 } else {
                     sharedPreferencesValid = false;
                 }
 
                 if (sharedpreferences.contains("allBooms2frames" + i)) {
                     allBooms2[i].frames = sharedpreferences.getInt("allBooms2frames" + i, -1);
-                    if (allBooms2[i].frames != -1)
-                        sharedPreferencesValid = true;
+                    if (allBooms2[i].frames != -1) sharedPreferencesValid = true;
                 } else {
                     sharedPreferencesValid = false;
                 }
 
                 if (sharedpreferences.contains("allBooms2currentFrame" + i)) {
                     allBooms2[i].currentFrame = sharedpreferences.getInt("allBooms2currentFrame" + i, -1);
-                    if (allBooms2[i].currentFrame != -1)
-                        sharedPreferencesValid = true;
+                    if (allBooms2[i].currentFrame != -1) sharedPreferencesValid = true;
                 } else {
                     sharedPreferencesValid = false;
                 }
 
                 if (sharedpreferences.contains("allBooms2currentfps" + i)) {
                     allBooms2[i].fps = sharedpreferences.getInt("allBooms2currentfps" + i, -1);
-                    if (allBooms2[i].fps != -1)
-                        sharedPreferencesValid = true;
+                    if (allBooms2[i].fps != -1) sharedPreferencesValid = true;
                 } else {
                     sharedPreferencesValid = false;
                 }
 
                 if (sharedpreferences.contains("allBooms2currentcounter" + i)) {
                     allBooms2[i].counter = sharedpreferences.getInt("allBooms2currentcounter" + i, -1);
-                    if (allBooms2[i].counter != -1)
-                        sharedPreferencesValid = true;
+                    if (allBooms2[i].counter != -1) sharedPreferencesValid = true;
                 } else {
                     sharedPreferencesValid = false;
                 }
 
                 if (sharedpreferences.contains("allBooms2critx" + i)) {
                     allBooms2[i].critx = sharedpreferences.getInt("allBooms2critx" + i, -1);
-                    if (allBooms2[i].critx != -1)
-                        sharedPreferencesValid = true;
+                    if (allBooms2[i].critx != -1) sharedPreferencesValid = true;
                 } else {
                     sharedPreferencesValid = false;
                 }
 
                 if (sharedpreferences.contains("allBooms2crity" + i)) {
                     allBooms2[i].crity = sharedpreferences.getInt("allBooms2crity" + i, -1);
-                    if (allBooms2[i].crity != -1)
-                        sharedPreferencesValid = true;
+                    if (allBooms2[i].crity != -1) sharedPreferencesValid = true;
                 } else {
                     sharedPreferencesValid = false;
                 }
@@ -2563,48 +2389,42 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
                 if (sharedpreferences.contains("largeItempieceslargex" + i)) {
                     largeItem.pieces[i].largex = sharedpreferences.getInt("largeItempieceslargex" + i, -1);
-                    if (largeItem.pieces[i].largex != -1)
-                        sharedPreferencesValid = true;
+                    if (largeItem.pieces[i].largex != -1) sharedPreferencesValid = true;
                 } else {
                     sharedPreferencesValid = false;
                 }
 
                 if (sharedpreferences.contains("largeItempieceslargey" + i)) {
                     largeItem.pieces[i].largey = sharedpreferences.getInt("largeItempieceslargey" + i, -1);
-                    if (largeItem.pieces[i].largey != -1)
-                        sharedPreferencesValid = true;
+                    if (largeItem.pieces[i].largey != -1) sharedPreferencesValid = true;
                 } else {
                     sharedPreferencesValid = false;
                 }
 
                 if (sharedpreferences.contains("largeItempiecesArrayx" + i)) {
                     largeItem.pieces[i].x = sharedpreferences.getInt("largeItempiecesArrayx" + i, -1);
-                    if (largeItem.pieces[i].x != -1)
-                        sharedPreferencesValid = true;
+                    if (largeItem.pieces[i].x != -1) sharedPreferencesValid = true;
                 } else {
                     sharedPreferencesValid = false;
                 }
 
                 if (sharedpreferences.contains("largeItempiecesArrayy" + i)) {
                     largeItem.pieces[i].y = sharedpreferences.getInt("largeItempiecesArrayy" + i, -1);
-                    if (largeItem.pieces[i].y != -1)
-                        sharedPreferencesValid = true;
+                    if (largeItem.pieces[i].y != -1) sharedPreferencesValid = true;
                 } else {
                     sharedPreferencesValid = false;
                 }
 
                 if (sharedpreferences.contains("largeItempiecesArrayItemSpeed" + i)) {
                     largeItem.pieces[i].itemSpeed = sharedpreferences.getInt("largeItempiecesArrayItemSpeed" + i, -1);
-                    if (largeItem.pieces[i].itemSpeed != -1)
-                        sharedPreferencesValid = true;
+                    if (largeItem.pieces[i].itemSpeed != -1) sharedPreferencesValid = true;
                 } else {
                     sharedPreferencesValid = false;
                 }
 
                 if (sharedpreferences.contains("largeItempiecesArraycenter" + i)) {
                     largeItem.pieces[i].center = sharedpreferences.getInt("largeItempiecesArraycenter" + i, -1);
-                    if (largeItem.pieces[i].center != -1)
-                        sharedPreferencesValid = true;
+                    if (largeItem.pieces[i].center != -1) sharedPreferencesValid = true;
                 } else {
                     sharedPreferencesValid = false;
                 }
@@ -2637,32 +2457,28 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                     bulletArray[i] = new Bullet();
                     if (sharedpreferences.contains("FireArrayx" + i)) {
                         bulletArray[i].x = sharedpreferences.getInt("FireArrayx" + i, -1);
-                        if (bulletArray[i].x != -1)
-                            sharedPreferencesValid = true;
+                        if (bulletArray[i].x != -1) sharedPreferencesValid = true;
                     } else {
                         sharedPreferencesValid = false;
                     }
 
                     if (sharedpreferences.contains("FireArrayy" + i)) {
                         bulletArray[i].y = sharedpreferences.getInt("FireArrayy" + i, -1);
-                        if (bulletArray[i].y != -1)
-                            sharedPreferencesValid = true;
+                        if (bulletArray[i].y != -1) sharedPreferencesValid = true;
                     } else {
                         sharedPreferencesValid = false;
                     }
 
                     if (sharedpreferences.contains("FireArrayFireSpeed" + i)) {
                         bulletArray[i].fireSpeed = sharedpreferences.getInt("FireArrayFireSpeed" + i, -1);
-                        if (bulletArray[i].fireSpeed != -1)
-                            sharedPreferencesValid = true;
+                        if (bulletArray[i].fireSpeed != -1) sharedPreferencesValid = true;
                     } else {
                         sharedPreferencesValid = false;
                     }
 
                     if (sharedpreferences.contains("FireArraycenter" + i)) {
                         bulletArray[i].center = sharedpreferences.getInt("FireArraycenter" + i, -1);
-                        if (bulletArray[i].center != -1)
-                            sharedPreferencesValid = true;
+                        if (bulletArray[i].center != -1) sharedPreferencesValid = true;
                     } else {
                         sharedPreferencesValid = false;
                     }
@@ -2688,8 +2504,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                 for (int i = 0; i < numberOfStarsY; i++) {
                     if (sharedpreferences.contains("starsY" + i)) {
                         starsY[i] = sharedpreferences.getInt("starsY" + i, -1);
-                        if (starsY[i] != -1)
-                            sharedPreferencesValid = true;
+                        if (starsY[i] != -1) sharedPreferencesValid = true;
                     } else {
                         sharedPreferencesValid = false;
                     }
@@ -2708,8 +2523,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                 for (int i = 0; i < numberOfStarsX; i++) {
                     if (sharedpreferences.contains("starsX" + i)) {
                         starsX[i] = sharedpreferences.getInt("starsX" + i, -1);
-                        if (starsX[i] != -1)
-                            sharedPreferencesValid = true;
+                        if (starsX[i] != -1) sharedPreferencesValid = true;
                     } else {
                         sharedPreferencesValid = false;
                     }
@@ -2730,40 +2544,35 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                     lightArray[i] = new Light();
                     if (sharedpreferences.contains("starArraystarW" + i)) {
                         lightArray[i].starW = sharedpreferences.getInt("starArraystarW" + i, -1);
-                        if (lightArray[i].starW != -1)
-                            sharedPreferencesValid = true;
+                        if (lightArray[i].starW != -1) sharedPreferencesValid = true;
                     } else {
                         sharedPreferencesValid = false;
                     }
 
                     if (sharedpreferences.contains("starArraystarH" + i)) {
                         lightArray[i].starH = sharedpreferences.getInt("starArraystarH" + i, -1);
-                        if (lightArray[i].starH != -1)
-                            sharedPreferencesValid = true;
+                        if (lightArray[i].starH != -1) sharedPreferencesValid = true;
                     } else {
                         sharedPreferencesValid = false;
                     }
 
                     if (sharedpreferences.contains("starArraystarX" + i)) {
                         lightArray[i].starX = sharedpreferences.getInt("starArraystarX" + i, -1);
-                        if (lightArray[i].starX != -1)
-                            sharedPreferencesValid = true;
+                        if (lightArray[i].starX != -1) sharedPreferencesValid = true;
                     } else {
                         sharedPreferencesValid = false;
                     }
 
                     if (sharedpreferences.contains("starArraystarY" + i)) {
                         lightArray[i].starY = sharedpreferences.getInt("starArraystarY" + i, -1);
-                        if (lightArray[i].starY != -1)
-                            sharedPreferencesValid = true;
+                        if (lightArray[i].starY != -1) sharedPreferencesValid = true;
                     } else {
                         sharedPreferencesValid = false;
                     }
 
                     if (sharedpreferences.contains("starArrayspeed" + i)) {
                         lightArray[i].speed = sharedpreferences.getInt("starArrayspeed" + i, -1);
-                        if (lightArray[i].speed != -1)
-                            sharedPreferencesValid = true;
+                        if (lightArray[i].speed != -1) sharedPreferencesValid = true;
                     } else {
                         sharedPreferencesValid = false;
                     }
@@ -2790,56 +2599,49 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                     itemArray[i] = new Item();
                     if (sharedpreferences.contains("ItemArraylargex" + i)) {
                         itemArray[i].largex = sharedpreferences.getInt("ItemArraylargex" + i, -1);
-                        if (itemArray[i].largex != -1)
-                            sharedPreferencesValid = true;
+                        if (itemArray[i].largex != -1) sharedPreferencesValid = true;
                     } else {
                         sharedPreferencesValid = false;
                     }
 
                     if (sharedpreferences.contains("ItemArraylargey" + i)) {
                         itemArray[i].largey = sharedpreferences.getInt("ItemArraylargey" + i, -1);
-                        if (itemArray[i].largey != -1)
-                            sharedPreferencesValid = true;
+                        if (itemArray[i].largey != -1) sharedPreferencesValid = true;
                     } else {
                         sharedPreferencesValid = false;
                     }
 
                     if (sharedpreferences.contains("ItemArrayx" + i)) {
                         itemArray[i].x = sharedpreferences.getInt("ItemArrayx" + i, -1);
-                        if (itemArray[i].x != -1)
-                            sharedPreferencesValid = true;
+                        if (itemArray[i].x != -1) sharedPreferencesValid = true;
                     } else {
                         sharedPreferencesValid = false;
                     }
 
                     if (sharedpreferences.contains("ItemArrayy" + i)) {
                         itemArray[i].y = sharedpreferences.getInt("ItemArrayy" + i, -1);
-                        if (itemArray[i].y != -1)
-                            sharedPreferencesValid = true;
+                        if (itemArray[i].y != -1) sharedPreferencesValid = true;
                     } else {
                         sharedPreferencesValid = false;
                     }
 
                     if (sharedpreferences.contains("ItemArrayItemSpeed" + i)) {
                         itemArray[i].itemSpeed = sharedpreferences.getInt("ItemArrayItemSpeed" + i, -1);
-                        if (itemArray[i].itemSpeed != -1)
-                            sharedPreferencesValid = true;
+                        if (itemArray[i].itemSpeed != -1) sharedPreferencesValid = true;
                     } else {
                         sharedPreferencesValid = false;
                     }
 
                     if (sharedpreferences.contains("ItemArraymovementType" + i)) {
                         itemArray[i].movementType = sharedpreferences.getInt("ItemArraymovementType" + i, -1);
-                        if (itemArray[i].movementType != -1)
-                            sharedPreferencesValid = true;
+                        if (itemArray[i].movementType != -1) sharedPreferencesValid = true;
                     } else {
                         sharedPreferencesValid = false;
                     }
 
                     if (sharedpreferences.contains("ItemArraycenter" + i)) {
                         itemArray[i].center = sharedpreferences.getInt("ItemArraycenter" + i, -1);
-                        if (itemArray[i].center != -1)
-                            sharedPreferencesValid = true;
+                        if (itemArray[i].center != -1) sharedPreferencesValid = true;
                     } else {
                         sharedPreferencesValid = false;
                     }
@@ -2867,112 +2669,98 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     private void getStringSharedPreferences(@NonNull SharedPreferences sharedpreferences) {
         if (sharedpreferences.contains("text")) {
             text = sharedpreferences.getString("text", "");
-            if (text.isEmpty())
-                sharedPreferencesValid = true;
+            if (text.isEmpty()) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("chainText")) {
             chainText = sharedpreferences.getString("chainText", "");
-            if (chainText.isEmpty())
-                sharedPreferencesValid = true;
+            if (chainText.isEmpty()) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("rapidS")) {
             rapidS = sharedpreferences.getString("rapidS", "");
-            if (rapidS.isEmpty())
-                sharedPreferencesValid = true;
+            if (rapidS.isEmpty()) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("FireString")) {
             fireString = sharedpreferences.getString("FireString", "");
-            if (fireString.isEmpty())
-                sharedPreferencesValid = true;
+            if (fireString.isEmpty()) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("textString1")) {
             textString1 = sharedpreferences.getString("textString1", "");
-            if (textString1.isEmpty())
-                sharedPreferencesValid = true;
+            if (textString1.isEmpty()) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("textString2")) {
             textString2 = sharedpreferences.getString("textString2", "");
-            if (textString2.isEmpty())
-                sharedPreferencesValid = true;
+            if (textString2.isEmpty()) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("textString3")) {
             textString3 = sharedpreferences.getString("textString3", "");
-            if (textString3.isEmpty())
-                sharedPreferencesValid = true;
+            if (textString3.isEmpty()) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("textString4")) {
             textString4 = sharedpreferences.getString("textString4", "");
-            if (textString4.isEmpty())
-                sharedPreferencesValid = true;
+            if (textString4.isEmpty()) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("textString5")) {
             textString5 = sharedpreferences.getString("textString5", "");
-            if (textString5.isEmpty())
-                sharedPreferencesValid = true;
+            if (textString5.isEmpty()) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("textString6")) {
             textString6 = sharedpreferences.getString("textString6", "");
-            if (textString6.isEmpty())
-                sharedPreferencesValid = true;
+            if (textString6.isEmpty()) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("incomingLargeItemText")) {
             incomingLargeItemText = sharedpreferences.getString("incomingLargeItemText", "");
-            if (incomingLargeItemText.isEmpty())
-                sharedPreferencesValid = true;
+            if (incomingLargeItemText.isEmpty()) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("doughString")) {
             shieldString = sharedpreferences.getString("doughString", "");
-            if (shieldString.isEmpty())
-                sharedPreferencesValid = true;
+            if (shieldString.isEmpty()) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("chainString")) {
             chainString = sharedpreferences.getString("chainString", "");
-            if (chainString.isEmpty())
-                sharedPreferencesValid = true;
+            if (chainString.isEmpty()) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("finalScoreText")) {
             finalScoreText = sharedpreferences.getString("finalScoreText", "");
-            if (finalScoreText.isEmpty())
-                sharedPreferencesValid = true;
+            if (finalScoreText.isEmpty()) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
@@ -2981,48 +2769,42 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     private void getLongSharedPreferences(@NonNull SharedPreferences sharedpreferences) {
         if (sharedpreferences.contains("score")) {
             score = sharedpreferences.getInt("score", -1);
-            if (score != -1L)
-                sharedPreferencesValid = true;
+            if (score != -1L) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("tempTimer2")) {
             tempTimer2 = sharedpreferences.getLong("tempTimer2", -1L);
-            if (tempTimer2 != -1L)
-                sharedPreferencesValid = true;
+            if (tempTimer2 != -1L) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("tempTimer3")) {
             tempTimer3 = sharedpreferences.getLong("tempTimer3", -1L);
-            if (tempTimer3 != -1L)
-                sharedPreferencesValid = true;
+            if (tempTimer3 != -1L) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("finalScore")) {
             finalScore = sharedpreferences.getInt("finalScore", -1);
-            if (finalScore != -1L)
-                sharedPreferencesValid = true;
+            if (finalScore != -1L) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("displayScoreTimer")) {
             displayScoreTimer = sharedpreferences.getLong("displayScoreTimer", -1L);
-            if (displayScoreTimer != -1L)
-                sharedPreferencesValid = true;
+            if (displayScoreTimer != -1L) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("chainTextTimer")) {
             chainTextTimer = sharedpreferences.getLong("chainTextTimer", -1L);
-            if (chainTextTimer != -1L)
-                sharedPreferencesValid = true;
+            if (chainTextTimer != -1L) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
@@ -3031,24 +2813,21 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     private void getFloatSharedPreferences(@NonNull SharedPreferences sharedpreferences) {
         if (sharedpreferences.contains("volume")) {
             volume = sharedpreferences.getFloat("volume", -1f);
-            if (volume != -1f)
-                sharedPreferencesValid = true;
+            if (volume != -1f) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("prevVolume")) {
             prevVolume = sharedpreferences.getFloat("prevVolume", -1f);
-            if (prevVolume != -1f)
-                sharedPreferencesValid = true;
+            if (prevVolume != -1f) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("currVolume")) {
             currVolume = sharedpreferences.getFloat("currVolume", -1f);
-            if (currVolume != -1f)
-                sharedPreferencesValid = true;
+            if (currVolume != -1f) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
@@ -3057,552 +2836,483 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     private void getIntSharedPreferences(@NonNull SharedPreferences sharedpreferences) {
         if (sharedpreferences.contains("acc")) {
             acc = sharedpreferences.getInt("acc", -1);
-            if (acc != -1)
-                sharedPreferencesValid = true;
+            if (acc != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("largeW")) {
             largeW = sharedpreferences.getInt("largeW", -1);
-            if (largeW != -1)
-                sharedPreferencesValid = true;
+            if (largeW != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("largeH")) {
             largeH = sharedpreferences.getInt("largeH", -1);
-            if (largeH != -1)
-                sharedPreferencesValid = true;
+            if (largeH != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("aCurr")) {
             aCurr = sharedpreferences.getInt("aCurr", -1);
-            if (aCurr != -1)
-                sharedPreferencesValid = true;
+            if (aCurr != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("sCurr")) {
             sCurr = sharedpreferences.getInt("sCurr", -1);
-            if (sCurr != -1)
-                sharedPreferencesValid = true;
+            if (sCurr != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("timer")) {
             timer = sharedpreferences.getInt("timer", -1);
-            if (timer != -1)
-                sharedPreferencesValid = true;
+            if (timer != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("myX")) {
             myX = sharedpreferences.getInt("myX", -1);
-            if (myX != -1)
-                sharedPreferencesValid = true;
+            if (myX != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("myY")) {
             myY = sharedpreferences.getInt("myY", -1);
-            if (myY != -1)
-                sharedPreferencesValid = true;
+            if (myY != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("maxItems")) {
             maxItems = sharedpreferences.getInt("maxItems", -1);
-            if (maxItems != -1)
-                sharedPreferencesValid = true;
+            if (maxItems != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("ItemCount")) {
             itemCount = sharedpreferences.getInt("ItemCount", -1);
-            if (itemCount != -1)
-                sharedPreferencesValid = true;
+            if (itemCount != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("bonusSpeed")) {
             bonusSpeed = sharedpreferences.getInt("bonusSpeed", -1);
-            if (bonusSpeed != -1)
-                sharedPreferencesValid = true;
+            if (bonusSpeed != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("ItemH")) {
             itemH = sharedpreferences.getInt("ItemH", -1);
-            if (itemH != -1)
-                sharedPreferencesValid = true;
+            if (itemH != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("ItemW")) {
             itemW = sharedpreferences.getInt("ItemW", -1);
-            if (itemW != -1)
-                sharedPreferencesValid = true;
+            if (itemW != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("displayBonusTextTimer")) {
             displayBonusTextTimer = sharedpreferences.getInt("displayBonusTextTimer", -1);
-            if (displayBonusTextTimer != -1)
-                sharedPreferencesValid = true;
+            if (displayBonusTextTimer != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("textSize1")) {
             textSize1 = sharedpreferences.getInt("textSize1", -1);
-            if (textSize1 != -1)
-                sharedPreferencesValid = true;
+            if (textSize1 != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("jx1")) {
             jx1 = sharedpreferences.getInt("jx1", -1);
-            if (jx1 != -1)
-                sharedPreferencesValid = true;
+            if (jx1 != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("jx2")) {
             jx2 = sharedpreferences.getInt("jx2", -1);
-            if (jx2 != -1)
-                sharedPreferencesValid = true;
+            if (jx2 != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("jy1")) {
             jy1 = sharedpreferences.getInt("jy1", -1);
-            if (jy1 != -1)
-                sharedPreferencesValid = true;
+            if (jy1 != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("jy2")) {
             jy2 = sharedpreferences.getInt("jy2", -1);
-            if (jy2 != -1)
-                sharedPreferencesValid = true;
+            if (jy2 != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("roundChain")) {
             roundChain = sharedpreferences.getInt("roundChain", -1);
-            if (roundChain != -1)
-                sharedPreferencesValid = true;
+            if (roundChain != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("starTrail")) {
             starTrail = sharedpreferences.getInt("starTrail", -1);
-            if (starTrail != -1)
-                sharedPreferencesValid = true;
+            if (starTrail != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("wallbX")) {
             wallBX = sharedpreferences.getInt("wallbX", -1);
-            if (wallBX != -1)
-                sharedPreferencesValid = true;
+            if (wallBX != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("wallbY")) {
             wallBY = sharedpreferences.getInt("wallbY", -1);
-            if (wallBY != -1)
-                sharedPreferencesValid = true;
+            if (wallBY != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("wallX")) {
             wallX = sharedpreferences.getInt("wallX", -1);
-            if (wallX != -1)
-                sharedPreferencesValid = true;
+            if (wallX != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("wallY")) {
             wallY = sharedpreferences.getInt("wallY", -1);
-            if (wallY != -1)
-                sharedPreferencesValid = true;
+            if (wallY != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("FireW")) {
             fireW = sharedpreferences.getInt("FireW", -1);
-            if (fireW != -1)
-                sharedPreferencesValid = true;
+            if (fireW != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("FireH")) {
             fireH = sharedpreferences.getInt("FireH", -1);
-            if (fireH != -1)
-                sharedPreferencesValid = true;
+            if (fireH != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("rapidH")) {
             rapidH = sharedpreferences.getInt("rapidH", -1);
-            if (rapidH != -1)
-                sharedPreferencesValid = true;
+            if (rapidH != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("noteHeight")) {
             noteHeight = sharedpreferences.getInt("noteHeight", -1);
-            if (noteHeight != -1)
-                sharedPreferencesValid = true;
+            if (noteHeight != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("noteWidth")) {
             noteWidth = sharedpreferences.getInt("noteWidth", -1);
-            if (noteWidth != -1)
-                sharedPreferencesValid = true;
+            if (noteWidth != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("incSpeed")) {
             incSpeed = sharedpreferences.getInt("incSpeed", -1);
-            if (incSpeed != -1)
-                sharedPreferencesValid = true;
+            if (incSpeed != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("maxFires")) {
             maxFire = sharedpreferences.getInt("maxFires", -1);
-            if (maxFire != -1)
-                sharedPreferencesValid = true;
+            if (maxFire != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("currChain")) {
             currChain = sharedpreferences.getInt("currChain", -1);
-            if (currChain != -1)
-                sharedPreferencesValid = true;
+            if (currChain != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("playerMapW")) {
             playerW = sharedpreferences.getInt("playerMapW", -1);
-            if (playerW != -1)
-                sharedPreferencesValid = true;
+            if (playerW != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("playerMapH")) {
             playerH = sharedpreferences.getInt("playerMapH", -1);
-            if (playerH != -1)
-                sharedPreferencesValid = true;
+            if (playerH != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("sMax")) {
             sMax = sharedpreferences.getInt("sMax", -1);
-            if (sMax != -1)
-                sharedPreferencesValid = true;
+            if (sMax != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("aMax")) {
             aMax = sharedpreferences.getInt("aMax", -1);
-            if (aMax != -1)
-                sharedPreferencesValid = true;
+            if (aMax != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("speed")) {
             speed = sharedpreferences.getInt("speed", -1);
-            if (speed != -1)
-                sharedPreferencesValid = true;
+            if (speed != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("i")) {
             i = sharedpreferences.getInt("i", -1);
-            if (i != -1)
-                sharedPreferencesValid = true;
+            if (i != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("newX")) {
             newX = sharedpreferences.getInt("newX", -1);
-            if (newX != -1)
-                sharedPreferencesValid = true;
+            if (newX != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("newY")) {
             newY = sharedpreferences.getInt("newY", -1);
-            if (newY != -1)
-                sharedPreferencesValid = true;
+            if (newY != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("rapidCount")) {
             rapidCount = sharedpreferences.getInt("rapidCount", -1);
-            if (rapidCount != -1)
-                sharedPreferencesValid = true;
+            if (rapidCount != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("Itemx1")) {
             itemX1 = sharedpreferences.getInt("Itemx1", -1);
-            if (itemX1 != -1)
-                sharedPreferencesValid = true;
+            if (itemX1 != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("Itemx2")) {
             itemX2 = sharedpreferences.getInt("Itemx2", -1);
-            if (itemX2 != -1)
-                sharedPreferencesValid = true;
+            if (itemX2 != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("Itemy1")) {
             itemY1 = sharedpreferences.getInt("Itemy1", -1);
-            if (itemY1 != -1)
-                sharedPreferencesValid = true;
+            if (itemY1 != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("Itemy2")) {
             itemY2 = sharedpreferences.getInt("Itemy2", -1);
-            if (itemY2 != -1)
-                sharedPreferencesValid = true;
+            if (itemY2 != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("temp1")) {
             temp1 = sharedpreferences.getInt("temp1", -1);
-            if (temp1 != -1)
-                sharedPreferencesValid = true;
+            if (temp1 != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("temp2")) {
             temp2 = sharedpreferences.getInt("temp2", -1);
-            if (temp2 != -1)
-                sharedPreferencesValid = true;
+            if (temp2 != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("tempscore")) {
             tempScore = sharedpreferences.getInt("tempscore", -1);
-            if (tempScore != -1)
-                sharedPreferencesValid = true;
+            if (tempScore != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("maxChain")) {
             maxChain = sharedpreferences.getInt("maxChain", -1);
-            if (maxChain != -1)
-                sharedPreferencesValid = true;
+            if (maxChain != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("critBonus")) {
             critBonus = sharedpreferences.getInt("critBonus", -1);
-            if (critBonus != -1)
-                sharedPreferencesValid = true;
+            if (critBonus != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("chainBonus")) {
             chainBonus = sharedpreferences.getInt("chainBonus", -1);
-            if (chainBonus != -1)
-                sharedPreferencesValid = true;
+            if (chainBonus != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("Firex1")) {
             fireX1 = sharedpreferences.getInt("Firex1", -1);
-            if (fireX1 != -1)
-                sharedPreferencesValid = true;
+            if (fireX1 != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("Firex2")) {
             fireX2 = sharedpreferences.getInt("Firex2", -1);
-            if (fireX2 != -1)
-                sharedPreferencesValid = true;
+            if (fireX2 != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("ItemW")) {
             itemW = sharedpreferences.getInt("ItemW", -1);
-            if (itemW != -1)
-                sharedPreferencesValid = true;
+            if (itemW != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("ItemH")) {
             itemH = sharedpreferences.getInt("ItemH", -1);
-            if (itemH != -1)
-                sharedPreferencesValid = true;
+            if (itemH != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("px1")) {
             px1 = sharedpreferences.getInt("px1", -1);
-            if (px1 != -1)
-                sharedPreferencesValid = true;
+            if (px1 != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("px2")) {
             px2 = sharedpreferences.getInt("px2", -1);
-            if (px2 != -1)
-                sharedPreferencesValid = true;
+            if (px2 != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("py1")) {
             py1 = sharedpreferences.getInt("py1", -1);
-            if (py1 != -1)
-                sharedPreferencesValid = true;
+            if (py1 != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("py2")) {
             py2 = sharedpreferences.getInt("py2", -1);
-            if (py2 != -1)
-                sharedPreferencesValid = true;
+            if (py2 != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("bossNumber")) {
             bossNumber = sharedpreferences.getInt("bossNumber", -1);
-            if (bossNumber != -1)
-                sharedPreferencesValid = true;
+            if (bossNumber != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("numStars")) {
             numStars = sharedpreferences.getInt("numStars", -1);
-            if (numStars != -1)
-                sharedPreferencesValid = true;
+            if (numStars != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("startSpeedOffset")) {
             startSpeedOffset = sharedpreferences.getInt("startSpeedOffset", -1);
-            if (startSpeedOffset != -1)
-                sharedPreferencesValid = true;
+            if (startSpeedOffset != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("speedOffset")) {
             speedOffset = sharedpreferences.getInt("speedOffset", -1);
-            if (speedOffset != -1)
-                sharedPreferencesValid = true;
+            if (speedOffset != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("currSpeedOffset")) {
             currSpeedOffset = sharedpreferences.getInt("currSpeedOffset", -1);
-            if (currSpeedOffset != -1)
-                sharedPreferencesValid = true;
+            if (currSpeedOffset != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("FireSpeed")) {
             fireSpeed = sharedpreferences.getInt("FireSpeed", -1);
-            if (fireSpeed != -1)
-                sharedPreferencesValid = true;
+            if (fireSpeed != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("textSize1")) {
             textSize1 = sharedpreferences.getInt("textSize1", -1);
-            if (textSize1 != -1)
-                sharedPreferencesValid = true;
+            if (textSize1 != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("textSize2")) {
             textSize2 = sharedpreferences.getInt("textSize2", -1);
-            if (textSize2 != -1)
-                sharedPreferencesValid = true;
+            if (textSize2 != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("textSize3")) {
             textSize3 = sharedpreferences.getInt("textSize3", -1);
-            if (textSize3 != -1)
-                sharedPreferencesValid = true;
+            if (textSize3 != -1) sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
@@ -3823,8 +3533,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     }
 
     public void onResume() {
-        if (soundPool == null)
-            initSoundPool();
+        if (soundPool == null) initSoundPool();
     }
 
     @Override
@@ -3846,8 +3555,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     }
 
     public void onStop() {
-        if (isLogging)
-            Log.d(TAG, "storing Shared Pres");
+        if (isLogging) Log.d(TAG, "storing Shared Pres");
 
         SharedPreferences sharedpreferences;
         sharedpreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
@@ -4081,7 +3789,6 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     }
 
     public void onDestroy() {
-        if (soundPool != null)
-            releaseSoundPool();
+        if (soundPool != null) releaseSoundPool();
     }
 }
