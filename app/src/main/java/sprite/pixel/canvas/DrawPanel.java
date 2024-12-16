@@ -328,7 +328,6 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
             highScoreScreen();
         } else {
             resetGameVars();
-            canvas.drawColor(Color.RED);
         }
     }
 
@@ -751,7 +750,6 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
         b.putString("score", textString1);
         b.putString("chain", textString5);
         intent.putExtras(b);
-        //context.startActivity(intent);
         activity.startActivityForResult(intent, HIGH_SCORE);
     }
 
@@ -990,9 +988,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
                 x = ((i % ROW) * bitmapWd3);
 
                 largeItem.pieces[i].piece = Bitmap.createBitmap(largeSkin, x, y, bitmapWd3, bitmapHd3);
-
                 largeItem.pieces[i].largex = largeItem.pieces[i].x = x + xOffset;
-
                 largeItem.pieces[i].largey = largeItem.pieces[i].y = y - (bitmapHd3 * ROW);
 
             }
