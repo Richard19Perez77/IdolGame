@@ -28,6 +28,7 @@ import androidx.annotation.NonNull;
 
 import java.io.IOException;
 import java.util.Random;
+
 import sprite.pixel.canvas.movables.Boom;
 import sprite.pixel.canvas.movables.LargeItem;
 import sprite.pixel.canvas.movables.Bullet;
@@ -240,11 +241,9 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     }
 
     public void onCreate() {
-        if (isLogging)
-            Log.d(TAG, "onCreate Panel");
+        if (isLogging) Log.d(TAG, "onCreate Panel");
 
-        if (isLogging)
-            Log.d(TAG, "getting Shared Prefs");
+        if (isLogging) Log.d(TAG, "getting Shared Prefs");
 
         SharedPreferences sharedpreferences;
         sharedpreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
@@ -838,8 +837,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             mp1.setVolume(currVolume, currVolume);
             mp1.setOnPreparedListener(this);
             mp1.prepareAsync();
-        } catch (IllegalStateException | IllegalArgumentException | IOException e) {
-            e.printStackTrace();
+        } catch (IllegalStateException | IllegalArgumentException | IOException ignored) {
+            Log.d(TAG,"mpInit");
         }
     }
 
@@ -1222,8 +1221,9 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                 mp1.setOnPreparedListener(this);
                 mp1.prepareAsync();
             } catch (IllegalStateException | IllegalArgumentException | IOException e) {
-                e.printStackTrace();
+                Log.d(TAG,"startEndGameMusic");
             }
+
             mp3overplaying = true;
         }
     }
@@ -1481,33 +1481,18 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             mp1.setVolume(currVolume, currVolume);
             mp1.setOnPreparedListener(this);
             mp1.prepareAsync();
-        } catch (IllegalStateException | IllegalArgumentException | IOException e) {
-            e.printStackTrace();
+        } catch (IllegalStateException | IllegalArgumentException | IOException ignored) {
+            Log.d(TAG, "startGamePlayMusic");
         }
+
         mp2gameplayplaying = true;
     }
 
     public void showSoundNote(Canvas canvas) {
         if (soundOn) {
             canvas.drawBitmap(noteW, (screenW - noteWidth), rapidH, null);
-//            if (scoreText.getColor() == (getResources().getColor(R.color.Red))) {
-//                canvas.drawBitmap(noteR, (screenW - noteWidth), rapidH, null);
-//            } else if (scoreText.getColor() == getResources().getColor(
-//                    R.color.MediumVioletRed)) {
-//                canvas.drawBitmap(noteG, (screenW - noteWidth), rapidH, null);
-//            } else {
-//                canvas.drawBitmap(noteW, (screenW - noteWidth), rapidH, null);
-//            }
         } else {
             canvas.drawBitmap(noteWoff, (screenW - noteWidth), rapidH, null);
-//            if (scoreText.getColor() == (getResources().getColor(R.color.Red))) {
-//                canvas.drawBitmap(noteRoff, (screenW - noteWidth), rapidH, null);
-//            } else if (scoreText.getColor() == getResources().getColor(
-//                    R.color.MediumVioletRed)) {
-//                canvas.drawBitmap(noteGoff, (screenW - noteWidth), rapidH, null);
-//            } else {
-//                canvas.drawBitmap(noteWoff, (screenW - noteWidth), rapidH, null);
-//            }
         }
     }
 
@@ -1985,9 +1970,10 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                     currVolume = 0.5f;
                 }
                 mp1.setVolume(currVolume, currVolume);
-            } catch (IllegalStateException | IllegalArgumentException | IOException e) {
-                e.printStackTrace();
+            } catch (IllegalStateException | IllegalArgumentException | IOException ignored) {
+                Log.d(TAG, "checkScore");
             }
+
             mp1.setOnPreparedListener(this);
             mp1.prepareAsync();
             mp4winplaying = true;
@@ -2269,7 +2255,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
                 myThread1.join();
                 retry = false;
             } catch (InterruptedException e) {
-                // we will try it again and again
+                Log.d(TAG,"surfaceDestroyed");
             }
         }
     }
