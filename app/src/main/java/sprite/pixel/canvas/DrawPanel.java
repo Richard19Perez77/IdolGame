@@ -377,9 +377,9 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
         planetB = BitmapFactory.decodeResource(getResources(), R.drawable.planet2b);
         planet1Phase = true;
 
-        for (int i = 0; i < lightArray.length; i++) {
+        for (Light light : lightArray) {
             randPlanetType = rand.nextInt(5);
-            getPlanetTypeForStar(lightArray[i], randPlanetType);
+            getPlanetTypeForStar(light, randPlanetType);
         }
 
         timerPaint.setStrokeWidth(1);
@@ -1275,24 +1275,24 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
     }
 
     public void destroyAllItems() {
-        for (int i = 0; i < itemArray.length; i++) {
-            if (itemArray[i].exists) {
-                itemX1 = itemArray[i].x;
-                itemY1 = itemArray[i].y;
+        for (Item item : itemArray) {
+            if (item.exists) {
+                itemX1 = item.x;
+                itemY1 = item.y;
                 // replace with boom map animation
                 temp1 = itemX1 - 30;
                 temp2 = itemY1 - 30;
                 playSound(EXPLODE, fSpeed);
                 boomMap(temp1, temp2, crit);
-                destroyItems(itemArray[i]);
+                destroyItems(item);
             }
         }
     }
 
     public void showShields(Canvas canvas, int jx1, int jx2, int jy1, int jy2) {
-        for (int i = 0; i < effects.length; i++) {
-            if (effects[i].exists) {
-                effects[i].update(canvas, jx1, jx2, jy1, jy2);
+        for (Effect effect : effects) {
+            if (effect.exists) {
+                effect.update(canvas, jx1, jx2, jy1, jy2);
             }
         }
     }
@@ -1430,10 +1430,10 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
 
     public void drawItems(Canvas canvas) {
         if (createSmallItems) {
-            for (int i = 0; i < itemArray.length; i++) {
-                if (itemArray[i].exists) {
-                    itemArray[i].moveItem(incSpeed);
-                    canvas.drawBitmap(itemSkin, itemArray[i].x, itemArray[i].y, null);
+            for (Item item : itemArray) {
+                if (item.exists) {
+                    item.moveItem(incSpeed);
+                    canvas.drawBitmap(itemSkin, item.x, item.y, null);
                 }
             }
         } else {
@@ -1449,9 +1449,9 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
     public void createNewItem() {
         if (createSmallItems) {
             if (itemCount <= itemArray.length) {
-                for (int i = 0; i < itemArray.length; i++) {
-                    if (!itemArray[i].exists) {
-                        itemArray[i].exists = true;
+                for (Item item : itemArray) {
+                    if (!item.exists) {
+                        item.exists = true;
                         itemCount += 1;
                         break;
                     }
@@ -1471,11 +1471,11 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
 
                 // check for fire hitting small items
                 // and small items hitting player
-                for (int j = 0; j < itemArray.length; j++) {
-                    if (itemArray[j].exists) {
-                        itemX1 = itemArray[j].x;
+                for (Item item : itemArray) {
+                    if (item.exists) {
+                        itemX1 = item.x;
                         itemX2 = itemX1 + itemW;
-                        itemY1 = itemArray[j].y;
+                        itemY1 = item.y;
                         itemY2 = itemY1 + itemH;
 
                         if ((fireX1 >= itemX1 && fireX1 <= itemX2) && (fireY2 >= itemY1 && fireY2 <= itemY2) || (fireX2 >= itemX1 && fireX2 <= itemX2) && (fireY2 >= itemY1 && fireY2 <= itemY2) || (fireX1 >= itemX1 && fireX1 <= itemX2) && (fireY1 >= itemY1 && fireY1 <= itemY2) || (fireX2 >= itemX1 && fireX2 <= itemX2) && (fireY1 >= itemY1 && fireY1 <= itemY2)) {
@@ -1489,7 +1489,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
                             }
 
                             // check for critical hit
-                            if ((itemArray[j].center <= bulletArray[i].center + 2 && itemArray[j].center >= bulletArray[i].center - 2) || bonusPlaying) {
+                            if ((item.center <= bulletArray[i].center + 2 && item.center >= bulletArray[i].center - 2) || bonusPlaying) {
                                 crit = true;
                                 critBonus += 500;
                             }
@@ -1501,7 +1501,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
                             crit = false;
                             playSound(EXPLODE, fSpeed);
                             destroyFire(bulletArray[i]);
-                            destroyItems(itemArray[j]);
+                            destroyItems(item);
                         }
                     }
                 }
@@ -1509,18 +1509,18 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
         }
 
         // next check for item hitting player
-        for (int i = 0; i < itemArray.length; i++) {
-            if (itemArray[i].exists) {
-                px1 = itemArray[i].x;
-                px2 = itemArray[i].x + itemW;
-                py1 = itemArray[i].y;
-                py2 = itemArray[i].y + itemH;
+        for (Item item : itemArray) {
+            if (item.exists) {
+                px1 = item.x;
+                px2 = item.x + itemW;
+                py1 = item.y;
+                py2 = item.y + itemH;
 
                 if ((px1 >= jx1 && px1 <= jx2) && (py2 >= jy1 && py2 <= jy2) || (px2 >= jx1 && px2 <= jx2) && (py2 >= jy1 && py2 <= jy2) || (px1 >= jx1 && px1 <= jx2) && (py1 >= jy1 && py1 <= jy2) || (px2 >= jx1 && px2 <= jx2) && (py1 >= jy1 && py1 <= jy2)) {
 
-                    for (int j = 0; j < effects.length; j++) {
-                        if (!effects[j].exists) {
-                            effects[j].start();
+                    for (Effect effect : effects) {
+                        if (!effect.exists) {
+                            effect.start();
                             break;
                         }
                     }
@@ -1529,7 +1529,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
                     temp2 = py1 - 30;
                     boomMap(temp1, temp2, crit);
                     playSound(EXPLODE, fSpeed);
-                    destroyItems(itemArray[i]);
+                    destroyItems(item);
                     sCurr -= 3;
                     playSound(EFFECT, fSpeed);
                 }
@@ -1617,29 +1617,29 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
 
     public void reSetItems() {
         if (createSmallItems) {
-            for (int i = 0; i < itemArray.length; i++) {
-                if (itemArray[i].exists) if (itemArray[i].y > (screenH)) {
+            for (Item item : itemArray) {
+                if (item.exists) if (item.y > (screenH)) {
                     //items off bottom of screen
-                    destroyItems(itemArray[i]);
+                    destroyItems(item);
                     currChain = 0;
                     if (bonusPlaying) {
                         sCurr--;
-                        for (int j = 0; j < effects.length; j++) {
-                            if (!effects[j].exists) {
-                                effects[j].start();
+                        for (Effect effect : effects) {
+                            if (!effect.exists) {
+                                effect.start();
                                 break;
                             }
                         }
                     }
                 }
-                if (itemArray[i].x < 0 || itemArray[i].x + itemW > screenW) {
-                    itemArray[i].changeDirection();
+                if (item.x < 0 || item.x + itemW > screenW) {
+                    item.changeDirection();
                 }
             }
         } else {
-            for (int i = 0; i < itemArray.length; i++) {
-                if (itemArray[i].exists && itemArray[i].y > (screenH + itemH)) {
-                    itemArray[i].exists = false;
+            for (Item item : itemArray) {
+                if (item.exists && item.y > (screenH + itemH)) {
+                    item.exists = false;
                     if (incChain) currChain = 0;
                 }
             }
@@ -1803,8 +1803,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
         }
 
         if (score % SPEED_MARKER == 0) {
-            for (int i = 0; i < itemArray.length; i++) {
-                itemArray[i].itemSpeed += incSpeed;
+            for (Item item : itemArray) {
+                item.itemSpeed += incSpeed;
             }
         }
 
@@ -2173,7 +2173,6 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback, Me
         newX = 0;
         newY = 0;
         starTrail = 0;
-        acc = 0;
         playerW = 0;
         playerH = 0;
         i = 0;
