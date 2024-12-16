@@ -885,7 +885,6 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         for (int i = 0; i < numStars; i++) {
             randPlanetType = rand.nextInt(5);
             lightArray[i] = createNewStar(randPlanetType);
-            // add canvas var's for x and y
             lightArray[i].starX = screenW;
             lightArray[i].starY = rand.nextInt(screenH);
 
