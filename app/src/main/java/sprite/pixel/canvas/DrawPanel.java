@@ -69,7 +69,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     public boolean rapidAvailable = true, finalScoreSet, crit,
             showChainText, introScreenPlaying, gamePlaying,
             ready, gameTouchReady, bonusPlaying, bonusInitialized, gameOver,
-            mp2gameplayplaying, mp3overplaying, mp4winplaying, threadAlive,
+            mp2GameplayPlaying, mp3overplaying, mp4WinPlaying, threadAlive,
             planet1Phase, planet2Phase, planet3Phase, overheat, retry,
             showFinalScore, playerMapPressed, soundOn = true, allVarsLoaded,
             timer3Started, loadingPrepared, showHighScoreScreen,
@@ -153,11 +153,11 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     public AudioManager mgr;
 
     // replace boom map
-    public Bitmap b, planeta, planetb, itemSkin, fireSkin;
+    public Bitmap b, planetA, planetB, itemSkin, fireSkin;
     public Bitmap[] booms;
     public Boom[] allBooms2;
     public Bitmap rapidG, rapidR, rapidW, playerMap, loadingIntro, warningIntro,
-            noteR, noteG, noteW, noteRoff, noteWoff, noteGoff;
+            noteR, noteG, noteW, noteROff, noteWoff, noteGoff;
 
     // large item variables
     public float measure, fSpeed, streamVolumeCurrent,
@@ -413,9 +413,9 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         mpInit(getContext());
         initSoundPool();
 
-        planeta = BitmapFactory.decodeResource(getResources(),
+        planetA = BitmapFactory.decodeResource(getResources(),
                 R.drawable.planet1);
-        planetb = BitmapFactory.decodeResource(getResources(),
+        planetB = BitmapFactory.decodeResource(getResources(),
                 R.drawable.planet2b);
         planet1Phase = true;
 
@@ -445,7 +445,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         noteR = BitmapFactory.decodeResource(getResources(), R.drawable.noter);
         noteG = BitmapFactory.decodeResource(getResources(), R.drawable.noteg);
         noteW = BitmapFactory.decodeResource(getResources(), R.drawable.notew);
-        noteRoff = BitmapFactory.decodeResource(getResources(),
+        noteROff = BitmapFactory.decodeResource(getResources(),
                 R.drawable.noteroff);
         noteGoff = BitmapFactory.decodeResource(getResources(),
                 R.drawable.notegoff);
@@ -600,7 +600,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         // check for shields to be empty
         if (sCurr > 0) {
             // play non bonus game music
-            if (!mp4winplaying && !mp2gameplayplaying)
+            if (!mp4WinPlaying && !mp2GameplayPlaying)
                 startGamePlayMusic();
 
             if (incScore) {
@@ -750,7 +750,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         } else {
             startEndGameMusic();
             drawBackground(canvas);
-            createStarfield(canvas);
+            createStarField(canvas);
             showFinalScoreText(canvas);
             printScoreTexts(canvas);
             updateBooms(canvas);
@@ -760,8 +760,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
     public void drawBackground(Canvas c) {
         c.drawPaint(backGround);
-        createStarfield(c);
-        createAsteroidfield(c);
+        createStarField(c);
+        createAsteroidField(c);
         createPlanets(c);
     }
 
@@ -881,9 +881,9 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         }
 
-        planeta = BitmapFactory.decodeResource(getResources(),
+        planetA = BitmapFactory.decodeResource(getResources(),
                 R.drawable.planet1);
-        planetb = BitmapFactory.decodeResource(getResources(),
+        planetB = BitmapFactory.decodeResource(getResources(),
                 R.drawable.planet2b);
         planet1Phase = true;
 
@@ -931,7 +931,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         noteR = BitmapFactory.decodeResource(getResources(), R.drawable.noter);
         noteG = BitmapFactory.decodeResource(getResources(), R.drawable.noteg);
         noteW = BitmapFactory.decodeResource(getResources(), R.drawable.notew);
-        noteRoff = BitmapFactory.decodeResource(getResources(),
+        noteROff = BitmapFactory.decodeResource(getResources(),
                 R.drawable.noteroff);
         noteGoff = BitmapFactory.decodeResource(getResources(),
                 R.drawable.notegoff);
@@ -1204,13 +1204,13 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
     public void startEndGameMusic() {
         if (!mp3overplaying) {
-            if (mp2gameplayplaying) {
+            if (mp2GameplayPlaying) {
                 mp1.stop();
-                mp2gameplayplaying = false;
+                mp2GameplayPlaying = false;
             }
-            if (mp4winplaying) {
+            if (mp4WinPlaying) {
                 mp1.stop();
-                mp4winplaying = false;
+                mp4WinPlaying = false;
             }
             try {
                 mp1.reset();
@@ -1485,7 +1485,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             Log.d(TAG, "startGamePlayMusic");
         }
 
-        mp2gameplayplaying = true;
+        mp2GameplayPlaying = true;
     }
 
     public void showSoundNote(Canvas canvas) {
@@ -1906,7 +1906,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             tempTimer2++;
         }
 
-        // end of gameplaying and start of bonus
+        // end of game playing and start of bonus
         if (score == BOSS_SCORE + 16000 && !timer3Started) {
             tempTimer3 = 1;
             timer3Started = true;
@@ -1948,9 +1948,9 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             }
         }
 
-        if (score % WIN_SCORE == 0 && score != 0 && !mp4winplaying) {
+        if (score % WIN_SCORE == 0 && score != 0 && !mp4WinPlaying) {
             mp1.stop();
-            mp2gameplayplaying = false;
+            mp2GameplayPlaying = false;
             try {
                 mp1.reset();
                 Uri uri = Uri.parse(path + R.raw.win);
@@ -1966,7 +1966,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
             mp1.setOnPreparedListener(this);
             mp1.prepareAsync();
-            mp4winplaying = true;
+            mp4WinPlaying = true;
         }
 
         if (score % SPEED_MARKER == 0) {
@@ -2062,12 +2062,12 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
     }
 
-    public void createStarfield(Canvas canvas) {
+    public void createStarField(Canvas canvas) {
         drawStars(canvas);
         moveStars();
     }
 
-    public void createAsteroidfield(Canvas canvas) {
+    public void createAsteroidField(Canvas canvas) {
         drawAsteroids(canvas);
         moveAsteroids();
     }
@@ -2105,33 +2105,33 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     }
 
     public void drawPlanets(@NonNull Canvas c) {
-        c.drawBitmap(planetb, wallBX, wallBY, null);
-        c.drawBitmap(planeta, wallX, wallY, null);
+        c.drawBitmap(planetB, wallBX, wallBY, null);
+        c.drawBitmap(planetA, wallX, wallY, null);
     }
 
     public void movePlanets() {
-        if (wallBX < -planetb.getWidth() - 75) {
+        if (wallBX < -planetB.getWidth() - 75) {
             wallBX = screenW;
             wallBY = 50;
         }
 
-        if (wallX < -planeta.getWidth() - 50) {
+        if (wallX < -planetA.getWidth() - 50) {
             if (planet1Phase) {
-                planeta = BitmapFactory.decodeResource(getResources(),
+                planetA = BitmapFactory.decodeResource(getResources(),
                         R.drawable.planet2);
                 wallX = screenW;
                 wallY = 0;
                 planet1Phase = false;
                 planet2Phase = true;
             } else if (planet2Phase) {
-                planeta = BitmapFactory.decodeResource(getResources(),
+                planetA = BitmapFactory.decodeResource(getResources(),
                         R.drawable.planet3);
                 wallX = screenW;
                 wallY = 0;
                 planet2Phase = false;
                 planet3Phase = true;
             } else if (planet3Phase) {
-                planeta = BitmapFactory.decodeResource(getResources(),
+                planetA = BitmapFactory.decodeResource(getResources(),
                         R.drawable.planet1);
                 wallX = screenW;
                 wallY = 0;
@@ -2312,9 +2312,9 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         bonusPlaying = false;
         bonusInitialized = false;
         gameOver = false;
-        mp2gameplayplaying = false;
+        mp2GameplayPlaying = false;
         mp3overplaying = false;
-        mp4winplaying = false;
+        mp4WinPlaying = false;
         threadAlive = false;
         planet1Phase = false;
         planet2Phase = false;
@@ -3704,14 +3704,14 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
 
         if (sharedpreferences.contains("mp4winplaying")) {
-            mp4winplaying = sharedpreferences.getBoolean("mp4winplaying", false);
+            mp4WinPlaying = sharedpreferences.getBoolean("mp4winplaying", false);
             sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
         }
 
         if (sharedpreferences.contains("mp2gameplayplaying")) {
-            mp2gameplayplaying = sharedpreferences.getBoolean("mp2gameplayplaying", false);
+            mp2GameplayPlaying = sharedpreferences.getBoolean("mp2gameplayplaying", false);
             sharedPreferencesValid = true;
         } else {
             sharedPreferencesValid = false;
@@ -3887,8 +3887,8 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         editor.putBoolean("showHighScoreScreen", showHighScoreScreen);
         editor.putBoolean("allVarsLoaded", allVarsLoaded);
         editor.putBoolean("gameTouchReady", gameTouchReady);
-        editor.putBoolean("mp4winplaying", mp4winplaying);
-        editor.putBoolean("mp2gameplayplaying", mp2gameplayplaying);
+        editor.putBoolean("mp4winplaying", mp4WinPlaying);
+        editor.putBoolean("mp2gameplayplaying", mp2GameplayPlaying);
         editor.putBoolean("mp3overplaying", mp3overplaying);
         editor.putBoolean("ready", ready);
         editor.putBoolean("createSmallItems", createSmallItems);
