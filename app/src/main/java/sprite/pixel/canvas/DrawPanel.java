@@ -23,6 +23,9 @@ import android.util.SparseIntArray;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import androidx.annotation.NonNull;
+
 import java.io.IOException;
 import java.util.Random;
 import sprite.pixel.canvas.movables.Boom;
@@ -1154,7 +1157,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    public void getPlayerMapLocationThenDraw(Canvas canvas) {
+    public void getPlayerMapLocationThenDraw(@NonNull Canvas canvas) {
         // get player map location and draw him
         jx1 = myX - playerW / 2;
         jx2 = myX + (playerW / 2);
@@ -1164,7 +1167,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         canvas.drawBitmap(playerMap, jx1, jy1, null);
     }
 
-    public void printScoreTexts(Canvas canvas) {
+    public void printScoreTexts(@NonNull Canvas canvas) {
         // print score and chain
         scoreText.setTextSize(textSize2);
         chainString = "Chain/Max " + currChain + "/" + maxChain;
