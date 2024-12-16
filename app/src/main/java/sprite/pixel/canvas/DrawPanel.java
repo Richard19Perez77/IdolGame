@@ -2273,7 +2273,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    public void surfaceDestroyed(SurfaceHolder holder) {
+    public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
         retry = true;
         myThread1.setRunning(false);
         while (retry) {
@@ -2286,11 +2286,11 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    public void surfaceChanged(SurfaceHolder holder, int format, int width,
+    public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width,
                                int height) {
     }
 
-    public void surfaceCreated(SurfaceHolder holder) {
+    public void surfaceCreated(@NonNull SurfaceHolder holder) {
         if (isLogging) {
             Log.d(TAG, "surface Created Panel");
         }
