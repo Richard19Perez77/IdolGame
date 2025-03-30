@@ -17,6 +17,8 @@ import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.SparseIntArray;
@@ -33,6 +35,7 @@ import sprite.pixel.canvas.movables.Bullet;
 import sprite.pixel.canvas.movables.Item;
 import sprite.pixel.canvas.movables.Effect;
 import sprite.pixel.canvas.movables.Light;
+
 
 @SuppressLint("ViewConstructor")
 public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
@@ -161,6 +164,9 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     private boolean isItemArrayLargeItem;
     private boolean isWindowReady = false;
 
+    private HandlerThread soundThread;
+    private Handler soundHandler;
+
     public DrawPanel(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
@@ -168,6 +174,10 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         myThread1 = new DrawThread(getHolder(), this);
         setFocusable(true);
         this.activity = (Activity) context;
+
+        soundThread = new HandlerThread("SoundThread");
+        soundThread.start();
+        soundHandler = new Handler(soundThread.getLooper());
     }
 
     public void onCreate() {
@@ -1700,12 +1710,23 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
     }
 
     public void playSound(int sound, float fSpeed) {
-        // plays the sounds effect called
-        if (soundOn)
-            volume = streamVolumeCurrent / streamVolumeMax;
-        else
-            volume = 0;
-        soundPool.play(soundsMap.get(sound), volume, volume, 1, 0, fSpeed);
+//        // plays the sounds effect called
+//        if (soundOn)
+//            volume = streamVolumeCurrent / streamVolumeMax;
+//        else
+//            volume = 0;
+
+        if (soundHandler == null) return;
+
+        soundHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                float volumeToPlay = soundOn ? (streamVolumeCurrent / streamVolumeMax) : 0;
+                soundPool.play(soundsMap.get(sound), volumeToPlay, volumeToPlay, 1, 0, fSpeed);
+            }
+        });
+
+        // soundPool.play(soundsMap.get(sound), volume, volume, 1, 0, fSpeed);
     }
 
     public void destroyItems(Item item) {
