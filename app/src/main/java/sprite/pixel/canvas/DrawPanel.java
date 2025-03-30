@@ -2009,7 +2009,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
         }
 
         // create new items at intervals
-        if (timer % 50 == 0 && itemCount < maxItems && score < BOSS_SCORE
+        if (timer % 30 == 0 && itemCount < maxItems && score < BOSS_SCORE
                 && createSmallItems) {
             createNewItem();
         }
@@ -2213,7 +2213,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
 
         if (screenH >= 1000 && screenW >= 600) {
             fireSpeed = 33;
-            maxItems = 50;
+            maxItems = 75;
             maxFire = 75;
             textSize1 = 55;
             textSize2 = 40;
@@ -2221,7 +2221,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             numStars = 50;
         } else if (screenH >= 700 && screenW >= 400) {
             fireSpeed = 28;
-            maxItems = 40;
+            maxItems = 60;
             maxFire = 50;
             textSize1 = 35;
             textSize2 = 25;
@@ -2229,7 +2229,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             numStars = 40;
         } else if (screenH >= 400 && screenW >= 300) {
             fireSpeed = 23;
-            maxItems = 20;
+            maxItems = 25;
             maxFire = 30;
             textSize1 = 25;
             textSize2 = 20;
@@ -2237,7 +2237,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             numStars = 30;
         } else if (screenH >= 200 && screenW >= 200) {
             fireSpeed = 18;
-            maxItems = 15;
+            maxItems = 20;
             maxFire = 25;
             textSize1 = 25;
             textSize2 = 15;
@@ -2245,7 +2245,7 @@ public class DrawPanel extends SurfaceView implements SurfaceHolder.Callback,
             numStars = 20;
         } else {
             fireSpeed = 16;
-            maxItems = 10;
+            maxItems = 15;
             maxFire = 10;
             textSize1 = 20;
             textSize2 = 10;
